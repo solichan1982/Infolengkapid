@@ -1,0 +1,78 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: #333;
+    line-height: 1.6;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px 0;
+}
+
+header {
+    background-color: #fff;
+    padding: 20px 0;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo img {
+    height: 50px; /* Sesuaikan ukuran logo */
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #555;
+    padding: 10px 15px;
+    display: block;
+    font-weight: bold;
+}
+
+nav ul li a:hover {
+    color: #f06292; /* Warna pink untuk hover */
+}
+
+/* Styling untuk section hero, produk, dll. akan ditambahkan di sini */
+#hero {
+    background-color: #fce4ec; /* Warna latar belakang pink muda */
+    text-align: center;
+    padding: 100px 0;
+    color: #4a148c; /* Warna teks ungu gelap */
+}
+
+#hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 3em;
+    margin-bottom: 15px;
+}
+
+.button {
+    display: inline-block;
+    background-color: #f06292;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    margin-top: 20px;
+    transition: background-color 0.3s ease;
+}
+
+.button:hover {
+    background-color: #e91e63;
+}
+
+/* Tambahkan lebih banyak styling sesuai kebutuhan Anda */

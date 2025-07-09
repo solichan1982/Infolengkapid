@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Info Kendaraan - InfoLengkapID</title>
+    <meta name="description" content="Temukan informasi lengkap kendaraan dijual, mobil bekas, motor, dan lainnya di InfoLengkapID. Pilihan kendaraan berkualitas dengan harga terbaik.">
+    <meta name="keywords" content="mobil dijual, motor dijual, mobil bekas, motor bekas, jual beli mobil, jual beli motor, kendaraan, otomotif, InfoLengkapID">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'automotive-blue': '#1A237E', // Dark blue, professional
+                        'automotive-light-blue': '#283593', // Slightly lighter for accents
+                        'automotive-gray': '#424242',   // Dark gray for text
+                        'automotive-light-gray': '#E0E0E0', // Light gray for backgrounds
+                        'automotive-red': '#E53935',    // Red for ID and accents, sporty
+                        'automotive-orange': '#FF9800', // Orange for highlights
+                        'soft-bg': '#ECEFF1',           // Very light grey background
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Roboto+Condensed:wght@700&display=swap" rel="stylesheet">
+    
+    <style>
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background-color: #f8fafc; 
+        }
+        .unggulan-slider-inner { 
+            transition: transform 0.5s ease-in-out; 
+        }
+        #gallery-popup { 
+            transition: opacity 0.3s ease; 
+        }
+        .gallery-slide { 
+            display: none; 
+            transition: opacity 0.5s ease-in-out; 
+        }
+        .gallery-slide.active { 
+            display: block; 
+        }
+        .no-scrollbar::-webkit-scrollbar { 
+            display: none; 
+        }
+        .no-scrollbar { 
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .brand-text {
+            font-family: 'Roboto Condensed', sans-serif; /* A bold, modern font for the brand */
+        }
+    </style>
+</head>
+<body class="bg-soft-bg">
+
+   <header class="bg-white shadow-md sticky top-0 z-40">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex-shrink-0 flex items-center">
+                    <img src="https://placehold.co/40x40/automotive-blue/ffffff?text=🚗" alt="Logo Kendaraan" class="h-8 w-8 mr-2">
+                    <a href="index.html" class="text-2xl font-bold brand-text">
+                        <span class="text-automotive-blue">Info</span>
+                        <span class="text-automotive-gray">Lengkap</span>
+                        <span class="text-automotive-red">ID</span>
+                    </a>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-4">
+                        <a href="index.html" class="bg-automotive-blue text-white block px-3 py-2 rounded-md text-base font-medium">Beranda</a>
+                 <a href="#layanan" class="text-gray-500 hover:bg-automotive-light-gray hover:text-automotive-blue block px-3 py-2 rounded-md text-base font-medium">Layanan kami</a>
+                 <a href="tentang.html" class="text-gray-500 hover:bg-automotive-light-gray hover:text-automotive-blue block px-3 py-2 rounded-md text-base font-medium">Tentang Kami</a>
+                 <a href="layanan.html" class="text-gray-500 hover:bg-automotive-light-gray hover:text-automotive-blue block px-3 py-2 rounded-md text-base font-medium">Layanan</a>
+                 <a href="blog.html" class="text-gray-500 hover:bg-automotive-light-gray hover:text-automotive-blue block px-3 py-2 rounded-md text-base font-medium">Blog</a>
+                 <a href="kebijakan-privasi.html" class="text-gray-500 hover:bg-automotive-light-gray hover:text-automotive-blue block px-3 py-2 rounded-md text-base font-medium">kebijakan Privasi</a>
+                 <a href="syarat-kententuan.html" class="text-gray-500 hover:bg-automotive-light-gray hover:text-automotive-blue block px-3 py-2 rounded-md text-base font-medium">Ketentuan</a>
+                 <a href="contact.html" class="text-gray-500 hover:bg-automotive-light-gray hover:text-automotive-blue block px-3 py-2 rounded-md text-base font-medium">Kontak</a>
+                    </div>
+                </div>
+                <div class="-mr-2 flex md:hidden">
+                    <button id="mobile-menu-button" type="button" class="bg-gray-100 inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-automotive-blue" aria-controls="mobile-menu" aria-expanded="false">
+                        <span class="sr-only">Buka menu</span>
+                        <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" /></svg>
+                        <svg class="hidden h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="md:hidden hidden" id="mobile-menu">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                 <a href="index.html" class="bg-automotive-blue text-white block px-3 py-2 rounded-md text-base font-medium">Beranda</a>
+                 <a href="#layanan" class="text-gray-500 hover:bg-automotive-light-gray hover:text-automotive-blue block px-3 py-2 rounded-md text-base font-medium">Layanan kami</a>
+                 <a href="tentang.html" class="text-gray-500 hover:bg-automotive-light-gray hover:text-automotive-blue block px-3 py-2 rounded-md text-base font-medium">Tentang Kami</a>
+                 <a href="layanan.html" class="text-gray-500 hover:bg-automotive-light-gray hover:text-automotive-blue block px-3 py-2 rounded-md text-base font-medium">Layanan</a>
+                 <a href="blog.html" class="text-gray-500 hover:bg-automotive-light-gray hover:text-automotive-blue block px-3 py-2 rounded-md text-base font-medium">Blog</a>
+                 <a href="kebijakan-privasi.html" class="text-gray-500 hover:bg-automotive-light-gray hover:text-automotive-blue block px-3 py-2 rounded-md text-base font-medium">kebijakan Privasi</a>
+                 <a href="syarat-kententuan.html" class="text-gray-500 hover:bg-automotive-light-gray hover:text-automotive-blue block px-3 py-2 rounded-md text-base font-medium">Ketentuan</a>
+                 <a href="contact.html" class="text-gray-500 hover:bg-automotive-light-gray hover:text-automotive-blue block px-3 py-2 rounded-md text-base font-medium">Kontak</a>
+            </div>
+        </div>
+    </header>
+
+    <section class="relative w-full h-80 lg:h-96 overflow-hidden shadow-lg">
+        <div id="unggulan-slider" class="h-full">
+            <div class="unggulan-slider-inner relative h-full w-full flex">
+                <div class="w-full flex-shrink-0 h-full bg-cover bg-center" style="background-image: url('https://placehold.co/1600x600/1A237E/ffffff?text=Mobil+Impian+Anda!');">
+                    <div class="w-full h-full flex flex-col justify-center items-center bg-black bg-opacity-50 text-white text-center p-4">
+                        <h2 class="text-3xl md:text-5xl font-extrabold leading-tight">Temukan Kendaraan Impian Anda</h2>
+                        <p class="mt-4 text-lg md:text-xl max-w-2xl">Mobil bekas, motor, hingga kendaraan niaga.</p>
+                    </div>
+                </div>
+                <div class="w-full flex-shrink-0 h-full bg-cover bg-center" style="background-image: url('https://placehold.co/1600x600/283593/ffffff?text=Motor+Terbaru!');">
+                    <div class="w-full h-full flex flex-col justify-center items-center bg-black bg-opacity-50 text-white text-center p-4">
+                        <h2 class="text-3xl md:text-5xl font-extrabold leading-tight">Motor Baru & Bekas Terbaik</h2>
+                        <p class="mt-4 text-lg md:text-xl max-w-2xl">Berbagai merek dan model tersedia.</p>
+                    </div>
+                </div>
+                <div class="w-full flex-shrink-0 h-full bg-cover bg-center" style="background-image: url('https://placehold.co/1600x600/E53935/ffffff?text=Jual+Beli+Aman!');">
+                    <div class="w-full h-full flex flex-col justify-center items-center bg-black bg-opacity-50 text-white text-center p-4">
+                        <h2 class="text-3xl md:text-5xl font-extrabold leading-tight">Jual Beli Kendaraan Aman & Mudah</h2>
+                        <p class="mt-4 text-lg md:text-xl max-w-2xl">InfoLengkapID, solusi otomotif Anda.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="unggulan-slider-dots" class="absolute bottom-5 left-1/2 -translate-x-1/2 flex space-x-2"></div>
+    </section>
+
+    <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-16">
+        <section class="mb-8 p-4 bg-white rounded-lg shadow-md">
+            <h2 class="text-2xl font-bold text-gray-800 mb-4">Cari Kendaraan</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                <select id="type-filter" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-automotive-blue text-gray-700">
+                    <option value="">Jenis Kendaraan (Semua)</option>
+                    <option value="mobil">Mobil</option>
+                    <option value="motor">Motor</option>
+                    <option value="niaga">Kendaraan Niaga</option>
+                    <option value="lain-lain">Lain-lain</option>
+                </select>
+                <input type="text" id="brand-model-filter-input" placeholder="Merek/Model: Honda, Toyota, Nmax..." class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-automotive-blue">
+                <select id="price-range-filter" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-automotive-blue text-gray-700">
+                    <option value="">Harga (Semua)</option>
+                    <option value="<50jt">&lt; Rp 50 Juta</option>
+                    <option value="50jt-100jt">Rp 50 Juta - 100 Juta</option>
+                    <option value=">100jt">&gt; Rp 100 Juta</option>
+                </select>
+            </div>
+        </section>
+
+        <div class="my-8 text-center bg-automotive-light-gray p-4 rounded-lg border border-automotive-blue/20">
+            <p class="text-automotive-blue text-sm mb-2">Space Iklan Anda di Sini (Google AdSense)</p>
+            <div class="bg-automotive-blue/10 h-24 md:h-32 flex items-center justify-center text-automotive-blue text-xl font-bold">
+                Iklan Responsif
+            </div>
+        </div>
+
+        <section class="text-center py-6">
+            <h2 class="text-2xl font-bold text-gray-800 mb-4">Ingin Jual Kendaraan Anda?</h2>
+            <p class="text-gray-600 mb-6">Pasang iklan kendaraan Anda di InfoLengkapID dan jangkau jutaan calon pembeli!</p>
+            <a href="LINK_GOOGLE_FORM_ANDA_DI_SINI_KENDARAAN" target="_blank" class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-automotive-red hover:bg-automotive-blue focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-automotive-red">
+                <svg class="-ml-1 mr-3 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M3 5a2 2 0 012-2h10a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2V5zm1.5 2.5a.5.5 0 00-.5.5v5a.5.5 0 00.5.5h11a.5.5 0 00.5-.5v-5a.5.5 0 00-.5-.5h-11zM10 16a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd" />
+                    <path fill-rule="evenodd" d="M10 13a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd" />
+                </svg>
+                Iklankan Kendaraan Anda Sekarang!
+            </a>
+            <p class="text-xs text-gray-400 mt-2">Anda akan diarahkan ke Google Form</p>
+        </section>
+
+        <section id="Mobil Bekas">
+            <h2 class="text-3xl font-bold text-gray-800 mb-6 border-l-4 border-automotive-blue pl-4">Mobil Bekas Berkualitas</h2>
+            <div class="relative">
+                <div id="mobil-container" class="flex overflow-x-auto space-x-6 pb-4 no-scrollbar scroll-smooth">
+                    <div class="property-card flex-shrink-0 w-80 bg-white rounded-lg shadow-lg" 
+                        data-type="mobil" data-brand-model="Toyota Avanza" data-location="Jakarta Selatan"
+                        data-images="https://placehold.co/800x600/1A237E/ffffff?text=Avanza+Depan,https://placehold.co/800x600/283593/ffffff?text=Avanza+Dalam">
+                        <img src="https://placehold.co/600x400/1A237E/ffffff?text=Toyota+Avanza" alt="Toyota Avanza Bekas" class="w-full h-48 object-cover cursor-pointer open-gallery">
+                        <div class="p-4 flex flex-col flex-grow">
+                            <h3 class="font-bold text-lg mb-1 property-title">Toyota Avanza 2018 Matic</h3>
+                            <p class="text-sm text-gray-500 mb-3 property-location">Jakarta Selatan - Siap Pakai</p>
+                            <p class="text-xl font-semibold text-automotive-blue mb-4">Rp 125.000.000</p>
+                            <ul class="text-gray-600 text-sm mb-4 space-y-1">
+                                <li>Kilometer rendah, Servis Rutin</li>
+                                <li>AC Dingin, Interior Bersih</li>
+                                <li>Surat Lengkap, Pajak Hidup</li>
+                            </ul>
+                            <div class="mt-auto flex space-x-2">
+                                <button class="whatsapp-trigger flex-1 text-center bg-green-500 text-white py-2 px-4 rounded-md hover:bg-green-600 transition-colors text-sm font-medium" 
+                                        data-wa-number="6281234567901" 
+                                        data-service-name="Toyota Avanza 2018 Matic">
+                                    Hubungi Penjual (WA)
+                                </button>
+                                <a href="https://maps.google.com/?q=-6.2608,106.8105" target="_blank" class="flex-1 text-center bg-automotive-orange text-gray-800 py-2 px-4 rounded-md hover:bg-orange-500 transition-colors text-sm font-medium">Lihat Lokasi</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="property-card flex-shrink-0 w-80 bg-white rounded-lg shadow-lg" 
+                        data-type="mobil" data-brand-model="Honda Jazz" data-location="Bandung Kota"
+                        data-images="https://placehold.co/800x600/283593/ffffff?text=Jazz+Depan,https://placehold.co/800x600/1A237E/ffffff?text=Jazz+Belakang">
+                        <img src="https://placehold.co/600x400/283593/ffffff?text=Honda+Jazz" alt="Honda Jazz Bekas" class="w-full h-48 object-cover cursor-pointer open-gallery">
+                        <div class="p-4 flex flex-col flex-grow">
+                            <h3 class="font-bold text-lg mb-1 property-title">Honda Jazz RS 2017 Manual</h3>
+                            <p class="text-sm text-gray-500 mb-3 property-location">Bandung Kota - Terawat</p>
+                            <p class="text-xl font-semibold text-automotive-blue mb-4">Rp 160.000.000</p>
+                            <ul class="text-gray-600 text-sm mb-4 space-y-1">
+                                <li>Tangan Pertama, Jarang Pakai</li>
+                                <li>Bebas Banjir & Tabrakan</li>
+                                <li>Dokumen Lengkap, Pajak On</li>
+                            </ul>
+                            <div class="mt-auto flex space-x-2">
+                                <button class="whatsapp-trigger flex-1 text-center bg-green-500 text-white py-2 px-4 rounded-md hover:bg-green-600 transition-colors text-sm font-medium" 
+                                        data-wa-number="6281234567902" 
+                                        data-service-name="Honda Jazz RS 2017 Manual">
+                                    Hubungi Penjual (WA)
+                                </button>
+                                <a href="https://maps.google.com/?q=-6.9175,107.6191" target="_blank" class="flex-1 text-center bg-automotive-orange text-gray-800 py-2 px-4 rounded-md hover:bg-orange-500 transition-colors text-sm font-medium">Lihat Lokasi</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="absolute top-1/2 -left-4 transform -translate-y-1/2 bg-white p-2 rounded-full shadow-md hidden md:block z-10" onclick="scrollContainer('mobil-container', -300)" aria-label="Geser ke Kiri">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" /></svg>
+                </button>
+                <button class="absolute top-1/2 -right-4 transform -translate-y-1/2 bg-white p-2 rounded-full shadow-md hidden md:block z-10" onclick="scrollContainer('mobil-container', 300)" aria-label="Geser ke Kanan">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+                </button>
+            </div>
+        </section>
+
+        <div class="my-8 text-center bg-automotive-light-gray p-4 rounded-lg border border-automotive-blue/20">
+            <p class="text-automotive-blue text-sm mb-2">Space Iklan Anda di Sini (Google AdSense)</p>
+            <div class="bg-automotive-blue/10 h-24 md:h-32 flex items-center justify-center text-automotive-blue text-xl font-bold">
+                Iklan Responsif
+            </div>
+        </div>
+
+        <section id="Motor Bekas">
+            <h2 class="text-3xl font-bold text-gray-800 mb-6 border-l-4 border-automotive-blue pl-4">Motor Bekas Pilihan</h2>
+            <div class="relative">
+                <div id="motor-container" class="flex overflow-x-auto space-x-6 pb-4 no-scrollbar scroll-smooth">
+                    <div class="property-card flex-shrink-0 w-80 bg-white rounded-lg shadow-lg" 
+                        data-type="motor" data-brand-model="Yamaha NMAX" data-location="Surabaya"
+                        data-images="https://placehold.co/800x600/E53935/ffffff?text=NMAX+Depan,https://placehold.co/800x600/1A237E/ffffff?text=NMAX+Samping">
+                        <img src="https://placehold.co/600x400/E53935/ffffff?text=Yamaha+NMAX" alt="Yamaha NMAX Bekas" class="w-full h-48 object-cover cursor-pointer open-gallery">
+                        <div class="p-4 flex flex-col flex-grow">
+                            <h3 class="font-bold text-lg mb-1 property-title">Yamaha NMAX 155 ABS 2020</h3>
+                            <p class="text-sm text-gray-500 mb-3 property-location">Surabaya - Terawat Baik</p>
+                            <p class="text-xl font-semibold text-automotive-blue mb-4">Rp 28.000.000</p>
+                            <ul class="text-gray-600 text-sm mb-4 space-y-1">
+                                <li>STNK BPKB Lengkap, Pajak Panjang</li>
+                                <li>Servis Rutin Bengkel Resmi</li>
+                                <li>Siap Touring, Mesin Halus</li>
+                            </ul>
+                            <div class="mt-auto flex space-x-2">
+                                <button class="whatsapp-trigger flex-1 text-center bg-green-500 text-white py-2 px-4 rounded-md hover:bg-green-600 transition-colors text-sm font-medium" 
+                                        data-wa-number="6281234567903" 
+                                        data-service-name="Yamaha NMAX 155 ABS 2020">
+                                    Hubungi Penjual (WA)
+                                </button>
+                                <a href="https://maps.google.com/?q=-7.2575,112.7688" target="_blank" class="flex-1 text-center bg-automotive-orange text-gray-800 py-2 px-4 rounded-md hover:bg-orange-500 transition-colors text-sm font-medium">Lihat Lokasi</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="property-card flex-shrink-0 w-80 bg-white rounded-lg shadow-lg" 
+                        data-type="motor" data-brand-model="Honda Vario" data-location="Yogyakarta"
+                        data-images="https://placehold.co/800x600/1A237E/ffffff?text=Vario+Depan,https://placehold.co/800x600/E53935/ffffff?text=Vario+Belakang">
+                        <img src="https://placehold.co/600x400/1A237E/ffffff?text=Honda+Vario" alt="Honda Vario Bekas" class="w-full h-48 object-cover cursor-pointer open-gallery">
+                        <div class="p-4 flex flex-col flex-grow">
+                            <h3 class="font-bold text-lg mb-1 property-title">Honda Vario 125 CBS 2019</h3>
+                            <p class="text-sm text-gray-500 mb-3 property-location">Yogyakarta - Harga Nego</p>
+                            <p class="text-xl font-semibold text-automotive-blue mb-4">Rp 17.500.000</p>
+                            <ul class="text-gray-600 text-sm mb-4 space-y-1">
+                                <li>Body Mulus, Mesin Orisinil</li>
+                                <li>Pajak Hidup, Siap Ganti Nama</li>
+                                <li>Cocok untuk Harian</li>
+                            </ul>
+                            <div class="mt-auto flex space-x-2">
+                                <button class="whatsapp-trigger flex-1 text-center bg-green-500 text-white py-2 px-4 rounded-md hover:bg-green-600 transition-colors text-sm font-medium" 
+                                        data-wa-number="6281234567904" 
+                                        data-service-name="Honda Vario 125 CBS 2019">
+                                    Hubungi Penjual (WA)
+                                </button>
+                                <a href="https://maps.google.com/?q=-7.7956,110.3686" target="_blank" class="flex-1 text-center bg-automotive-orange text-gray-800 py-2 px-4 rounded-md hover:bg-orange-500 transition-colors text-sm font-medium">Lihat Lokasi</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="absolute top-1/2 -left-4 transform -translate-y-1/2 bg-white p-2 rounded-full shadow-md hidden md:block z-10" onclick="scrollContainer('motor-container', -300)" aria-label="Geser ke Kiri">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" /></svg>
+                </button>
+                <button class="absolute top-1/2 -right-4 transform -translate-y-1/2 bg-white p-2 rounded-full shadow-md hidden md:block z-10" onclick="scrollContainer('motor-container', 300)" aria-label="Geser ke Kanan">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+                </button>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-gray-800 text-white mt-12">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-8 text-center">
+            <p>&copy; 2024 InfoLengkapID. Semua Hak Cipta Dilindungi.</p>
+        </div>
+    </footer>
+
+    <div id="gallery-popup" class="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center p-4 z-50 hidden opacity-0">
+        <div class="relative w-full max-w-3xl">
+            <button id="close-gallery" class="absolute -top-2 -right-2 md:-top-4 md:-right-4 z-10 text-white bg-red-600 rounded-full w-9 h-9 flex items-center justify-center text-2xl font-bold hover:bg-red-700 transition-colors" aria-label="Tutup Galeri">&times;</button>
+            <div id="gallery-container" class="relative w-full h-64 md:h-96 bg-black rounded-lg overflow-hidden"></div>
+            <button id="prev-btn" class="absolute top-1/2 left-2 md:left-4 -translate-y-1/2 bg-white/30 text-white p-2 rounded-full hover:bg-white/50 transition-colors" aria-label="Gambar Sebelumnya">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" /></svg>
+            </button>
+            <button id="next-btn" class="absolute top-1/2 right-2 md:right-4 -translate-y-1/2 bg-white/30 text-white p-2 rounded-full hover:bg-white/50 transition-colors" aria-label="Gambar Selanjutnya">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+            </button>
+            <div id="gallery-counter" class="absolute bottom-2 right-3 text-white text-sm bg-black/50 px-2 py-1 rounded"></div>
+        </div>
+    </div>
+
+    <form id="whatsappNotificationForm" action="https://formspree.io/f/mvgrjrjv" method="POST" style="display: none;">
+        <input type="hidden" name="_subject" value="Notifikasi Klik WhatsApp: Info Kendaraan">
+        <input type="hidden" name="jenis_notifikasi" value="Klik WhatsApp Info Kendaraan">
+        <input type="hidden" name="nama_kendaraan" id="namaKendaraanInput">
+        <input type="hidden" name="nomor_wa_tujuan" id="nomorWaInput">
+        <input type="hidden" name="waktu_klik" id="waktuKlikInput">
+        <input type="hidden" name="halaman_url" id="halamanUrlInput">
+    </form>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // --- MOBILE HAMBURGER MENU LOGIC ---
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const svgs = mobileMenuButton.querySelectorAll('svg');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            svgs.forEach(svg => svg.classList.toggle('hidden'));
+        });
+
+        // --- FEATURED SLIDER LOGIC ---
+        const unggulanSlider = document.querySelector('#unggulan-slider .unggulan-slider-inner');
+        if (unggulanSlider) {
+            const unggulanSlides = unggulanSlider.querySelectorAll('.unggulan-slider-inner > div');
+            const dotsContainer = document.getElementById('unggulan-slider-dots');
+            let currentUnggulanSlide = 0;
+            const slideInterval = 5000; // Slide changes every 5 seconds
+
+            // Create dots for each slide
+            unggulanSlides.forEach((_, i) => {
+                const dot = document.createElement('button');
+                dot.classList.add('w-3', 'h-3', 'rounded-full', 'transition-colors', 'duration-300');
+                dot.classList.add(i === 0 ? 'bg-white' : 'bg-white/50', 'hover:bg-white');
+                dot.addEventListener('click', () => goToUnggulanSlide(i));
+                dotsContainer.appendChild(dot);
+            });
+
+            const dots = dotsContainer.querySelectorAll('button');
+
+            // Update dot active state based on current slide
+            function updateDots(index) {
+                dots.forEach((dot, i) => {
+                    dot.classList.toggle('bg-white', i === index);
+                    dot.classList.toggle('bg-white/50', i !== index);
+                });
+            }
+
+            // Move slider to a specific slide
+            function goToUnggulanSlide(slideIndex) {
+                currentUnggulanSlide = slideIndex;
+                unggulanSlider.style.transform = `translateX(-${currentUnggulanSlide * 100}%)`;
+                updateDots(currentUnggulanSlide);
+            }
+
+            // Move to the next slide
+            function nextUnggulanSlide() {
+                currentUnggulanSlide = (currentUnggulanSlide + 1) % unggulanSlides.length;
+                goToUnggulanSlide(currentUnggulanSlide);
+            }
+
+            // Auto-advance slides
+            setInterval(nextUnggulanSlide, slideInterval);
+            // Initialize slider to the first slide
+            goToUnggulanSlide(0);
+        }
+
+        // --- GALLERY POPUP LOGIC ---
+        const galleryPopup = document.getElementById('gallery-popup');
+        const galleryContainer = document.getElementById('gallery-container');
+        const galleryCounter = document.getElementById('gallery-counter');
+        const closeGalleryBtn = document.getElementById('close-gallery');
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+        const openGalleryTriggers = document.querySelectorAll('.open-gallery');
+        let currentImages = [];
+        let currentIndex = 0;
+
+        // Displays a specific image slide in the gallery
+        function showSlide(index) {
+            const slides = galleryContainer.querySelectorAll('.gallery-slide');
+            slides.forEach(slide => slide.classList.remove('active'));
+            if (slides[index]) { // Check if slide exists
+                slides[index].classList.add('active');
+                galleryCounter.textContent = `${index + 1} / ${currentImages.length}`;
+                currentIndex = index;
+            }
+        }
+
+        // Changes the current slide by a given direction (+1 for next, -1 for previous)
+        function changeSlide(direction) {
+            let newIndex = currentIndex + direction;
+            if (newIndex < 0) { 
+                newIndex = currentImages.length - 1; 
+            } else if (newIndex >= currentImages.length) { 
+                newIndex = 0; 
+            }
+            showSlide(newIndex);
+        }
+
+        // Event listeners for opening the gallery
+        openGalleryTriggers.forEach(trigger => {
+            trigger.addEventListener('click', function() {
+                const card = this.closest('.property-card');
+                const imagesAttr = card.dataset.images; // Get image URLs from data-images attribute
+                if (!imagesAttr) return; // Exit if no images are defined
+
+                currentImages = imagesAttr.split(',').map(url => url.trim()); // Split and trim URLs
+                galleryContainer.innerHTML = ''; // Clear previous images
+
+                // Create and append image slides
+                currentImages.forEach((imgUrl) => {
+                    const slide = document.createElement('div');
+                    slide.className = 'gallery-slide absolute w-full h-full';
+                    const img = document.createElement('img');
+                    img.src = imgUrl;
+                    img.className = 'w-full h-full object-contain'; // object-contain to fit image within container
+                    img.alt = `Kendaraan Gambar ${imgUrl}`; // Add meaningful alt text
+                    slide.appendChild(img);
+                    galleryContainer.appendChild(slide);
+                });
+
+                showSlide(0); // Show the first image
+                galleryPopup.classList.remove('hidden'); // Make popup visible
+                // Timeout for smooth fade-in effect
+                setTimeout(() => galleryPopup.classList.remove('opacity-0'), 10);
+            });
+        });
+
+        // Function to close the gallery
+        function closeGallery() {
+            galleryPopup.classList.add('opacity-0'); // Start fade-out
+            // Hide after transition
+            setTimeout(() => galleryPopup.classList.add('hidden'), 300);
+        }
+
+        // Event listeners for gallery navigation and closing
+        prevBtn.addEventListener('click', () => changeSlide(-1));
+        nextBtn.addEventListener('click', () => changeSlide(1));
+        closeGalleryBtn.addEventListener('click', closeGallery);
+        // Close gallery if clicked outside the image container
+        galleryPopup.addEventListener('click', (e) => {
+            if (e.target === galleryPopup) closeGallery();
+        });
+
+        // --- FILTERING LOGIC ---
+        const allPropertyCards = document.querySelectorAll('.property-card');
+
+        function applyFilters() {
+            const lowerCaseBrandModelSearchTerm = document.getElementById('brand-model-filter-input').value.toLowerCase().trim();
+            const selectedType = document.getElementById('type-filter').value;
+            const selectedPriceRange = document.getElementById('price-range-filter').value;
+
+            allPropertyCards.forEach(card => {
+                const cardBrandModel = card.dataset.brandModel ? card.dataset.brandModel.toLowerCase() : '';
+                const cardType = card.dataset.type;
+                const cardPriceText = card.querySelector('.font-semibold.text-automotive-blue').textContent; // e.g., "Rp 125.000.000"
+
+                let isBrandModelMatch = (lowerCaseBrandModelSearchTerm === '' || cardBrandModel.includes(lowerCaseBrandModelSearchTerm));
+                let isTypeMatch = (selectedType === '' || cardType === selectedType);
+                let isPriceMatch = true; 
+
+                if (selectedPriceRange !== '') {
+                    const priceValue = parseInt(cardPriceText.replace(/\D/g, '').trim()); 
+                    if (isNaN(priceValue)) {
+                        isPriceMatch = false; 
+                    } else {
+                        switch (selectedPriceRange) {
+                            case '<50jt':
+                                isPriceMatch = priceValue < 50000000;
+                                break;
+                            case '50jt-100jt':
+                                isPriceMatch = priceValue >= 50000000 && priceValue <= 100000000;
+                                break;
+                            case '>100jt':
+                                isPriceMatch = priceValue > 100000000;
+                                break;
+                        }
+                    }
+                }
+                
+                if (isBrandModelMatch && isTypeMatch && isPriceMatch) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        document.getElementById('brand-model-filter-input').addEventListener('keyup', applyFilters);
+        document.getElementById('type-filter').addEventListener('change', applyFilters);
+        document.getElementById('price-range-filter').addEventListener('change', applyFilters);
+
+        applyFilters(); // Initial filter application
+
+        // --- HORIZONTAL SCROLL LOGIC FOR PROPERTY LISTINGS (DESKTOP ARROWS) ---
+        window.scrollContainer = function(containerId, scrollAmount) {
+            const container = document.getElementById(containerId);
+            if (container) {
+                container.scrollBy({
+                    left: scrollAmount,
+                    behavior: 'smooth'
+                });
+            }
+        };
+
+        // --- WHATSAPP CLICK TRACKING & NOTIFICATION LOGIC ---
+        const whatsappButtons = document.querySelectorAll('.whatsapp-trigger');
+        const notificationForm = document.getElementById('whatsappNotificationForm');
+        const namaKendaraanInput = document.getElementById('namaKendaraanInput');
+        const nomorWaInput = document.getElementById('nomorWaInput');
+        const waktuKlikInput = document.getElementById('waktuKlikInput');
+        const halamanUrlInput = document.getElementById('halamanUrlInput');
+
+        whatsappButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const propertyName = this.dataset.serviceName; // Reusing serviceName for property name
+                const waNumber = this.dataset.waNumber;       
+
+                namaKendaraanInput.value = propertyName;
+                nomorWaInput.value = waNumber;
+                waktuKlikInput.value = new Date().toLocaleString('id-ID', { timeZone: 'Asia/Jakarta' });
+                halamanUrlInput.value = window.location.href;
+
+                // Send data to Formspree
+                notificationForm.submit();
+
+                // Open WhatsApp chat after a small delay
+                setTimeout(() => {
+                    window.location.href = `https://wa.me/${waNumber}?text=Halo, saya tertarik dengan ${encodeURIComponent(propertyName)} yang saya lihat di InfoLengkapID.`;
+                }, 200); // Give a small delay for the form to submit
+            });
+        });
+
+    });
+    </script>
+</body>
+</html>

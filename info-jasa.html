@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Info Jasa Harian & Kasar - InfoLengkap</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'primary-blue': '#3B82F6', // A vibrant blue
+                        'secondary-blue': '#60A5FA', // A lighter blue
+                        'dark-blue': '#1D4ED8',    // A darker blue for hover/active states
+                        'light-blue': '#DBEAFE',   // Very light blue for backgrounds
+                        'soft-gray-blue': '#EFF6FF', // A soft, almost white bluish gray
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background-color: #f8fafc; 
+        }
+        .unggulan-slider-inner { 
+            transition: transform 0.5s ease-in-out; 
+        }
+        #gallery-popup { 
+            transition: opacity 0.3s ease; 
+        }
+        .gallery-slide { 
+            display: none; 
+            transition: opacity 0.5s ease-in-out; 
+        }
+        .gallery-slide.active { 
+            display: block; 
+        }
+        .no-scrollbar::-webkit-scrollbar { 
+            display: none; 
+        }
+        .no-scrollbar { 
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+
+   <header class="bg-white shadow-md sticky top-0 z-40">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex-shrink-0">
+                    <a href="index.html" class="text-2xl font-bold text-primary-blue">Info<span class="text-gray-800">Lengkap</span></a>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-4">
+                        <a href="index.html" class="bg-primary-blue text-white block px-3 py-2 rounded-md text-base font-medium">Beranda</a>
+                 <a href="#layanan" class="text-gray-500 hover:bg-light-blue hover:text-dark-blue block px-3 py-2 rounded-md text-base font-medium">Layanan kami</a>
+                 <a href="tentang.html" class="text-gray-500 hover:bg-light-blue hover:text-dark-blue block px-3 py-2 rounded-md text-base font-medium">Tentang Kami</a>
+                 <a href="layanan.html" class="text-gray-500 hover:bg-light-blue hover:text-dark-blue block px-3 py-2 rounded-md text-base font-medium">Layanan</a>
+                 <a href="blog.html" class="text-gray-500 hover:bg-light-blue hover:text-dark-blue block px-3 py-2 rounded-md text-base font-medium">Blog</a>
+                 <a href="kebijakan-privasi.html" class="text-gray-500 hover:bg-light-blue hover:text-dark-blue block px-3 py-2 rounded-md text-base font-medium">kebijakan Privasi</a>
+                 <a href="syarat-kententuan.html" class="text-gray-500 hover:bg-light-blue hover:text-dark-blue block px-3 py-2 rounded-md text-base font-medium">Ketentuan</a>
+                 <a href="contact.html" class="text-gray-500 hover:bg-light-blue hover:text-dark-blue block px-3 py-2 rounded-md text-base font-medium">Kontak</a>
+                    </div>
+                </div>
+                <div class="-mr-2 flex md:hidden">
+                    <button id="mobile-menu-button" type="button" class="bg-gray-100 inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-blue" aria-controls="mobile-menu" aria-expanded="false">
+                        <span class="sr-only">Buka menu</span>
+                        <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" /></svg>
+                        <svg class="hidden h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="md:hidden hidden" id="mobile-menu">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                 <a href="index.html" class="bg-primary-blue text-white block px-3 py-2 rounded-md text-base font-medium">Beranda</a>
+                 <a href="#layanan" class="text-gray-500 hover:bg-light-blue hover:text-dark-blue block px-3 py-2 rounded-md text-base font-medium">Layanan kami</a>
+                 <a href="tentang.html" class="text-gray-500 hover:bg-light-blue hover:text-dark-blue block px-3 py-2 rounded-md text-base font-medium">Tentang Kami</a>
+                 <a href="layanan.html" class="text-gray-500 hover:bg-light-blue hover:text-dark-blue block px-3 py-2 rounded-md text-base font-medium">Layanan</a>
+                 <a href="blog.html" class="text-gray-500 hover:bg-light-blue hover:text-dark-blue block px-3 py-2 rounded-md text-base font-medium">Blog</a>
+                 <a href="kebijakan-privasi.html" class="text-gray-500 hover:bg-light-blue hover:text-dark-blue block px-3 py-2 rounded-md text-base font-medium">kebijakan Privasi</a>
+                 <a href="syarat-kententuan.html" class="text-gray-500 hover:bg-light-blue hover:text-dark-blue block px-3 py-2 rounded-md text-base font-medium">Ketentuan</a>
+                 <a href="contact.html" class="text-gray-500 hover:bg-light-blue hover:text-dark-blue block px-3 py-2 rounded-md text-base font-medium">Kontak</a>
+            </div>
+        </div>
+    </header>
+
+    <section class="relative w-full h-80 lg:h-96 overflow-hidden shadow-lg">
+        <div id="unggulan-slider" class="h-full">
+            <div class="unggulan-slider-inner relative h-full w-full flex">
+                <div class="w-full flex-shrink-0 h-full bg-cover bg-center" style="background-image: url('https://placehold.co/1600x600/3B82F6/ffffff?text=Jasa+Tukang+Harian!');">
+                    <div class="w-full h-full flex flex-col justify-center items-center bg-black bg-opacity-50 text-white text-center p-4">
+                        <h2 class="text-3xl md:text-5xl font-extrabold leading-tight">Jasa Tukang Terpercaya</h2>
+                        <p class="mt-4 text-lg md:text-xl max-w-2xl">Untuk kebutuhan rumah dan proyek Anda.</p>
+                    </div>
+                </div>
+                <div class="w-full flex-shrink-0 h-full bg-cover bg-center" style="background-image: url('https://placehold.co/1600x600/60A5FA/ffffff?text=Solusi+Servis!');">
+                    <div class="w-full h-full flex flex-col justify-center items-center bg-black bg-opacity-50 text-white text-center p-4">
+                        <h2 class="text-3xl md:text-5xl font-extrabold leading-tight">Servis Elektronik & Rumah Tangga</h2>
+                        <p class="mt-4 text-lg md:text-xl max-w-2xl">Ahli dan Bergaransi.</p>
+                    </div>
+                </div>
+                <div class="w-full flex-shrink-0 h-full bg-cover bg-center" style="background-image: url('https://placehold.co/1600x600/1D4ED8/ffffff?text=Profesional+dan+Cepat!');">
+                    <div class="w-full h-full flex flex-col justify-center items-center bg-black bg-opacity-50 text-white text-center p-4">
+                        <h2 class="text-3xl md:text-5xl font-extrabold leading-tight">Jasa Pindahan & Angkut Barang</h2>
+                        <p class="mt-4 text-lg md:text-xl max-w-2xl">Aman, cepat, terpercaya.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="unggulan-slider-dots" class="absolute bottom-5 left-1/2 -translate-x-1/2 flex space-x-2"></div>
+    </section>
+
+    <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-16">
+        <section class="mb-8 p-4 bg-white rounded-lg shadow-md">
+            <h2 class="text-2xl font-bold text-gray-800 mb-4">Cari Jasa Harian & Pekerjaan Kasar</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                <select id="service-type-filter" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-blue text-gray-700">
+                    <option value="">Jenis Jasa (Semua)</option>
+                    <option value="tukang">Jasa Tukang Harian</option>
+                    <option value="servis">Jasa Servis</option>
+                    <option value="sanitasi">Jasa Sanitasi</option>
+                    <option value="angkut">Jasa Angkut Barang</option>
+                    <option value="desain">Jasa Desain Arsitek</option>
+                    <option value="lainnya">Jasa Lainnya</option>
+                </select>
+                <input type="text" id="location-filter-input" placeholder="Lokasi: Jakarta, Bandung, Surabaya..." class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-blue">
+                <select id="price-range-filter" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-blue text-gray-700">
+                    <option value="">Harga (Semua)</option>
+                    <option value="nego">Nego/Survei</option>
+                    <option value="<100k">&lt; Rp 100 Ribu</option>
+                    <option value="100k-500k">Rp 100 Ribu - 500 Ribu</option>
+                    <option value=">500k">&gt; Rp 500 Ribu</option>
+                </select>
+            </div>
+        </section>
+
+        <div class="my-8 text-center bg-light-blue p-4 rounded-lg border border-primary-blue/20">
+            <p class="text-primary-blue text-sm mb-2">Space Iklan Anda di Sini (Google AdSense)</p>
+            <div class="bg-primary-blue/10 h-24 md:h-32 flex items-center justify-center text-primary-blue text-xl font-bold">
+                Iklan Responsif
+            </div>
+        </div>
+
+        <section class="text-center py-6">
+            <h2 class="text-2xl font-bold text-gray-800 mb-4">Punya Keahlian di Bidang Jasa Harian/Kasar?</h2>
+            <p class="text-gray-600 mb-6">Daftarkan jasa Anda agar ditemukan oleh lebih banyak pelanggan!</p>
+            <a href="LINK_GOOGLE_FORM_ANDA_DI_SINI" target="_blank" class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-primary-blue hover:bg-dark-blue focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-blue">
+                <svg class="-ml-1 mr-3 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                    <path d="M11 3a1 1 0 10-2 0v1a1 1 0 102 0V3z" />
+                    <path fill-rule="evenodd" d="M4 4a2 2 0 00-2 2v6a2 2 0 002 2l2.5-.5a.5.5 0 01.5.5V16a2 2 0 002 2h2a2 2 0 002-2v-2.5a.5.5 0 01.5-.5L16 12a2 2 0 002-2V6a2 2 0 00-2-2h-3V3a1 1 0 10-2 0v1H9V3a1 1 0 10-2 0v1H4zm1 9.5V7.836A3.001 3.001 0 007.836 5H12v6.5a.5.5 0 01-.5.5h-5a.5.5 0 01-.5-.5z" clip-rule="evenodd" />
+                </svg>
+                Daftar Jasa Anda Sekarang!
+            </a>
+            <p class="text-xs text-gray-400 mt-2">Anda akan diarahkan ke Google Form</p>
+        </section>
+
+        <section id="Jasa Tukang Harian">
+            <h2 class="text-3xl font-bold text-gray-800 mb-6 border-l-4 border-primary-blue pl-4">Jasa Tukang Harian</h2>
+            <div class="relative">
+                <div id="tukang-harian-container" class="flex overflow-x-auto space-x-6 pb-4 no-scrollbar scroll-smooth">
+                    <div class="property-card flex-shrink-0 w-80 bg-white rounded-lg shadow-lg" 
+                        data-lat="-6.208763" data-lon="106.845599" data-location="Jakarta Pusat" 
+                        data-images="https://placehold.co/800x600/3B82F6/ffffff?text=Tukang+Bangunan+1,https://placehold.co/800x600/60A5FA/ffffff?text=Tukang+Bangunan+2">
+                        <img src="https://placehold.co/600x400/3B82F6/ffffff?text=Tukang+Bangunan" alt="Jasa Tukang Bangunan" class="w-full h-48 object-cover cursor-pointer open-gallery">
+                        <div class="p-4 flex flex-col flex-grow">
+                            <h3 class="font-bold text-lg mb-1 property-title">Tukang Bangunan Harian</h3>
+                            <p class="text-sm text-gray-500 mb-3 property-location">Jakarta Pusat</p>
+                            <p class="text-xl font-semibold text-primary-blue mb-4">Mulai Rp 150 Ribu/hari</p>
+                            <div class="mt-auto flex space-x-2">
+                                <button class="whatsapp-trigger flex-1 text-center bg-green-500 text-white py-2 px-4 rounded-md hover:bg-green-600 transition-colors text-sm font-medium" 
+                                        data-wa-number="6281234567805" 
+                                        data-service-name="Tukang Bangunan Harian">
+                                    WhatsApp
+                                </button>
+                                <a href="#peta-lokasi" class="map-link flex-1 text-center bg-secondary-blue text-white py-2 px-4 rounded-md hover:bg-dark-blue transition-colors text-sm font-medium">Peta Lokasi</a>
+                            </div>
+                            <div class="mt-4 text-center">
+                                <a href="formulir-keluhan.html?jenis_laporan=Jasa+Tidak+Sesuai&nama_jasa=Tukang+Bangunan+Harian&url_asal=https://solichan1982.github.io/Info-lengkap-id/info-jasa.html" 
+                                   class="inline-block bg-red-600 text-white py-2 px-4 rounded-md hover:bg-red-700 transition-colors text-sm font-medium">
+                                    Laporkan Jasa Ini
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="property-card flex-shrink-0 w-80 bg-white rounded-lg shadow-lg" 
+                        data-lat="-6.902525" data-lon="107.618782" data-location="Bandung Kota" 
+                        data-images="https://placehold.co/800x600/60A5FA/ffffff?text=Tukang+Listrik+1,https://placehold.co/800x600/3B82F6/ffffff?text=Tukang+Listrik+2">
+                        <img src="https://placehold.co/600x400/60A5FA/ffffff?text=Tukang+Listrik" alt="Jasa Tukang Listrik" class="w-full h-48 object-cover cursor-pointer open-gallery">
+                        <div class="p-4 flex flex-col flex-grow">
+                            <h3 class="font-bold text-lg mb-1 property-title">Tukang Listrik Panggilan</h3>
+                            <p class="text-sm text-gray-500 mb-3 property-location">Bandung Kota</p>
+                            <p class="text-xl font-semibold text-primary-blue mb-4">Mulai Rp 100 Ribu/perbaikan</p>
+                            <div class="mt-auto flex space-x-2">
+                                <button class="whatsapp-trigger flex-1 text-center bg-green-500 text-white py-2 px-4 rounded-md hover:bg-green-600 transition-colors text-sm font-medium" 
+                                        data-wa-number="6281234567806" 
+                                        data-service-name="Tukang Listrik Panggilan">
+                                    WhatsApp
+                                </button>
+                                <a href="#peta-lokasi" class="map-link flex-1 text-center bg-secondary-blue text-white py-2 px-4 rounded-md hover:bg-dark-blue transition-colors text-sm font-medium">Peta Lokasi</a>
+                            </div>
+                            <div class="mt-4 text-center">
+                                <a href="formulir-keluhan.html?jenis_laporan=Jasa+Tidak+Sesuai&nama_jasa=Tukang+Listrik+Panggilan&url_asal=https://solichan1982.github.io/Info-lengkap-id/info-jasa.html" 
+                                   class="inline-block bg-red-600 text-white py-2 px-4 rounded-md hover:bg-red-700 transition-colors text-sm font-medium">
+                                    Laporkan Jasa Ini
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="absolute top-1/2 -left-4 transform -translate-y-1/2 bg-white p-2 rounded-full shadow-md hidden md:block z-10" onclick="scrollContainer('tukang-harian-container', -300)" aria-label="Geser ke Kiri">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" /></svg>
+                </button>
+                <button class="absolute top-1/2 -right-4 transform -translate-y-1/2 bg-white p-2 rounded-full shadow-md hidden md:block z-10" onclick="scrollContainer('tukang-harian-container', 300)" aria-label="Geser ke Kanan">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+                </button>
+            </div>
+        </section>
+
+        <div class="my-8 text-center bg-light-blue p-4 rounded-lg border border-primary-blue/20">
+            <p class="text-primary-blue text-sm mb-2">Space Iklan Anda di Sini (Google AdSense)</p>
+            <div class="bg-primary-blue/10 h-24 md:h-32 flex items-center justify-center text-primary-blue text-xl font-bold">
+                Iklan Responsif
+            </div>
+        </div>
+
+        <section id="Jasa Servis">
+            <h2 class="text-3xl font-bold text-gray-800 mb-6 border-l-4 border-primary-blue pl-4">Jasa Servis Elektronik & Lainnya</h2>
+            <div class="relative">
+                <div id="jasa-servis-container" class="flex overflow-x-auto space-x-6 pb-4 no-scrollbar scroll-smooth">
+                    <div class="property-card flex-shrink-0 w-80 bg-white rounded-lg shadow-lg" 
+                        data-lat="-7.257472" data-lon="112.768845" data-location="Surabaya Pusat" 
+                        data-images="https://placehold.co/800x600/1D4ED8/ffffff?text=Servis+AC+1,https://placehold.co/800x600/3B82F6/ffffff?text=Servis+AC+2">
+                        <img src="https://placehold.co/600x400/1D4ED8/ffffff?text=Servis+AC" alt="Jasa Servis AC" class="w-full h-48 object-cover cursor-pointer open-gallery">
+                        <div class="p-4 flex flex-col flex-grow">
+                            <h3 class="font-bold text-lg mb-1 property-title">Servis & Cuci AC Profesional</h3>
+                            <p class="text-sm text-gray-500 mb-3 property-location">Surabaya Pusat</p>
+                            <p class="text-xl font-semibold text-primary-blue mb-4">Mulai Rp 75 Ribu</p>
+                            <div class="mt-auto flex space-x-2">
+                                <button class="whatsapp-trigger flex-1 text-center bg-green-500 text-white py-2 px-4 rounded-md hover:bg-green-600 transition-colors text-sm font-medium" 
+                                        data-wa-number="6281234567807" 
+                                        data-service-name="Servis & Cuci AC Profesional">
+                                    WhatsApp
+                                </button>
+                                <a href="#peta-lokasi" class="map-link flex-1 text-center bg-secondary-blue text-white py-2 px-4 rounded-md hover:bg-dark-blue transition-colors text-sm font-medium">Peta Lokasi</a>
+                            </div>
+                            <div class="mt-4 text-center">
+                                <a href="formulir-keluhan.html?jenis_laporan=Jasa+Tidak+Sesuai&nama_jasa=Servis+AC+Profesional&url_asal=https://solichan1982.github.io/Info-lengkap-id/info-jasa.html" 
+                                   class="inline-block bg-red-600 text-white py-2 px-4 rounded-md hover:bg-red-700 transition-colors text-sm font-medium">
+                                    Laporkan Jasa Ini
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="property-card flex-shrink-0 w-80 bg-white rounded-lg shadow-lg" 
+                        data-lat="-6.175392" data-lon="106.827153" data-location="Jakarta Pusat" 
+                        data-images="https://placehold.co/800x600/3B82F6/ffffff?text=Servis+Laptop+1,https://placehold.co/800x600/1D4ED8/ffffff?text=Servis+Laptop+2">
+                        <img src="https://placehold.co/600x400/3B82F6/ffffff?text=Servis+Laptop" alt="Jasa Servis Laptop" class="w-full h-48 object-cover cursor-pointer open-gallery">
+                        <div class="p-4 flex flex-col flex-grow">
+                            <h3 class="font-bold text-lg mb-1 property-title">Servis Laptop & PC Panggilan</h3>
+                            <p class="text-sm text-gray-500 mb-3 property-location">Jakarta Pusat</p>
+                            <p class="text-xl font-semibold text-primary-blue mb-4">Nego/Perbaikan</p>
+                            <div class="mt-auto flex space-x-2">
+                                <button class="whatsapp-trigger flex-1 text-center bg-green-500 text-white py-2 px-4 rounded-md hover:bg-green-600 transition-colors text-sm font-medium" 
+                                        data-wa-number="6281234567808" 
+                                        data-service-name="Servis Laptop & PC Panggilan">
+                                    WhatsApp
+                                </button>
+                                <a href="#peta-lokasi" class="map-link flex-1 text-center bg-secondary-blue text-white py-2 px-4 rounded-md hover:bg-dark-blue transition-colors text-sm font-medium">Peta Lokasi</a>
+                            </div>
+                            <div class="mt-4 text-center">
+                                <a href="formulir-keluhan.html?jenis_laporan=Jasa+Tidak+Sesuai&nama_jasa=Servis+Laptop+%26+PC+Panggilan&url_asal=https://solichan1982.github.io/Info-lengkap-id/info-jasa.html" 
+                                   class="inline-block bg-red-600 text-white py-2 px-4 rounded-md hover:bg-red-700 transition-colors text-sm font-medium">
+                                    Laporkan Jasa Ini
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="absolute top-1/2 -left-4 transform -translate-y-1/2 bg-white p-2 rounded-full shadow-md hidden md:block z-10" onclick="scrollContainer('jasa-servis-container', -300)" aria-label="Geser ke Kiri">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" /></svg>
+                </button>
+                <button class="absolute top-1/2 -right-4 transform -translate-y-1/2 bg-white p-2 rounded-full shadow-md hidden md:block z-10" onclick="scrollContainer('jasa-servis-container', 300)" aria-label="Geser ke Kanan">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+                </button>
+            </div>
+        </section>
+
+        <div class="my-8 text-center bg-light-blue p-4 rounded-lg border border-primary-blue/20">
+            <p class="text-primary-blue text-sm mb-2">Space Iklan Anda di Sini (Google AdSense)</p>
+            <div class="bg-primary-blue/10 h-24 md:h-32 flex items-center justify-center text-primary-blue text-xl font-bold">
+                Iklan Responsif
+            </div>
+        </div>
+
+        <section id="Jasa Sanitasi">
+            <h2 class="text-3xl font-bold text-gray-800 mb-6 border-l-4 border-primary-blue pl-4">Jasa Sanitasi & Kebersihan</h2>
+            <div class="relative">
+                <div id="sanitasi-container" class="flex overflow-x-auto space-x-6 pb-4 no-scrollbar scroll-smooth">
+                    <div class="property-card flex-shrink-0 w-80 bg-white rounded-lg shadow-lg" 
+                        data-lat="-6.175392" data-lon="106.827153" data-location="Seluruh Jabodetabek" 
+                        data-images="https://placehold.co/800x600/60A5FA/ffffff?text=Sedot+WC+1,https://placehold.co/800x600/1D4ED8/ffffff?text=Sedot+WC+2">
+                        <img src="https://placehold.co/600x400/60A5FA/ffffff?text=Sedot+WC" alt="Jasa Sedot WC" class="w-full h-48 object-cover cursor-pointer open-gallery">
+                        <div class="p-4 flex flex-col flex-grow">
+                            <h3 class="font-bold text-lg mb-1 property-title">Sedot WC & Saluran Mampet</h3>
+                            <p class="text-sm text-gray-500 mb-3 property-location">Seluruh Jabodetabek</p>
+                            <p class="text-xl font-semibold text-primary-blue mb-4">Mulai Rp 350 Ribu</p>
+                            <div class="mt-auto flex space-x-2">
+                                <button class="whatsapp-trigger flex-1 text-center bg-green-500 text-white py-2 px-4 rounded-md hover:bg-green-600 transition-colors text-sm font-medium" 
+                                        data-wa-number="6281234567809" 
+                                        data-service-name="Sedot WC & Saluran Mampet">
+                                    WhatsApp
+                                </button>
+                                <a href="#peta-lokasi" class="map-link flex-1 text-center bg-secondary-blue text-white py-2 px-4 rounded-md hover:bg-dark-blue transition-colors text-sm font-medium">Peta Lokasi</a>
+                            </div>
+                            <div class="mt-4 text-center">
+                                <a href="formulir-keluhan.html?jenis_laporan=Jasa+Tidak+Sesuai&nama_jasa=Sedot+WC+%26+Saluran+Mampet&url_asal=https://solichan1982.github.io/Info-lengkap-id/info-jasa.html" 
+                                   class="inline-block bg-red-600 text-white py-2 px-4 rounded-md hover:bg-red-700 transition-colors text-sm font-medium">
+                                    Laporkan Jasa Ini
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="absolute top-1/2 -left-4 transform -translate-y-1/2 bg-white p-2 rounded-full shadow-md hidden md:block z-10" onclick="scrollContainer('sanitasi-container', -300)" aria-label="Geser ke Kiri">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" /></svg>
+                </button>
+                <button class="absolute top-1/2 -right-4 transform -translate-y-1/2 bg-white p-2 rounded-full shadow-md hidden md:block z-10" onclick="scrollContainer('sanitasi-container', 300)" aria-label="Geser ke Kanan">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+                </button>
+            </div>
+        </section>
+
+        <div class="my-8 text-center bg-light-blue p-4 rounded-lg border border-primary-blue/20">
+            <p class="text-primary-blue text-sm mb-2">Space Iklan Anda di Sini (Google AdSense)</p>
+            <div class="bg-primary-blue/10 h-24 md:h-32 flex items-center justify-center text-primary-blue text-xl font-bold">
+                Iklan Responsif
+            </div>
+        </div>
+
+        <section id="Jasa Angkut Barang">
+            <h2 class="text-3xl font-bold text-gray-800 mb-6 border-l-4 border-primary-blue pl-4">Jasa Angkut Barang & Pindahan</h2>
+            <div class="relative">
+                <div id="angkut-barang-container" class="flex overflow-x-auto space-x-6 pb-4 no-scrollbar scroll-smooth">
+                    <div class="property-card flex-shrink-0 w-80 bg-white rounded-lg shadow-lg" 
+                        data-lat="-7.257472" data-lon="112.768845" data-location="Surabaya & Sekitarnya" 
+                        data-images="https://placehold.co/800x600/1D4ED8/ffffff?text=Pindahan+Rumah+1,https://placehold.co/800x600/3B82F6/ffffff?text=Pindahan+Rumah+2">
+                        <img src="https://placehold.co/600x400/1D4ED8/ffffff?text=Pindahan+Rumah" alt="Jasa Pindahan Rumah" class="w-full h-48 object-cover cursor-pointer open-gallery">
+                        <div class="p-4 flex flex-col flex-grow">
+                            <h3 class="font-bold text-lg mb-1 property-title">Jasa Pindahan Rumah/Kantor</h3>
+                            <p class="text-sm text-gray-500 mb-3 property-location">Surabaya & Sekitarnya</p>
+                            <p class="text-xl font-semibold text-primary-blue mb-4">Nego/Volume</p>
+                            <div class="mt-auto flex space-x-2">
+                                <button class="whatsapp-trigger flex-1 text-center bg-green-500 text-white py-2 px-4 rounded-md hover:bg-green-600 transition-colors text-sm font-medium" 
+                                        data-wa-number="6281234567810" 
+                                        data-service-name="Jasa Pindahan Rumah/Kantor">
+                                    WhatsApp
+                                </button>
+                                <a href="#peta-lokasi" class="map-link flex-1 text-center bg-secondary-blue text-white py-2 px-4 rounded-md hover:bg-dark-blue transition-colors text-sm font-medium">Peta Lokasi</a>
+                            </div>
+                            <div class="mt-4 text-center">
+                                <a href="formulir-keluhan.html?jenis_laporan=Jasa+Tidak+Sesuai&nama_jasa=Jasa+Pindahan+Rumah%2FKantor&url_asal=https://solichan1982.github.io/Info-lengkap-id/info-jasa.html" 
+                                   class="inline-block bg-red-600 text-white py-2 px-4 rounded-md hover:bg-red-700 transition-colors text-sm font-medium">
+                                    Laporkan Jasa Ini
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="absolute top-1/2 -left-4 transform -translate-y-1/2 bg-white p-2 rounded-full shadow-md hidden md:block z-10" onclick="scrollContainer('angkut-barang-container', -300)" aria-label="Geser ke Kiri">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" /></svg>
+                </button>
+                <button class="absolute top-1/2 -right-4 transform -translate-y-1/2 bg-white p-2 rounded-full shadow-md hidden md:block z-10" onclick="scrollContainer('angkut-barang-container', 300)" aria-label="Geser ke Kanan">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+                </button>
+            </div>
+        </section>
+
+        <div class="my-8 text-center bg-light-blue p-4 rounded-lg border border-primary-blue/20">
+            <p class="text-primary-blue text-sm mb-2">Space Iklan Anda di Sini (Google AdSense)</p>
+            <div class="bg-primary-blue/10 h-24 md:h-32 flex items-center justify-center text-primary-blue text-xl font-bold">
+                Iklan Responsif
+            </div>
+        </div>
+
+        <section id="Jasa Desain Arsitek">
+            <h2 class="text-3xl font-bold text-gray-800 mb-6 border-l-4 border-primary-blue pl-4">Jasa Desain Arsitek & Interior</h2>
+            <div class="relative">
+                <div id="desain-arsitek-container" class="flex overflow-x-auto space-x-6 pb-4 no-scrollbar scroll-smooth">
+                    <div class="property-card flex-shrink-0 w-80 bg-white rounded-lg shadow-lg" 
+                        data-lat="-6.902525" data-lon="107.618782" data-location="Bandung & Sekitarnya" 
+                        data-images="https://placehold.co/800x600/60A5FA/ffffff?text=Desain+Rumah+1,https://placehold.co/800x600/3B82F6/ffffff?text=Desain+Rumah+2">
+                        <img src="https://placehold.co/600x400/60A5FA/ffffff?text=Desain+Rumah" alt="Jasa Desain Rumah" class="w-full h-48 object-cover cursor-pointer open-gallery">
+                        <div class="p-4 flex flex-col flex-grow">
+                            <h3 class="font-bold text-lg mb-1 property-title">Jasa Desain Rumah Minimalis</h3>
+                            <p class="text-sm text-gray-500 mb-3 property-location">Bandung & Sekitarnya</p>
+                            <p class="text-xl font-semibold text-primary-blue mb-4">Nego/Proyek</p>
+                            <div class="mt-auto flex space-x-2">
+                                <button class="whatsapp-trigger flex-1 text-center bg-green-500 text-white py-2 px-4 rounded-md hover:bg-green-600 transition-colors text-sm font-medium" 
+                                        data-wa-number="6281234567811" 
+                                        data-service-name="Jasa Desain Rumah Minimalis">
+                                    WhatsApp
+                                </button>
+                                <a href="#peta-lokasi" class="map-link flex-1 text-center bg-secondary-blue text-white py-2 px-4 rounded-md hover:bg-dark-blue transition-colors text-sm font-medium">Peta Lokasi</a>
+                            </div>
+                            <div class="mt-4 text-center">
+                                <a href="formulir-keluhan.html?jenis_laporan=Jasa+Tidak+Sesuai&nama_jasa=Jasa+Desain+Rumah+Minimalis&url_asal=https://solichan1982.github.io/Info-lengkap-id/info-jasa.html" 
+                                   class="inline-block bg-red-600 text-white py-2 px-4 rounded-md hover:bg-red-700 transition-colors text-sm font-medium">
+                                    Laporkan Jasa Ini
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="absolute top-1/2 -left-4 transform -translate-y-1/2 bg-white p-2 rounded-full shadow-md hidden md:block z-10" onclick="scrollContainer('desain-arsitek-container', -300)" aria-label="Geser ke Kiri">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" /></svg>
+                </button>
+                <button class="absolute top-1/2 -right-4 transform -translate-y-1/2 bg-white p-2 rounded-full shadow-md hidden md:block z-10" onclick="scrollContainer('desain-arsitek-container', 300)" aria-label="Geser ke Kanan">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+                </button>
+            </div>
+        </section>
+
+        <div class="my-8 text-center bg-light-blue p-4 rounded-lg border border-primary-blue/20">
+            <p class="text-primary-blue text-sm mb-2">Space Iklan Anda di Sini (Google AdSense)</p>
+            <div class="bg-primary-blue/10 h-24 md:h-32 flex items-center justify-center text-primary-blue text-xl font-bold">
+                Iklan Responsif
+            </div>
+        </div>
+
+        <section id="Jasa Lainnya">
+            <h2 class="text-3xl font-bold text-gray-800 mb-6 border-l-4 border-primary-blue pl-4">Jasa Lainnya</h2>
+            <div class="relative">
+                <div id="lainnya-container" class="flex overflow-x-auto space-x-6 pb-4 no-scrollbar scroll-smooth">
+                    <div class="property-card flex-shrink-0 w-80 bg-white rounded-lg shadow-lg" 
+                        data-lat="-6.175392" data-lon="106.827153" data-location="Jakarta & Sekitarnya" 
+                        data-images="https://placehold.co/800x600/3B82F6/ffffff?text=Bersih-bersih+1,https://placehold.co/800x600/60A5FA/ffffff?text=Bersih-bersih+2">
+                        <img src="https://placehold.co/600x400/3B82F6/ffffff?text=Jasa+Bersih" alt="Jasa Bersih-bersih" class="w-full h-48 object-cover cursor-pointer open-gallery">
+                        <div class="p-4 flex flex-col flex-grow">
+                            <h3 class="font-bold text-lg mb-1 property-title">Jasa Bersih-Bersih Rumah/Kantor</h3>
+                            <p class="text-sm text-gray-500 mb-3 property-location">Jakarta & Sekitarnya</p>
+                            <p class="text-xl font-semibold text-primary-blue mb-4">Mulai Rp 100 Ribu/jam</p>
+                            <div class="mt-auto flex space-x-2">
+                                <button class="whatsapp-trigger flex-1 text-center bg-green-500 text-white py-2 px-4 rounded-md hover:bg-green-600 transition-colors text-sm font-medium" 
+                                        data-wa-number="6281234567812" 
+                                        data-service-name="Jasa Bersih-Bersih Rumah/Kantor">
+                                    WhatsApp
+                                </button>
+                                <a href="#peta-lokasi" class="map-link flex-1 text-center bg-secondary-blue text-white py-2 px-4 rounded-md hover:bg-dark-blue transition-colors text-sm font-medium">Peta Lokasi</a>
+                            </div>
+                            <div class="mt-4 text-center">
+                                <a href="formulir-keluhan.html?jenis_laporan=Jasa+Tidak+Sesuai&nama_jasa=Jasa+Bersih-Bersih+Rumah%2FKantor&url_asal=https://solichan1982.github.io/Info-lengkap-id/info-jasa.html" 
+                                   class="inline-block bg-red-600 text-white py-2 px-4 rounded-md hover:bg-red-700 transition-colors text-sm font-medium">
+                                    Laporkan Jasa Ini
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="absolute top-1/2 -left-4 transform -translate-y-1/2 bg-white p-2 rounded-full shadow-md hidden md:block z-10" onclick="scrollContainer('lainnya-container', -300)" aria-label="Geser ke Kiri">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" /></svg>
+                </button>
+                <button class="absolute top-1/2 -right-4 transform -translate-y-1/2 bg-white p-2 rounded-full shadow-md hidden md:block z-10" onclick="scrollContainer('lainnya-container', 300)" aria-label="Geser ke Kanan">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+                </button>
+            </div>
+        </section>
+
+
+        <section id="peta-lokasi" class="pt-8">
+            <h2 class="text-3xl font-bold text-gray-800 mb-6 border-l-4 border-primary-blue pl-4">Peta Lokasi Jasa Harian & Kasar</h2>
+            <div id="map" class="h-96 md:h-[500px] w-full rounded-lg shadow-md z-0"></div>
+        </section>
+    </main>
+
+    <footer class="bg-gray-800 text-white mt-12">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-8 text-center">
+            <p>&copy; 2024 InfoLengkap. Semua Hak Cipta Dilindungi.</p>
+        </div>
+    </footer>
+
+    <div id="gallery-popup" class="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center p-4 z-50 hidden opacity-0">
+        <div class="relative w-full max-w-3xl">
+            <button id="close-gallery" class="absolute -top-2 -right-2 md:-top-4 md:-right-4 z-10 text-white bg-red-600 rounded-full w-9 h-9 flex items-center justify-center text-2xl font-bold hover:bg-red-700 transition-colors" aria-label="Tutup Galeri">&times;</button>
+            <div id="gallery-container" class="relative w-full h-64 md:h-96 bg-black rounded-lg overflow-hidden"></div>
+            <button id="prev-btn" class="absolute top-1/2 left-2 md:left-4 -translate-y-1/2 bg-white/30 text-white p-2 rounded-full hover:bg-white/50 transition-colors" aria-label="Gambar Sebelumnya">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" /></svg>
+            </button>
+            <button id="next-btn" class="absolute top-1/2 right-2 md:right-4 -translate-y-1/2 bg-white/30 text-white p-2 rounded-full hover:bg-white/50 transition-colors" aria-label="Gambar Selanjutnya">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+            </button>
+            <div id="gallery-counter" class="absolute bottom-2 right-3 text-white text-sm bg-black/50 px-2 py-1 rounded"></div>
+        </div>
+    </div>
+
+    <form id="whatsappNotificationForm" action="https://formspree.io/f/mvgrjrjv" method="POST" style="display: none;">
+        <input type="hidden" name="_subject" value="Notifikasi Klik WhatsApp: Jasa Harian & Kasar">
+        <input type="hidden" name="jenis_notifikasi" value="Klik WhatsApp Jasa Layanan">
+        <input type="hidden" name="nama_layanan" id="namaLayananInput">
+        <input type="hidden" name="nomor_wa_tujuan" id="nomorWaInput">
+        <input type="hidden" name="waktu_klik" id="waktuKlikInput">
+        <input type="hidden" name="halaman_url" id="halamanUrlInput">
+    </form>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // --- MOBILE HAMBURGER MENU LOGIC ---
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const svgs = mobileMenuButton.querySelectorAll('svg');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            svgs.forEach(svg => svg.classList.toggle('hidden'));
+        });
+
+        // --- FEATURED SLIDER LOGIC ---
+        const unggulanSlider = document.querySelector('#unggulan-slider .unggulan-slider-inner');
+        if (unggulanSlider) {
+            const unggulanSlides = unggulanSlider.querySelectorAll('.unggulan-slider-inner > div');
+            const dotsContainer = document.getElementById('unggulan-slider-dots');
+            let currentUnggulanSlide = 0;
+            const slideInterval = 5000; // Slide changes every 5 seconds
+
+            // Create dots for each slide
+            unggulanSlides.forEach((_, i) => {
+                const dot = document.createElement('button');
+                dot.classList.add('w-3', 'h-3', 'rounded-full', 'transition-colors', 'duration-300');
+                dot.classList.add(i === 0 ? 'bg-white' : 'bg-white/50', 'hover:bg-white');
+                dot.addEventListener('click', () => goToUnggulanSlide(i));
+                dotsContainer.appendChild(dot);
+            });
+
+            const dots = dotsContainer.querySelectorAll('button');
+
+            // Update dot active state based on current slide
+            function updateDots(index) {
+                dots.forEach((dot, i) => {
+                    dot.classList.toggle('bg-white', i === index);
+                    dot.classList.toggle('bg-white/50', i !== index);
+                });
+            }
+
+            // Move slider to a specific slide
+            function goToUnggulanSlide(slideIndex) {
+                currentUnggulanSlide = slideIndex;
+                unggulanSlider.style.transform = `translateX(-${currentUnggulanSlide * 100}%)`;
+                updateDots(currentUnggulanSlide);
+            }
+
+            // Move to the next slide
+            function nextUnggulanSlide() {
+                currentUnggulanSlide = (currentUnggulanSlide + 1) % unggulanSlides.length;
+                goToUnggulanSlide(currentUnggulanSlide);
+            }
+
+            // Auto-advance slides
+            setInterval(nextUnggulanSlide, slideInterval);
+            // Initialize slider to the first slide
+            goToUnggulanSlide(0);
+        }
+
+        // --- GALLERY POPUP LOGIC ---
+        const galleryPopup = document.getElementById('gallery-popup');
+        const galleryContainer = document.getElementById('gallery-container');
+        const galleryCounter = document.getElementById('gallery-counter');
+        const closeGalleryBtn = document.getElementById('close-gallery');
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+        const openGalleryTriggers = document.querySelectorAll('.open-gallery');
+        let currentImages = [];
+        let currentIndex = 0;
+
+        // Displays a specific image slide in the gallery
+        function showSlide(index) {
+            const slides = galleryContainer.querySelectorAll('.gallery-slide');
+            slides.forEach(slide => slide.classList.remove('active'));
+            if (slides[index]) { // Check if slide exists
+                slides[index].classList.add('active');
+                galleryCounter.textContent = `${index + 1} / ${currentImages.length}`;
+                currentIndex = index;
+            }
+        }
+
+        // Changes the current slide by a given direction (+1 for next, -1 for previous)
+        function changeSlide(direction) {
+            let newIndex = currentIndex + direction;
+            if (newIndex < 0) { 
+                newIndex = currentImages.length - 1; 
+            } else if (newIndex >= currentImages.length) { 
+                newIndex = 0; 
+            }
+            showSlide(newIndex);
+        }
+
+        // Event listeners for opening the gallery
+        openGalleryTriggers.forEach(trigger => {
+            trigger.addEventListener('click', function() {
+                const card = this.closest('.property-card');
+                const imagesAttr = card.dataset.images; // Get image URLs from data-images attribute
+                if (!imagesAttr) return; // Exit if no images are defined
+
+                currentImages = imagesAttr.split(',').map(url => url.trim()); // Split and trim URLs
+                galleryContainer.innerHTML = ''; // Clear previous images
+
+                // Create and append image slides
+                currentImages.forEach((imgUrl) => {
+                    const slide = document.createElement('div');
+                    slide.className = 'gallery-slide absolute w-full h-full';
+                    const img = document.createElement('img');
+                    img.src = imgUrl;
+                    img.className = 'w-full h-full object-contain'; // object-contain to fit image within container
+                    img.alt = `Jasa Gambar ${imgUrl}`; // Add meaningful alt text
+                    slide.appendChild(img);
+                    galleryContainer.appendChild(slide);
+                });
+
+                showSlide(0); // Show the first image
+                galleryPopup.classList.remove('hidden'); // Make popup visible
+                // Timeout for smooth fade-in effect
+                setTimeout(() => galleryPopup.classList.remove('opacity-0'), 10);
+            });
+        });
+
+        // Function to close the gallery
+        function closeGallery() {
+            galleryPopup.classList.add('opacity-0'); // Start fade-out
+            // Hide after transition
+            setTimeout(() => galleryPopup.classList.add('hidden'), 300);
+        }
+
+        // Event listeners for gallery navigation and closing
+        prevBtn.addEventListener('click', () => changeSlide(-1));
+        nextBtn.addEventListener('click', () => changeSlide(1));
+        closeGalleryBtn.addEventListener('click', closeGallery);
+        // Close gallery if clicked outside the image container
+        galleryPopup.addEventListener('click', (e) => {
+            if (e.target === galleryPopup) closeGallery();
+        });
+
+        // --- LEAFLET.JS MAP LOGIC & LOCATION FILTERING ---
+        const map = L.map('map').setView([-6.9175, 107.6191], 7); // Initial map view (Indonesia general area)
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+        }).addTo(map);
+
+        const allPropertyCards = document.querySelectorAll('.property-card');
+        let currentMarkers = []; // Stores currently displayed Leaflet markers
+        let allPropertyData = []; // Stores all property data (card, lat, lon, title, location)
+
+        // Populate allPropertyData from existing property cards
+        allPropertyCards.forEach(card => {
+            const lat = parseFloat(card.dataset.lat);
+            const lon = parseFloat(card.dataset.lon);
+            const title = card.querySelector('.property-title').textContent;
+            const location = card.dataset.location; // Get location from data-location attribute
+            allPropertyData.push({ card, lat, lon, title, location });
+        });
+
+        // Updates markers on the map based on filtered properties
+        function updateMapMarkers(filteredProperties) {
+            // Remove all existing markers from the map
+            currentMarkers.forEach(marker => map.removeLayer(marker));
+            currentMarkers = [];
+
+            // Add new markers for the filtered properties
+            filteredProperties.forEach(prop => {
+                // Ensure lat/lon are valid numbers
+                if (!isNaN(prop.lat) && !isNaN(prop.lon)) {
+                    const marker = L.marker([prop.lat, prop.lon]).addTo(map).bindPopup(`<b>${prop.title}</b><br>${prop.location}`);
+                    currentMarkers.push(marker);
+                }
+            });
+
+            // Adjust map view to fit all current markers
+            if (currentMarkers.length > 0) {
+                const group = new L.featureGroup(currentMarkers);
+                map.fitBounds(group.getBounds().pad(0.5)); // Zoom to marker bounds with some padding
+            } else {
+                // If no markers, reset map view to a default general area
+                map.setView([-6.9175, 107.6191], 7);
+            }
+        }
+
+        // Filters property cards and map markers based on search term
+        function filterProperties(searchTerm) {
+            const lowerCaseSearchTerm = searchTerm.toLowerCase().trim();
+            const filteredPropertiesForMap = []; // Collect properties for map update
+
+            allPropertyCards.forEach(card => {
+                const cardLocation = card.dataset.location ? card.dataset.location.toLowerCase() : '';
+                const cardTitle = card.querySelector('.property-title').textContent.toLowerCase();
+                
+                // Check if search term is empty OR if card's location OR title includes the search term
+                if (lowerCaseSearchTerm === '' || cardLocation.includes(lowerCaseSearchTerm) || cardTitle.includes(lowerCaseSearchTerm)) {
+                    card.style.display = 'block'; // Show the property card
+                    // Add this property's data to the list for map update
+                    const propData = allPropertyData.find(p => p.card === card);
+                    if (propData) {
+                        filteredPropertiesForMap.push(propData);
+                    }
+                } else {
+                    card.style.display = 'none'; // Hide the property card
+                }
+            });
+
+            updateMapMarkers(filteredPropertiesForMap); // Update map markers based on filtered list
+        }
+
+        // Event listener for location filter input (triggers filtering on each key press)
+        const locationFilterInput = document.getElementById('location-filter-input');
+        locationFilterInput.addEventListener('keyup', function() {
+            filterProperties(this.value);
+        });
+
+        // Initialize display: show all properties and their markers on load
+        filterProperties('');
+
+        // Event listeners for "Peta Lokasi" links on property cards
+        const mapLinks = document.querySelectorAll('.map-link');
+        mapLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault(); // Prevent default link behavior
+                const card = this.closest('.property-card');
+                const lat = parseFloat(card.dataset.lat);
+                const lon = parseFloat(card.dataset.lon);
+                
+                // Scroll to the map section
+                document.getElementById('peta-lokasi').scrollIntoView({ behavior: 'smooth' });
+                
+                // Center map on the clicked property's location and zoom in
+                if (!isNaN(lat) && !isNaN(lon)) {
+                    map.setView([lat, lon], 15); // Zoom level 15 is generally good for street level
+                    // Find the corresponding marker and open its popup
+                    const targetProperty = allPropertyData.find(p => p.card === card);
+                    if (targetProperty) {
+                        const marker = currentMarkers.find(m => 
+                            m.getLatLng().lat === targetProperty.lat && 
+                            m.getLatLng().lng === targetProperty.lon
+                        );
+                        if (marker) marker.openPopup();
+                    }
+                }
+            });
+        });
+
+        // --- HORIZONTAL SCROLL LOGIC FOR PROPERTY LISTINGS (DESKTOP ARROWS) ---
+        // This function is attached to the onclick attributes of the scroll buttons
+        window.scrollContainer = function(containerId, scrollAmount) {
+            const container = document.getElementById(containerId);
+            if (container) {
+                container.scrollBy({
+                    left: scrollAmount,
+                    behavior: 'smooth' // Smooth scrolling effect
+                });
+            }
+        };
+
+        // --- WHATSAPP CLICK TRACKING & NOTIFICATION LOGIC ---
+        const whatsappButtons = document.querySelectorAll('.whatsapp-trigger');
+        const notificationForm = document.getElementById('whatsappNotificationForm');
+        const namaLayananInput = document.getElementById('namaLayananInput');
+        const nomorWaInput = document.getElementById('nomorWaInput');
+        const waktuKlikInput = document.getElementById('waktuKlikInput');
+        const halamanUrlInput = document.getElementById('halamanUrlInput');
+
+        whatsappButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const serviceName = this.dataset.serviceName;
+                const waNumber = this.dataset.waNumber;       
+
+                namaLayananInput.value = serviceName;
+                nomorWaInput.value = waNumber;
+                waktuKlikInput.value = new Date().toLocaleString('id-ID', { timeZone: 'Asia/Jakarta' });
+                halamanUrlInput.value = window.location.href;
+
+                notificationForm.submit();
+
+                setTimeout(() => {
+                    window.location.href = `https://wa.me/${waNumber}?text=Halo, saya tertarik dengan layanan ${encodeURIComponent(serviceName)} yang Anda iklankan di InfoLengkap.`;
+                }, 200);
+            });
+        });
+
+    });
+    </script>
+</body>
+</html>

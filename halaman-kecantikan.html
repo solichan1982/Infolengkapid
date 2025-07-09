@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kecantikan Panggilan - InfoLengkap.id | Salon & Spa Profesional di Rumah Anda</title>
+    <meta name="description" content="InfoLengkap.id menyediakan layanan kecantikan dan spa profesional langsung di rumah Anda. Kami menghubungkan Anda dengan terapis terlatih untuk facial, manikur, pijat, makeup panggilan, dan lainnya.">
+    <meta name="keywords" content="salon panggilan, spa di rumah, kecantikan di rumah, facial panggilan, manikur pedikur panggilan, pijat panggilan, makeup artist panggilan, terapis kecantikan, perawatan kuku, perawatan rambut, jakarta, surabaya, bandung, yogyakarta, layanan perantara kecantikan">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlroPmXJq6F9lGvTfG8Zt3u2zE15wXkM+0Vb9qjR0l4Z8Fh2r5X+0O+5/6F7tL8bB9xQ+0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <style>
+        /* Menggunakan font Inter sebagai default */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc; /* light gray background */
+        }
+        /* Custom gradient for hero section overlay */
+        .hero-gradient-overlay {
+            background: linear-gradient(to bottom, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.6) 100%);
+        }
+        /* Custom scrollbar for better aesthetics (optional, for modern browsers) */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #a855f7; /* Tailwind's purple-500 */
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #9333ea; /* Tailwind's purple-600 */
+        }
+        /* Animation keyframes */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-in { animation: fadeIn 0.8s ease-out forwards; opacity: 0; }
+        .animate-fade-in-up { animation: fadeInUp 0.8s ease-out forwards; opacity: 0; }
+        .delay-100 { animation-delay: 0.1s; }
+        .delay-200 { animation-delay: 0.2s; }
+        .delay-300 { animation-delay: 0.3s; }
+        .delay-400 { animation-delay: 0.4s; }
+        .delay-500 { animation-delay: 0.5s; }
+        .delay-600 { animation-delay: 0.6s; }
+        .delay-700 { animation-delay: 0.7s; }
+
+        /* Floating WhatsApp Button */
+        .floating-whatsapp-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 50; /* Pastikan di atas elemen lain */
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-center: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+        }
+        .floating-whatsapp-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <header class="bg-white shadow-md sticky top-0 z-40">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex-shrink-0">
+                    <a href="index.html" class="text-2xl font-bold text-indigo-600">Info<span class="text-gray-800">Lengkap.id</span></a>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-4">
+                        <a href="index.html" class="text-gray-500 hover:bg-gray-100 hover:text-gray-900 px-3 py-2 rounded-md text-base font-medium">Beranda</a>
+                        <a href="index.html#layanan" class="text-gray-500 hover:bg-gray-100 hover:text-gray-900 px-3 py-2 rounded-md text-base font-medium">Layanan Kami</a>
+                        <a href="halaman-kecantikan.html" class="bg-pink-500 text-white px-3 py-2 rounded-md text-base font-medium" aria-current="page">Kecantikan</a>
+                        <a href="blog.html" class="text-gray-500 hover:bg-gray-100 hover:text-gray-900 px-3 py-2 rounded-md text-base font-medium">Blog & Berita</a>
+                        <a href="contact.html" class="text-gray-500 hover:bg-gray-100 hover:text-gray-900 px-3 py-2 rounded-md text-base font-medium">Kontak</a>
+                    </div>
+                </div>
+                <div class="-mr-2 flex md:hidden">
+                    <button id="mobile-menu-button" type="button" class="bg-gray-100 inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" aria-controls="mobile-menu" aria-expanded="false">
+                        <span class="sr-only">Buka menu utama</span>
+                        <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" /></svg>
+                        <svg class="hidden h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="md:hidden hidden" id="mobile-menu">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="index.html" class="text-gray-500 hover:bg-gray-100 hover:text-gray-900 block px-3 py-2 rounded-md text-base font-medium">Beranda</a>
+                <a href="index.html#layanan" class="text-gray-500 hover:bg-gray-100 hover:text-gray-900 block px-3 py-2 rounded-md text-base font-medium">Layanan Kami</a>
+                <a href="halaman-kecantikan.html" class="bg-pink-500 text-white block px-3 py-2 rounded-md text-base font-medium" aria-current="page">Kecantikan</a>
+                <a href="blog.html" class="text-gray-500 hover:bg-gray-100 hover:text-gray-900 block px-3 py-2 rounded-md text-base font-medium">Blog & Berita</a>
+                <a href="contact.html" class="text-gray-500 hover:bg-gray-100 hover:text-gray-900 block px-3 py-2 rounded-md text-base font-medium">Kontak</a>
+            </div>
+        </div>
+    </header>
+
+    <section class="relative w-full h-96 lg:h-[600px] bg-cover bg-center" style="background-image: url('aset iklan/jasa-kecantikan-panggilan-hero.jpg');" role="img" aria-label="Wanita sedang menikmati facial di rumah dengan terapis profesional InfoLengkap.id">
+        <div class="absolute inset-0 hero-gradient-overlay flex flex-col justify-center items-center text-white text-center p-4">
+            <h1 class="text-4xl md:text-6xl font-extrabold leading-tight drop-shadow-lg animate-fade-in-up">Kecantikan Panggilan: <br>Kecantikan Datang ke Rumah Anda</h1>
+            <p class="mt-4 text-lg md:text-xl max-w-3xl drop-shadow-md animate-fade-in-up delay-200">
+                InfoLengkap.id menghubungkan Anda dengan layanan perawatan spa, rambut, kuku, dan makeup profesional tanpa perlu keluar rumah. Praktis, nyaman, dan memanjakan!
+            </p>
+            <a href="https://wa.me/6281234567890?text=Halo%20InfoLengkap.id,%20saya%20tertarik%20untuk%20memesan%20layanan%20kecantikan%20panggilan." 
+               target="_blank" 
+               class="mt-8 px-8 py-4 bg-pink-500 text-white font-semibold rounded-full shadow-lg hover:bg-pink-600 transition-all duration-300 transform hover:scale-105 animate-fade-in-up delay-400" 
+               aria-label="Pesan layanan kecantikan melalui WhatsApp">
+                Pesan Sekarang
+            </a>
+        </div>
+    </section>
+
+    <section class="py-12 md:py-20 bg-gradient-to-br from-purple-50 to-pink-50">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center max-w-4xl">
+            <h2 class="text-3xl md:text-5xl font-bold text-gray-800 leading-tight mb-6 animate-fade-in">Raih Kecantikan Alami Anda <br>dengan Nyaman di Rumah</h2>
+            <p class="text-lg md:text-xl text-gray-600 mb-10 animate-fade-in delay-200">
+                InfoLengkap.id hadir sebagai solusi terdepan untuk kebutuhan kecantikan Anda. Kami mempermudah Anda menemukan dan memesan terapis salon dan spa premium yang datang langsung ke pintu Anda. Pilih perawatan favorit Anda dan biarkan profesional kami memanjakan Anda tanpa batas waktu dan tempat.
+            </p>
+            <a href="info-kecantikan.html" class="px-7 py-3 bg-indigo-600 text-white font-semibold rounded-full shadow-md hover:bg-indigo-700 transition-colors duration-300 animate-fade-in delay-400">
+                Jelajahi Jasa Panggilan
+            </a>
+        </div>
+    </section>
+
+    <section class="py-12 md:py-20">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <h3 class="text-2xl md:text-4xl font-bold text-gray-800 text-center mb-12 animate-fade-in">Mengapa Memilih Layanan Kecantikan via InfoLengkap.id?</h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white rounded-lg shadow-xl p-8 text-center transform hover:scale-105 transition-transform duration-300 animate-fade-in delay-200">
+                    <div class="text-pink-500 mb-4">
+                        <i class="fas fa-user-tie text-5xl"></i> </div>
+                    <h4 class="font-bold text-xl mb-2">Terapis Terpilih Profesional</h4>
+                    <p class="text-gray-600">Kami bekerja sama dengan terapis berpengalaman dan bersertifikat yang telah melalui seleksi ketat untuk memastikan kualitas layanan terbaik.</p>
+                </div>
+                <div class="bg-white rounded-lg shadow-xl p-8 text-center transform hover:scale-105 transition-transform duration-300 animate-fade-in delay-400">
+                    <div class="text-pink-500 mb-4">
+                        <i class="fas fa-spa text-5xl"></i> </div>
+                    <h4 class="font-bold text-xl mb-2">Produk & Prosedur Higienis</h4>
+                    <p class="text-gray-600">Terapis kami menggunakan produk premium dan alat yang steril, menjaga standar kebersihan dan keamanan yang tertinggi.</p>
+                </div>
+                <div class="bg-white rounded-lg shadow-xl p-8 text-center transform hover:scale-105 transition-transform duration-300 animate-fade-in delay-600">
+                    <div class="text-pink-500 mb-4">
+                        <i class="fas fa-clock text-5xl"></i> </div>
+                    <h4 class="font-bold text-xl mb-2">Fleksibilitas Waktu & Lokasi</h4>
+                    <p class="text-gray-600">Nikmati perawatan kapan saja dan di mana saja. Anda tentukan jadwal, terapis kami akan datang ke rumah atau lokasi pilihan Anda.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-12 md:py-20 bg-gray-100">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <h3 class="text-2xl md:text-4xl font-bold text-gray-800 mb-12 animate-fade-in">Bagaimana Cara Memesan Layanan Kecantikan di InfoLengkap.id?</h3>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <div class="flex flex-col items-center p-6 bg-white rounded-lg shadow-md hover:shadow-xl transition-all duration-300 animate-fade-in delay-200">
+                        <div class="w-20 h-20 rounded-full bg-pink-100 flex items-center justify-center mb-4 text-pink-600 text-4xl font-bold">1</div>
+                        <h4 class="font-semibold text-xl mb-2">Pilih Layanan</h4>
+                        <p class="text-gray-600">Jelajahi daftar perawatan lengkap kami di bawah.</p>
+                    </div>
+                    <div class="flex flex-col items-center p-6 bg-white rounded-lg shadow-md hover:shadow-xl transition-all duration-300 animate-fade-in delay-300">
+                        <div class="w-20 h-20 rounded-full bg-pink-100 flex items-center justify-center mb-4 text-pink-600 text-4xl font-bold">2</div>
+                        <h4 class="font-semibold text-xl mb-2">Hubungi Kami</h4>
+                        <p class="text-gray-600">Klik tombol WhatsApp di layanan pilihan Anda untuk menjadwalkan.</p>
+                    </div>
+                    <div class="flex flex-col items-center p-6 bg-white rounded-lg shadow-md hover:shadow-xl transition-all duration-300 animate-fade-in delay-400">
+                        <div class="w-20 h-20 rounded-full bg-pink-100 flex items-center justify-center mb-4 text-pink-600 text-4xl font-bold">3</div>
+                        <h4 class="font-semibold text-xl mb-2">Terapis Datang</h4>
+                        <p class="text-gray-600">Terapis pilihan Anda akan tiba di lokasi yang disepakati.</p>
+                    </div>
+                    <div class="flex flex-col items-center p-6 bg-white rounded-lg shadow-md hover:shadow-xl transition-all duration-300 animate-fade-in delay-500">
+                        <div class="w-20 h-20 rounded-full bg-pink-100 flex items-center justify-center mb-4 text-pink-600 text-4xl font-bold">4</div>
+                        <h4 class="font-semibold text-xl mb-2">Nikmati Perawatan</h4>
+                        <p class="text-gray-600">Rasakan pengalaman spa dan salon mewah tanpa perlu keluar rumah!</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="layanan-detail" class="py-12 md:py-20 bg-pink-50">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <h3 class="text-2xl md:text-4xl font-bold text-gray-800 text-center mb-12 animate-fade-in">Pilihan Layanan Kecantikan Terbaik Kami</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:shadow-2xl transition-all duration-300 animate-fade-in delay-200">
+                        <img class="w-full h-56 object-cover" src="aset iklan/kecantikan_facial.jpg" alt="Layanan Facial Wajah untuk kulit glowing">
+                        <div class="p-6">
+                            <h4 class="font-bold text-2xl text-pink-600 mb-2">Facial Wajah Glowing</h4>
+                            <p class="text-gray-600 mb-4">Perawatan wajah lengkap untuk membersihkan, mencerahkan, dan menyegarkan kulit Anda. Cocok untuk semua jenis kulit.</p>
+                            <div class="flex justify-between items-center mb-4">
+                                <span class="text-xl font-bold text-indigo-700">Mulai dari Rp 180 Ribu</span>
+                            </div>
+                            <button onclick="window.open('https://wa.me/6281234567890?text=Halo%20InfoLengkap.id,%20saya%20tertarik%20dengan%20layanan%20Facial%20Wajah%20Glowing.%20Mohon%20info%20lebih%20lanjut%20dan%20jadwalkan.', '_blank')" class="w-full bg-pink-500 text-white py-3 rounded-full font-semibold hover:bg-pink-600 transition-colors duration-300">
+                                Pesan Facial Sekarang
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:shadow-2xl transition-all duration-300 animate-fade-in delay-300">
+                        <img class="w-full h-56 object-cover" src="aset iklan/kecantikan_manicure.jpg" alt="Layanan Manikur dan Pedikur panggilan">
+                        <div class="p-6">
+                            <h4 class="font-bold text-2xl text-pink-600 mb-2">Manikur & Pedikur Premium</h4>
+                            <p class="text-gray-600 mb-4">Perawatan tangan dan kaki untuk kuku yang bersih, sehat, dan indah. Termasuk pijat relaksasi.</p>
+                            <div class="flex justify-between items-center mb-4">
+                                <span class="text-xl font-bold text-indigo-700">Mulai dari Rp 120 Ribu</span>
+                            </div>
+                            <button onclick="window.open('https://wa.me/6281234567890?text=Halo%20InfoLengkap.id,%20saya%20tertarik%20dengan%20layanan%20Manikur%20%26%20Pedikur%20Premium.%20Mohon%20info%20lebih%20lanjut%20dan%20jadwalkan.', '_blank')" class="w-full bg-pink-500 text-white py-3 rounded-full font-semibold hover:bg-pink-600 transition-colors duration-300">
+                                Pesan Manikur & Pedikur
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:shadow-2xl transition-all duration-300 animate-fade-in delay-400">
+                        <img class="w-full h-56 object-cover" src="aset iklan/kecantikan_spa.jpg" alt="Layanan Spa dan Pijat Relaksasi di rumah">
+                        <div class="p-6">
+                            <h4 class="font-bold text-2xl text-pink-600 mb-2">Spa & Pijat Relaksasi</h4>
+                            <p class="text-gray-600 mb-4">Rasakan ketenangan dengan perawatan spa dan pijat relaksasi yang menenangkan otot dan pikiran.</p>
+                            <div class="flex justify-between items-center mb-4">
+                                <span class="text-xl font-bold text-indigo-700">Mulai dari Rp 250 Ribu</span>
+                            </div>
+                            <button onclick="window.open('https://wa.me/6281234567890?text=Halo%20InfoLengkap.id,%20saya%20tertarik%20dengan%20layanan%20Spa%20%26%20Pijat%20Relaksasi.%20Mohon%20info%20lebih%20lanjut%20dan%20jadwalkan.', '_blank')" class="w-full bg-pink-500 text-white py-3 rounded-full font-semibold hover:bg-pink-600 transition-colors duration-300">
+                                Pesan Spa & Pijat
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:shadow-2xl transition-all duration-300 animate-fade-in delay-500">
+                        <img class="w-full h-56 object-cover" src="aset iklan/kecantikan_makeup.jpg" alt="Layanan Makeup Artist panggilan untuk acara khusus">
+                        <div class="p-6">
+                            <h4 class="font-bold text-2xl text-pink-600 mb-2">Makeup Artist Panggilan</h4>
+                            <p class="text-gray-600 mb-4">Tampil memukau di setiap acara dengan riasan profesional dari makeup artist kami yang berpengalaman.</p>
+                            <div class="flex justify-between items-center mb-4">
+                                <span class="text-xl font-bold text-indigo-700">Mulai dari Rp 350 Ribu</span>
+                            </div>
+                            <button onclick="window.open('https://wa.me/6281234567890?text=Halo%20InfoLengkap.id,%20saya%20tertarik%20dengan%20layanan%20Makeup%20Artist%20Panggilan.%20Mohon%20info%20lebih%20lanjut%20dan%20jadwalkan.', '_blank')" class="w-full bg-pink-500 text-white py-3 rounded-full font-semibold hover:bg-pink-600 transition-colors duration-300">
+                                Pesan Makeup Artist
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:shadow-2xl transition-all duration-300 animate-fade-in delay-600">
+                        <img class="w-full h-56 object-cover" src="aset iklan/kecantikan_hair.jpg" alt="Layanan Hair Styling dan Creambath panggilan">
+                        <div class="p-6">
+                            <h4 class="font-bold text-2xl text-pink-600 mb-2">Hair Styling & Creambath</h4>
+                            <p class="text-gray-600 mb-4">Perawatan rambut untuk kilau dan kesehatan optimal. Mulai dari creambath hingga penataan rambut.</p>
+                            <div class="flex justify-between items-center mb-4">
+                                <span class="text-xl font-bold text-indigo-700">Mulai dari Rp 100 Ribu</span>
+                            </div>
+                            <button onclick="window.open('https://wa.me/6281234567890?text=Halo%20InfoLengkap.id,%20saya%20tertarik%20dengan%20layanan%20Hair%20Styling%20%26%20Creambath.%20Mohon%20info%20lebih%20lanjut%20dan%20jadwalkan.', '_blank')" class="w-full bg-pink-500 text-white py-3 rounded-full font-semibold hover:bg-pink-600 transition-colors duration-300">
+                                Pesan Perawatan Rambut
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:shadow-2xl transition-all duration-300 animate-fade-in delay-700">
+                        <img class="w-full h-56 object-cover" src="aset iklan/kecantikan_waxing.jpg" alt="Layanan Waxing profesional di rumah">
+                        <div class="p-6">
+                            <h4 class="font-bold text-2xl text-pink-600 mb-2">Waxing Profesional</h4>
+                            <p class="text-gray-600 mb-4">Dapatkan kulit halus dan bebas bulu dengan layanan waxing profesional yang cepat dan minim rasa sakit.</p>
+                            <div class="flex justify-between items-center mb-4">
+                                <span class="text-xl font-bold text-indigo-700">Mulai dari Rp 70 Ribu</span>
+                            </div>
+                            <button onclick="window.open('https://wa.me/6281234567890?text=Halo%20InfoLengkap.id,%20saya%20tertarik%20dengan%20layanan%20Waxing%20Profesional.%20Mohon%20info%20lebih%20lanjut%20dan%20jadwalkan.', '_blank')" class="w-full bg-pink-500 text-white py-3 rounded-full font-semibold hover:bg-pink-600 transition-colors duration-300">
+                                Pesan Waxing
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="text-center mt-16">
+                    <a href="https://wa.me/6281234567890?text=Halo%20InfoLengkap.id,%20saya%20ingin%20bertanya%20lebih%20lanjut%20tentang%20layanan%20kecantikan." target="_blank" class="px-8 py-4 bg-indigo-600 text-white font-semibold rounded-full shadow-lg hover:bg-indigo-700 transition-colors duration-300 transform hover:scale-105">
+                        Punya Pertanyaan? Hubungi Kami via WhatsApp!
+                    </a>
+                </div>
+            </div>
+        </section>
+        
+        <section class="py-12 md:py-20 bg-gray-50">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <h3 class="text-2xl md:text-4xl font-bold text-gray-800 text-center mb-12 animate-fade-in">Galeri Hasil Karya & Momen Perawatan Profesional</h3>
+                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                    <img src="aset galeri/kecantikan_galeri_1.jpg" alt="Hasil nail art modern dan elegan oleh terapis InfoLengkap.id" class="w-full h-64 object-cover rounded-lg shadow-md transform hover:scale-105 transition-transform duration-300 animate-fade-in delay-100">
+                    <img src="aset galeri/kecantikan_galeri_2.jpg" alt="Klien sedang menikmati pijat relaksasi di rumah yang nyaman" class="w-full h-64 object-cover rounded-lg shadow-md transform hover:scale-105 transition-transform duration-300 animate-fade-in delay-200">
+                    <img src="aset galeri/kecantikan_galeri_3.jpg" alt="Tampilan makeup natural untuk acara spesial" class="w-full h-64 object-cover rounded-lg shadow-md transform hover:scale-105 transition-transform duration-300 animate-fade-in delay-300">
+                    <img src="aset galeri/kecantikan_galeri_4.jpg" alt="Perawatan creambath rambut yang menenangkan" class="w-full h-64 object-cover rounded-lg shadow-md transform hover:scale-105 transition-transform duration-300 animate-fade-in delay-400">
+                    <img src="aset galeri/kecantikan_galeri_5.jpg" alt="Detail alat kecantikan yang higienis dan steril" class="w-full h-64 object-cover rounded-lg shadow-md transform hover:scale-105 transition-transform duration-300 animate-fade-in delay-500">
+                    <img src="aset galeri/kecantikan_galeri_6.jpg" alt="Senyum puas klien setelah facial" class="w-full h-64 object-cover rounded-lg shadow-md transform hover:scale-105 transition-transform duration-300 animate-fade-in delay-600">
+                    <img src="aset galeri/kecantikan_galeri_7.jpg" alt="Perawatan kaki untuk pedikur premium" class="w-full h-64 object-cover rounded-lg shadow-md transform hover:scale-105 transition-transform duration-300 animate-fade-in delay-700">
+                    <img src="aset galeri/kecantikan_galeri_8.jpg" alt="Area perawatan yang rapi dan nyaman di rumah klien" class="w-full h-64 object-cover rounded-lg shadow-md transform hover:scale-105 transition-transform duration-300 animate-fade-in delay-800">
+                </div>
+            </div>
+        </section>
+
+        <section class="py-12 md:py-20 bg-gradient-to-br from-pink-50 to-purple-50">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <h3 class="text-2xl md:text-4xl font-bold text-gray-800 mb-12 animate-fade-in">Apa Kata Pelanggan InfoLengkap.id?</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="bg-white rounded-lg shadow-xl p-6 transform hover:scale-105 transition-transform duration-300 animate-fade-in delay-200">
+                        <p class="text-gray-700 italic mb-4">"Layanan facial via InfoLengkap.id sangat memuaskan! Terapisnya ramah, profesional, dan hasilnya luar biasa. Benar-benar solusi terbaik di tengah kesibukan saya."</p>
+                        <p class="font-semibold text-pink-600">- Ibu Anna, Jakarta Selatan</p>
+                    </div>
+                    <div class="bg-white rounded-lg shadow-xl p-6 transform hover:scale-105 transition-transform duration-300 animate-fade-in delay-400">
+                        <p class="text-gray-700 italic mb-4">"Memesan manikur dan pedikur lewat InfoLengkap.id itu praktis banget. Kuku saya jadi cantik dan terawat. Terapisnya datang tepat waktu dan kerjanya rapi. Top!"</p>
+                        <p class="font-semibold text-pink-600">- Mbak Indah, Surabaya</p>
+                    </div>
+                    <div class="bg-white rounded-lg shadow-xl p-6 transform hover:scale-105 transition-transform duration-300 animate-fade-in delay-600">
+                        <p class="text-gray-700 italic mb-4">"Pijat relaksasi yang saya pesan bikin badan segar kembali. Prosesnya mudah lewat InfoLengkap.id, pelayanan cepat dan sangat ramah. Rekomen banget untuk yang cari kenyamanan!"</p>
+                        <p class="font-semibold text-pink-600">- Bapak Rio, Bandung</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-12 md:py-20">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
+                <h3 class="text-2xl md:text-4xl font-bold text-gray-800 text-center mb-12 animate-fade-in">Pertanyaan Umum Seputar Layanan Kecantikan Panggilan</h3>
+                <div class="space-y-4">
+                    <div class="bg-white rounded-lg shadow p-6 cursor-pointer transform hover:shadow-lg transition-shadow duration-300" onclick="toggleFaq(this)">
+                        <div class="flex justify-between items-center">
+                            <h4 class="font-semibold text-lg text-gray-800">Apakah terapis membawa semua peralatan dan produk yang diperlukan?</h4>
+                            <i class="fas fa-chevron-down text-pink-500 transform transition-transform duration-300"></i>
+                        </div>
+                        <p class="faq-answer mt-4 text-gray-600 hidden">Ya, terapis yang kami sediakan akan membawa semua peralatan dan produk berkualitas yang diperlukan untuk perawatan Anda. Anda hanya perlu menyiapkan tempat yang nyaman.</p>
+                    </div>
+                    <div class="bg-white rounded-lg shadow p-6 cursor-pointer transform hover:shadow-lg transition-shadow duration-300" onclick="toggleFaq(this)">
+                        <div class="flex justify-between items-center">
+                            <h4 class="font-semibold text-lg text-gray-800">Bagaimana cara pembayaran layanan ini?</h4>
+                            <i class="fas fa-chevron-down text-pink-500 transform transition-transform duration-300"></i>
+                        </div>
+                        <p class="faq-answer mt-4 text-gray-600 hidden">Pembayaran dapat dilakukan langsung kepada terapis setelah layanan selesai, atau melalui metode lain yang disepakati saat konfirmasi pemesanan (misal: transfer bank, e-wallet).</p>
+                    </div>
+                    <div class="bg-white rounded-lg shadow p-6 cursor-pointer transform hover:shadow-lg transition-shadow duration-300" onclick="toggleFaq(this)">
+                        <div class="flex justify-between items-center">
+                            <h4 class="font-semibold text-lg text-gray-800">Apakah ada biaya transportasi tambahan?</h4>
+                            <i class="fas fa-chevron-down text-pink-500 transform transition-transform duration-300"></i>
+                        </div>
+                        <p class="faq-answer mt-4 text-gray-600 hidden">Biaya transportasi mungkin berlaku tergantung jarak lokasi Anda dari area layanan terapis. Informasi detail akan kami sampaikan saat konfirmasi pemesanan.</p>
+                    </div>
+                    <div class="bg-white rounded-lg shadow p-6 cursor-pointer transform hover:shadow-lg transition-shadow duration-300" onclick="toggleFaq(this)">
+                        <div class="flex justify-between items-center">
+                            <h4 class="font-semibold text-lg text-gray-800">Daerah mana saja yang dilayani?</h4>
+                            <i class="fas fa-chevron-down text-pink-500 transform transition-transform duration-300"></i>
+                        </div>
+                        <p class="faq-answer mt-4 text-gray-600 hidden">Saat ini kami melayani area Jabodetabek dan kota-kota besar seperti Bandung, Surabaya, dan Yogyakarta. Silakan hubungi kami untuk konfirmasi cakupan area.</p>
+                    </div>
+                     <div class="bg-white rounded-lg shadow p-6 cursor-pointer transform hover:shadow-lg transition-shadow duration-300" onclick="toggleFaq(this)">
+                        <div class="flex justify-between items-center">
+                            <h4 class="font-semibold text-lg text-gray-800">Bagaimana jika saya ingin membatalkan atau mengubah jadwal?</h4>
+                            <i class="fas fa-chevron-down text-pink-500 transform transition-transform duration-300"></i>
+                        </div>
+                        <p class="faq-answer mt-4 text-gray-600 hidden">Anda dapat menghubungi tim layanan pelanggan kami melalui WhatsApp untuk membatalkan atau mengubah jadwal. Kami mohon Anda memberitahu kami sesegera mungkin.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-12 md:py-20 bg-indigo-600 text-white text-center">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
+                <h3 class="text-3xl md:text-5xl font-bold mb-6 animate-fade-in">Siap Merasakan Perawatan Mewah di Rumah Anda?</h3>
+                <p class="text-lg md:text-xl mb-10 animate-fade-in delay-200">
+                    InfoLengkap.id hadir untuk mempermudah Anda mendapatkan layanan kecantikan terbaik. Cukup klik tombol di bawah, sampaikan kebutuhan Anda, dan kami akan membantu menghubungkan Anda dengan terapis yang tepat.
+                </p>
+                <a href="https://wa.me/6281234567890?text=Halo%20InfoLengkap.id,%20saya%20siap%20memesan%20layanan%20kecantikan%20panggilan." 
+                   target="_blank" 
+                   class="px-8 py-4 bg-pink-500 text-white font-semibold rounded-full shadow-lg hover:bg-pink-600 transition-colors duration-300 transform hover:scale-105 animate-fade-in delay-400">
+                    Pesan Layanan Kecantikan Anda Sekarang!
+                </a>
+            </div>
+        </section>
+
+        <section class="py-12 md:py-20">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex justify-between items-center mb-8">
+                    <h3 class="text-2xl md:text-4xl font-bold text-gray-800 animate-fade-in">Berita & Ulasan Terbaru</h3>
+                    <a href="blog.html" class="text-indigo-600 hover:text-indigo-800 font-semibold transition-colors animate-fade-in delay-200">Lihat Semua Artikel &rarr;</a>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:shadow-xl transition-all duration-300 animate-fade-in delay-300">
+                        <img class="w-full h-48 object-cover" src="aset blog/blog_facial_benefits.jpg" alt="Manfaat rutin melakukan facial wajah di rumah">
+                        <div class="p-6">
+                            <span class="text-sm text-gray-500">10 Juni 2025</span>
+                            <h4 class="font-bold text-xl mt-2 mb-3 text-gray-800">5 Manfaat Rutin Facial Wajah untuk Kulit Sehat & Glowing</h4>
+                            <p class="text-gray-600 text-sm mb-4">Pelajari mengapa facial wajah harus menjadi bagian dari rutinitas kecantikan Anda, dan bagaimana InfoLengkap.id mempermudahnya...</p>
+                            <a href="info-kecantikan.html" class="text-pink-600 hover:text-pink-800 font-semibold">Baca Selengkapnya &rarr;</a>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:shadow-xl transition-all duration-300 animate-fade-in delay-400">
+                        <img class="w-full h-48 object-cover" src="aset blog/blog_nailart_trends.jpg" alt="Tren nail art terbaru tahun ini">
+                        <div class="p-6">
+                            <span class="text-sm text-gray-500">5 Juni 2025</span>
+                            <h4 class="font-bold text-xl mt-2 mb-3 text-gray-800">Tren Nail Art Terpanas yang Wajib Dicoba di 2025</h4>
+                            <p class="text-gray-600 text-sm mb-4">Dari minimalis hingga bold, temukan gaya nail art yang sesuai untuk Anda dan pesan terapisnya melalui InfoLengkap.id...</p>
+                            <a href="info-kecantikan.html" class="text-pink-600 hover:text-pink-800 font-semibold">Baca Selengkapnya &rarr;</a>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:shadow-xl transition-all duration-300 animate-fade-in delay-500">
+                        <img class="w-full h-48 object-cover" src="aset blog/blog_stress_relief.jpg" alt="Perawatan spa untuk menghilangkan stres">
+                        <div class="p-6">
+                            <span class="text-sm text-gray-500">28 Mei 2025</span>
+                            <h4 class="font-bold text-xl mt-2 mb-3 text-gray-800">Pelepas Stres Terbaik: Manfaat Pijat Relaksasi di Rumah</h4>
+                            <p class="text-gray-600 text-sm mb-4">Cari tahu bagaimana pijat dapat membantu Anda melepaskan ketegangan dan menyegarkan diri, dipesan mudah via InfoLengkap.id...</p>
+                            <a href="info-kecantikan.html" class="text-pink-600 hover:text-pink-800 font-semibold">Baca Selengkapnya &rarr;</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    <footer class="bg-gray-800 text-white mt-12">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-8 text-center">
+            <p>&copy; 2025 InfoLengkap.id. Semua Hak Cipta Dilindungi.</p>
+            <p class="text-sm text-gray-400 mt-2">Dibuat dengan ❤️ untuk kemudahan Anda.</p>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/6281234567890?text=Halo%20InfoLengkap.id,%20saya%20tertarik%20dengan%20layanan%20kecantikan%20Anda." target="_blank" class="floating-whatsapp-btn bg-green-500 text-white p-3 rounded-full" aria-label="Chat via WhatsApp">
+        <i class="fab fa-whatsapp text-3xl"></i>
+    </a>
+
+
+    <script>
+        // JavaScript for Mobile Menu
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const svgs = mobileMenuButton.querySelectorAll('svg');
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            svgs.forEach(svg => svg.classList.toggle('hidden'));
+        });
+
+        // JavaScript for FAQ Accordion
+        function toggleFaq(element) {
+            const answer = element.querySelector('.faq-answer');
+            const icon = element.querySelector('.fa-chevron-down');
+            answer.classList.toggle('hidden');
+            icon.classList.toggle('rotate-180'); // Rotate icon when open
+        }
+
+        // Intersection Observer for Animations (more performant)
+        const observerOptions = {
+            root: null, // viewport
+            rootMargin: '0px',
+            threshold: 0.1 // Trigger when 10% of element is visible
+        };
+
+        const observerCallback = (entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const el = entry.target;
+                    el.classList.remove('opacity-0', 'translate-y-4', 'scale-95'); // Ensure base state is removed
+                    // Tailwind's transition-all will handle the smooth fade-in
+                    // For specific animations (like fade-in-up), you might manually toggle classes or define them differently
+                    
+                    // For elements with a specific animation class
+                    if (el.classList.contains('animate-fade-in') || el.classList.contains('animate-fade-in-up')) {
+                        el.style.animationPlayState = 'running';
+                    }
+                    observer.unobserve(el); // Stop observing once it's animated
+                }
+            });
+        };
+
+        const observer = new IntersectionObserver(observerCallback, observerOptions);
+
+        document.addEventListener('DOMContentLoaded', () => {
+            // Add initial animation classes for elements that should be hidden until scrolled
+            const animatedElements = document.querySelectorAll('.animate-fade-in, .animate-fade-in-up');
+            animatedElements.forEach(el => {
+                el.classList.add('opacity-0'); // Start hidden
+                if (el.classList.contains('animate-fade-in-up')) {
+                    el.classList.add('translate-y-4'); // Slight move up for fadeInUp
+                }
+                el.style.animationPlayState = 'paused'; // Pause animation until scrolled into view
+                observer.observe(el);
+            });
+        });
+    </script>
+    <script type="application/ld+json"> 
+      {.
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "serviceType": "Jasa Kecantikan Panggilan",
+      "name": "Layanan Kecantikan Panggilan InfoLengkap.id",
+      "description": "InfoLengkap.id menghubungkan Anda dengan terapis profesional untuk facial, manikur, pedikur, pijat, makeup, hair styling, dan waxing di rumah Anda.",
+      "provider": {
+        "@type": "Organization",
+        "name": "InfoLengkap.id",
+        "url": "https://www.infolengkap.id/",
+        "logo": "https://www.infolengkap.id/logo.png"
+      },
+      "areaServed": [
+        {
+          "@type": "State",
+          "name": "DKI Jakarta"
+        },
+        {
+          "@type": "State",
+          "name": "Jawa Barat"
+        },
+        {
+          "@type": "State",
+          "name": "Jawa Timur"
+        },
+        {
+          "@type": "State",
+          "name": "DI Yogyakarta"
+        }
+        // Sesuaikan dengan area layanan Anda
+      ],
+      "offers": [
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Facial Wajah Glowing"
+          },
+          "priceSpecification": {
+            "@type": "PriceSpecification",
+            "price": "180000",
+            "priceCurrency": "IDR"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Manikur & Pedikur Premium"
+          },
+          "priceSpecification": {
+            "@type": "PriceSpecification",
+            "price": "120000",
+            "priceCurrency": "IDR"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Spa & Pijat Relaksasi"
+          },
+          "priceSpecification": {
+            "@type": "PriceSpecification",
+            "price": "250000",
+            "priceCurrency": "IDR"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Makeup Artist Panggilan"
+          },
+          "priceSpecification": {
+            "@type": "PriceSpecification",
+            "price": "350000",
+            "priceCurrency": "IDR"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Hair Styling & Creambath"
+          },
+          "priceSpecification": {
+            "@type": "PriceSpecification",
+            "price": "100000",
+            "priceCurrency": "IDR"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Waxing Profesional"
+          },
+          "priceSpecification": {
+            "@type": "PriceSpecification",
+            "price": "70000",
+            "priceCurrency": "IDR"
+          }
+        }
+      ],
+      "url": "https://www.infolengkap.id/kecantikan.html",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+62-812-3456-7890",
+        "contactType": "Customer Service",
+        "areaServed": ["ID"]
+      },
+      "hasServiceOutput": {
+        "@type": "Thing",
+        "name": "Kulit bersih, kuku indah, tubuh rileks, tampilan memukau"
+      }
+    }
+    </script>
+</body>
+</html>

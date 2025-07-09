@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Info Lengkap - Tips info & Trik</title>
+    
+    <meta name="description" content="Baca artikel terbaru tentang tips mencari kost, panduan menyewa kontrakan, info lokasi strategis, dan berita seputar properti hunian di blog InfoLengkap.">
+    <meta name="keywords" content="blog kost, blog kontrakan, tips sewa, panduan hunian, info properti, gaya hidup, mahasiswa, perantau">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background-color: #f8fafc; 
+        }
+        /* Style untuk efek hover pada card artikel */
+        .article-card {
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+        .article-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+
+    <header class="bg-white shadow-md sticky top-0 z-40">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex-shrink-0">
+                    <a href="index.html" class="text-2xl font-bold text-indigo-600">Info<span class="text-gray-800">Lengkap</span></a>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-4">
+                        <a <a href="index.html" class="bg-indigo-600 text-white block px-3 py-2 rounded-md text-base font-medium">Beranda</a>
+                 <a href="index.html#layanan" class="text-gray-500 hover:bg-gray-100 hover:text-gray-900 block px-3 py-2 rounded-md text-base font-medium">Layanan kami</a>
+                 <a href="layanan.html" class="text-gray-500 hover:bg-gray-100 hover:text-gray-900 block px-3 py-2 rounded-md text-base font-medium">Layanan</a>
+                 <a href="blog.html" class="text-gray-500 hover:bg-gray-100 hover:text-gray-900 block px-3 py-2 rounded-md text-base font-medium">Blog</a>
+                 <a href="kebijakan-privasi.html" class="text-gray-500 hover:bg-gray-100 hover:text-gray-900 block px-3 py-2 rounded-md text-base font-medium">kebijakan Privasi</a>
+                 <a href="syarat-kententuan.html" class="text-gray-500 hover:bg-gray-100 hover:text-gray-900 block px-3 py-2 rounded-md text-base font-medium">Ketentuan</a>
+                 <a href="contact.html" class="text-gray-500 hover:bg-gray-100 hover:text-gray-900 block px-3 py-2 rounded-md text-base font-medium">Kontak</a>
+                        <a href="index.html#pasang-iklan" class="bg-indigo-500 text-white px-3 py-2 rounded-md text-sm font-medium hover:bg-indigo-600 transition-colors">Pasang Iklan</a>
+                    </div>
+                </div>
+                <div class="-mr-2 flex md:hidden">
+                    <button id="mobile-menu-button" type="button" class="bg-gray-100 inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" aria-controls="mobile-menu" aria-expanded="false">
+                        <span class="sr-only">Buka menu</span>
+                        <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" /></svg>
+                        <svg class="hidden h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="md:hidden hidden" id="mobile-menu">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                 <a href="index.html" class="bg-indigo-600 text-white block px-3 py-2 rounded-md text-base font-medium">Beranda</a>
+                 <a href="index.html#layanan" class="text-gray-500 hover:bg-gray-100 hover:text-gray-900 block px-3 py-2 rounded-md text-base font-medium">Layanan kami</a>
+                 <a href="layanan.html" class="text-gray-500 hover:bg-gray-100 hover:text-gray-900 block px-3 py-2 rounded-md text-base font-medium">Layanan</a>
+                 <a href="blog.html" class="text-gray-500 hover:bg-gray-100 hover:text-gray-900 block px-3 py-2 rounded-md text-base font-medium">Blog</a>
+                 <a href="kebijakan-privasi.html" class="text-gray-500 hover:bg-gray-100 hover:text-gray-900 block px-3 py-2 rounded-md text-base font-medium">kebijakan Privasi</a>
+                 <a href="syarat-kententuan.html" class="text-gray-500 hover:bg-gray-100 hover:text-gray-900 block px-3 py-2 rounded-md text-base font-medium">Ketentuan</a>
+                 <a href="contact.html" class="text-gray-500 hover:bg-gray-100 hover:text-gray-900 block px-3 py-2 rounded-md text-base font-medium">Kontak</a>
+                <a href="index.html#pasang-iklan" class="bg-indigo-500 text-white block px-3 py-2 rounded-md text-base font-medium hover:bg-indigo-600 transition-colors mobile-menu-link">Pasang Iklan</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- ===== Hero Section with Automatic Image Slider ===== -->
+    <section class="relative w-full h-96 lg:h-[500px] overflow-hidden shadow-lg">
+        <div id="hero-slider" class="h-full">
+            <div class="slider-inner relative h-full w-full flex">
+                <div class="w-full flex-shrink-0 h-full bg-cover bg-center" style="background-image: url('aset iklan/info jual rumah.jpg');"><div class="w-full h-full flex flex-col justify-center items-center bg-black bg-opacity-50 text-white text-center p-4"><h2 class="text-3xl md:text-5xl font-extrabold leading-tight">Temukan Rumah Impian Anda</h2><p class="mt-4 text-lg md:text-xl max-w-2xl">Jelajahi ribuan properti terbaik di lokasi strategis.</p></div></div>
+                <div class="w-full flex-shrink-0 h-full bg-cover bg-center" style="background-image: url('aset iklan/info pro[erty.jpg');"><div class="w-full h-full flex flex-col justify-center items-center bg-black bg-opacity-50 text-white text-center p-4"><h2 class="text-3xl md:text-5xl font-extrabold leading-tight">Promosikan Produk Anda di Sini!</h2><p class="mt-4 text-lg md:text-xl max-w-2xl">Jangkau ribuan pengunjung setiap hari.</p></div></div>
+                <div class="w-full flex-shrink-0 h-full bg-cover bg-center" style="background-image: url('aset iklan/inforumag5.jpg');"><div class="w-full h-full flex flex-col justify-center items-center bg-black bg-opacity-50 text-white text-center p-4"><h2 class="text-3xl md:text-5xl font-extrabold leading-tight">Jual Beli Kendaraan Bekas Berkualitas</h2><p class="mt-4 text-lg md:text-xl max-w-2xl">Temukan mobil dan motor bekas dengan harga terbaik.</p></div></div>
+                <div class="w-full flex-shrink-0 h-full bg-cover bg-center" style="background-image: url('aset iklan/infokendaraan1.jpg');"><div class="w-full h-full flex flex-col justify-center items-center bg-black bg-opacity-50 text-white text-center p-4"><h2 class="text-3xl md:text-5xl font-extrabold leading-tight">Butuh Bantuan Jasa Profesional?</h2><p class="mt-4 text-lg md:text-xl max-w-2xl">Dari perbaikan AC hingga renovasi atap, kami siap membantu.</p></div></div>        
+            </div>
+        </div>
+        <div id="slider-dots" class="absolute bottom-5 left-1/2 -translate-x-1/2 flex space-x-2"></div>
+    </section>
+
+    <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <aside class="md:col-span-1 space-y-8">
+                <div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-4">Cari Artikel</h3>
+                    <div class="relative">
+                        <input type="text" placeholder="Cari artikel..." class="w-full p-3 pl-10 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                            <svg class="h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-4">Kategori</h3>
+                    <ul class="space-y-2">
+                        <li><a href="blog.html?category=tips-kost" class="text-gray-600 hover:text-indigo-600 font-medium">Tips Kost</a></li>
+                        <li><a href="blog.html?category=panduan-kontrakan" class="text-gray-600 hover:text-indigo-600 font-medium">Panduan Kontrakan</a></li>
+                        <li><a href="blog.html?category=gaya-hidup" class="text-gray-600 hover:text-indigo-600 font-medium">Gaya Hidup Mahasiswa</a></li>
+                        <li><a href="blog.html?category=area-strategis" class="text-gray-600 hover:text-indigo-600 font-medium">Area Strategis</a></li>
+                        <li><a href="blog.html?category=berita-properti" class="text-gray-600 hover:text-indigo-600 font-medium">Berita Properti</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-4">Artikel Populer</h3>
+                    <ul class="space-y-4">
+                        <li class="flex items-start space-x-3">
+                            <img src="https://placehold.co/80x60/d1d5db/ffffff?text=Populer1" alt="Thumbnail artikel populer" class="w-20 h-16 object-cover rounded-md flex-shrink-0">
+                            <div>
+                                <a href="single-post.html?id=artikel-populer-1" class="text-md font-semibold text-gray-800 hover:text-indigo-600">5 Hal Wajib Dicari Saat Pilih Kost</a>
+                                <p class="text-sm text-gray-500">25 Mei 2024</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start space-x-3">
+                            <img src="https://placehold.co/80x60/d1d5db/ffffff?text=Populer2" alt="Thumbnail artikel populer" class="w-20 h-16 object-cover rounded-md flex-shrink-0">
+                            <div>
+                                <a href="single-post.html?id=artikel-populer-2" class="text-md font-semibold text-gray-800 hover:text-indigo-600">Cara Negosiasi Harga Kontrakan</a>
+                                <p class="text-sm text-gray-500">18 Mei 2024</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="my-8 text-center bg-gray-100 p-4 rounded-lg border border-gray-200">
+                    <p class="text-gray-600 text-sm mb-2">Iklan (Google AdSense)</p>
+                    <div class="bg-gray-200 h-48 flex items-center justify-center text-gray-500 text-xl font-bold">
+                        Iklan Sidebar
+                        </div>
+                </div>
+            </aside>
+
+            <section class="md:col-span-2 space-y-8">
+                <div class="article-card bg-white rounded-lg shadow-md overflow-hidden flex flex-col md:flex-row">
+                    <img src="https://placehold.co/400x250/a5d6a7/ffffff?text=Tips+Kost" alt="Thumbnail artikel tips memilih kost" class="w-full md:w-1/3 h-48 md:h-auto object-cover">
+                    <div class="p-6 flex flex-col justify-between flex-grow">
+                        <div>
+                            <span class="text-sm font-semibold text-indigo-600 uppercase">Tips Kost</span>
+                            <h2 class="text-2xl font-bold text-gray-800 mt-2 mb-3">Panduan Lengkap Memilih Kost Idaman di Kota Besar</h2>
+                            <p class="text-gray-600 text-sm mb-4 line-clamp-3">Mencari kost di kota besar seperti Jakarta atau Surabaya bisa menjadi tantangan. Artikel ini akan memandu Anda langkah demi langkah dalam menemukan kost yang tidak hanya nyaman, tetapi juga sesuai dengan anggaran dan lokasi yang strategis. Jangan lewatkan tips penting ini!</p>
+                        </div>
+                        <div class="flex items-center justify-between text-sm text-gray-500 mt-4">
+                            <span>Oleh: Tim InfoLengkap</span>
+                            <span>28 Mei 2024</span>
+                            <a href="single-post.html?id=panduan-memilih-kost" class="text-indigo-600 hover:text-indigo-800 font-semibold flex items-center">
+                                Baca Selengkapnya
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="article-card bg-white rounded-lg shadow-md overflow-hidden flex flex-col md:flex-row">
+                    <img src="https://placehold.co/400x250/fbd38d/ffffff?text=Kontrakan+Familia" alt="Thumbnail artikel kontrakan keluarga" class="w-full md:w-1/3 h-48 md:h-auto object-cover">
+                    <div class="p-6 flex flex-col justify-between flex-grow">
+                        <div>
+                            <span class="text-sm font-semibold text-indigo-600 uppercase">Panduan Kontrakan</span>
+                            <h2 class="text-2xl font-bold text-gray-800 mt-2 mb-3">Tips Aman Menyewa Kontrakan untuk Keluarga Baru</h2>
+                            <p class="text-gray-600 text-sm mb-4 line-clamp-3">Menyewa kontrakan untuk keluarga memiliki pertimbangan berbeda dari kost individu. Dari aspek keamanan, fasilitas ramah anak, hingga lingkungan yang mendukung, artikel ini membahas semua yang perlu Anda perhatikan sebelum menandatangani kontrak sewa. Pastikan keluarga Anda nyaman!</p>
+                        </div>
+                        <div class="flex items-center justify-between text-sm text-gray-500 mt-4">
+                            <span>Oleh: Tim InfoLengkap</span>
+                            <span>20 Mei 2024</span>
+                            <a href="single-post.html?id=tips-kontrakan-keluarga" class="text-indigo-600 hover:text-indigo-800 font-semibold flex items-center">
+                                Baca Selengkapnya
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="my-8 text-center bg-gray-100 p-4 rounded-lg border border-gray-200">
+                    <p class="text-gray-600 text-sm mb-2">Space Iklan Anda di Sini (Google AdSense)</p>
+                    <div class="bg-gray-200 h-32 md:h-48 flex items-center justify-center text-gray-500 text-xl font-bold">
+                        Iklan Responsif
+                        </div>
+                </div>
+
+                <div class="article-card bg-white rounded-lg shadow-md overflow-hidden flex flex-col md:flex-row">
+                    <img src="https://placehold.co/400x250/9ad3bc/ffffff?text=Hidup+Hemat" alt="Thumbnail artikel hidup hemat di kost" class="w-full md:w-1/3 h-48 md:h-auto object-cover">
+                    <div class="p-6 flex flex-col justify-between flex-grow">
+                        <div>
+                            <span class="text-sm font-semibold text-indigo-600 uppercase">Gaya Hidup</span>
+                            <h2 class="text-2xl font-bold text-gray-800 mt-2 mb-3">Strategi Hidup Hemat ala Anak Kost: Maksimalkan Anggaran!</h2>
+                            <p class="text-gray-600 text-sm mb-4 line-clamp-3">Hidup mandiri sebagai anak kost menuntut kemampuan mengatur keuangan. Dari tips masak hemat, mencari promo, hingga cara mengelola pengeluaran bulanan, artikel ini akan membantu Anda tetap nyaman tanpa harus boros. Jadilah anak kost yang cerdas finansial!</p>
+                        </div>
+                        <div class="flex items-center justify-between text-sm text-gray-500 mt-4">
+                            <span>Oleh: Tim InfoLengkap</span>
+                            <span>15 Mei 2024</span>
+                            <a href="single-post.html?id=hidup-hemat-kost" class="text-indigo-600 hover:text-indigo-800 font-semibold flex items-center">
+                                Baca Selengkapnya
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="flex justify-center items-center space-x-2 mt-10">
+                    <a href="#" class="px-4 py-2 bg-gray-200 text-gray-700 rounded-md hover:bg-gray-300">Sebelumnya</a>
+                    <a href="#" class="px-4 py-2 bg-indigo-600 text-white rounded-md">1</a>
+                    <a href="#" class="px-4 py-2 bg-gray-200 text-gray-700 rounded-md hover:bg-gray-300">2</a>
+                    <a href="#" class="px-4 py-2 bg-gray-200 text-gray-700 rounded-md hover:bg-gray-300">3</a>
+                    <a href="#" class="px-4 py-2 bg-gray-200 text-gray-700 rounded-md hover:bg-gray-300">Selanjutnya</a>
+                </div>
+
+            </section>
+        </div>
+    </main>
+
+    <footer class="bg-gray-800 text-white mt-12">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">InfoLengkap</h3>
+                    <p class="text-gray-400 text-sm">Platform terpercaya untuk mencari informasi kost dan kontrakan di seluruh Indonesia.</p>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Tautan Cepat</h3>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="text-gray-400 hover:text-white transition-colors">Beranda</a></li>
+                        <li><a href="index.html#kost-putra" class="text-gray-400 hover:text-white transition-colors">Kost Putra</a></li>
+                        <li><a href="index.html#kost-putri" class="text-gray-400 hover:text-white transition-colors">Kost Putri</a></li>
+                        <li><a href="index.html#kontrakan" class="text-gray-400 hover:text-white transition-colors">Kontrakan</a></li>
+                        <li><a href="blog.html" class="text-gray-400 hover:text-white transition-colors">Blog</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Informasi</h3>
+                    <ul class="space-y-2">
+                        <li><a href="layanan.html" class="text-gray-400 hover:text-white transition-colors">Daftarkan Properti Anda</a></li>
+                        <li><a href="about-us.html" class="text-gray-400 hover:text-white transition-colors">Tentang Kami</a></li>
+                        <li><a href="kebijakan-privasi.html" class="text-gray-400 hover:text-white transition-colors">Kebijakan Privasi</a></li>
+                        <li><a href="syarat-kententuan.html" class="text-gray-400 hover:text-white transition-colors">Syarat & Ketentuan</a></li>
+                        <li><a href="dsolichan@gmail.com" class="text-gray-400 hover:text-white transition-colors">Hubungi Kami</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center">
+                <p class="text-gray-400">&copy; 2024 InfoLengkap. Semua Hak Cipta Dilindungi.</p>
+            </div>
+        </div>
+    </footer>
+
+     <!-- ===== Footer ===== -->
+    <footer class="bg-gray-800 text-white mt-12">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-8 text-center">
+            <p>&copy; 2025 InfoLengkap. Semua Hak Cipta Dilindungi.</p>
+            <p class="text-sm text-gray-400 mt-2">Dibuat dengan ❤️ untuk kemudahan Anda.</p>
+        </div>
+    </footer>
+
+
+    <script>
+        // JavaScript for Mobile Menu
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const svgs = mobileMenuButton.querySelectorAll('svg');
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            svgs.forEach(svg => svg.classList.toggle('hidden'));
+        });
+
+        // JavaScript for Automatic Hero Slider
+        document.addEventListener('DOMContentLoaded', function() {
+            const heroSlider = document.querySelector('#hero-slider .slider-inner');
+            const heroSlides = heroSlider.querySelectorAll('.slider-inner > div');
+            const dotsContainer = document.getElementById('slider-dots');
+            if (!heroSlider || heroSlides.length === 0) return;
+
+            let currentHeroSlide = 0;
+            const heroSlideInterval = 5000;
+
+            heroSlides.forEach((_, i) => {
+                const dot = document.createElement('button');
+                dot.classList.add('w-3', 'h-3', 'rounded-full', 'transition-colors', 'duration-300');
+                dot.classList.add(i === 0 ? 'bg-white' : 'bg-white/50', 'hover:bg-white');
+                dot.addEventListener('click', () => goToHeroSlide(i));
+                dotsContainer.appendChild(dot);
+            });
+
+            const dots = dotsContainer.querySelectorAll('button');
+
+            function updateDots(index) {
+                dots.forEach((dot, i) => {
+                    dot.classList.toggle('bg-white', i === index);
+                    dot.classList.toggle('bg-white/50', i !== index);
+                });
+            }
+
+            function goToHeroSlide(slideIndex) {
+                currentHeroSlide = slideIndex;
+                heroSlider.style.transform = `translateX(-${currentHeroSlide * 100}%)`;
+                updateDots(currentHeroSlide);
+            }
+
+            function nextHeroSlide() {
+                currentHeroSlide = (currentHeroSlide + 1) % heroSlides.length;
+                goToHeroSlide(currentHeroSlide);
+            }
+
+            setInterval(nextHeroSlide, heroSlideInterval);
+            goToHeroSlide(0);
+        });
+
+        // JavaScript for Service Sliders
+        document.addEventListener('DOMContentLoaded', function() {
+            const serviceSliders = document.querySelectorAll('.service-slider-inner');
+
+            serviceSliders.forEach(slider => {
+                let currentServiceSlide = 0;
+                const cards = slider.querySelectorAll('.flex-shrink-0');
+                const totalCards = cards.length;
+                // The actual number of unique cards is total minus the cloned ones.
+                // Assuming one clone for now.
+                const uniqueCards = totalCards - 1; 
+                if (uniqueCards <= 0) return;
+
+                const slideInterval = 3000;
+
+                function nextServiceSlide() {
+                    currentServiceSlide++;
+                    const cardWidth = cards[0].offsetWidth;
+                    slider.style.transform = `translateX(-${currentServiceSlide * cardWidth}px)`;
+                    
+                    // When it shows the cloned card, reset to the beginning without animation
+                    if (currentServiceSlide === uniqueCards) {
+                        setTimeout(() => {
+                            slider.style.transition = 'none';
+                            currentServiceSlide = 0;
+                            slider.style.transform = 'translateX(0)';
+                            // A moment later, restore the transition for the next slides
+                            setTimeout(() => {
+                                slider.style.transition = 'transform 0.5s ease-in-out';
+                            }, 50);
+                        }, 500); // Wait for the transition to finish before jumping
+                    }
+                }
+
+                setInterval(nextServiceSlide, slideInterval);
+            });
+        });
+
+    </script>
+</body>
+</html>

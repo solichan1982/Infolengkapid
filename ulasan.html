@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ulasan Layanan InfoLengkap</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <h1>InfoLengkap</h1>
+        <nav>
+            </nav>
+    </header>
+
+    <main>
+        <section class="review-summary">
+            <h2>Ringkasan Penilaian Keseluruhan</h2>
+            <div class="average-rating">
+                <span class="stars">[IKON BINTANG BESAR]</span>
+                <p><strong>[RATA-RATA RATING]</strong> dari 5 Bintang</p>
+                <p>Berdasarkan <strong>[JUMLAH TOTAL ULASAN]</strong> ulasan pengguna</p>
+            </div>
+        </section>
+
+        <section class="rating-distribution">
+            <h3>Distribusi Rating</h3>
+            <ul>
+                <li>5 Bintang: [Persentase]% ([Jumlah Ulasan])</li>
+                <li>4 Bintang: [Persentase]% ([Jumlah Ulasan])</li>
+                <li>3 Bintang: [Persentase]% ([Jumlah Ulasan])</li>
+                <li>2 Bintang: [Persentase]% ([Jumlah Ulasan])</li>
+                <li>1 Bintang: [Persentase]% ([Jumlah Ulasan])</li>
+            </ul>
+        </section>
+
+        <section class="review-filters">
+            <h3>Cari & Filter Ulasan</h3>
+            <div class="search-box">
+                <input type="text" placeholder="Cari ulasan...">
+                <button>Cari</button>
+            </div>
+            <div class="filter-options">
+                <label for="sort-by">Urutkan Berdasarkan:</label>
+                <select id="sort-by">
+                    <option value="latest">Terbaru</option>
+                    <option value="highest-rating">Rating Tertinggi</option>
+                    <option value="lowest-rating">Rating Terendah</option>
+                </select>
+
+                <label for="filter-stars">Filter Bintang:</label>
+                <select id="filter-stars">
+                    <option value="all">Semua Bintang</option>
+                    <option value="5">Hanya 5 Bintang</option>
+                    <option value="4">Hanya 4 Bintang</option>
+                    <option value="3">Hanya 3 Bintang</option>
+                    <option value="2">Hanya 2 Bintang</option>
+                    <option value="1">Hanya 1 Bintang</option>
+                </select>
+
+                <label for="filter-service">Filter Layanan:</label>
+                <select id="filter-service">
+                    <option value="all">Semua Layanan</option>
+                    <option value="hair-care">Perawatan Rambut</option>
+                    <option value="skin-care">Perawatan Kulit & Wajah</option>
+                    </select>
+            </div>
+        </section>
+
+        <section class="user-reviews-list">
+            <h3>Ulasan Pengguna Terbaru</h3>
+
+            <article class="review-item">
+                <div class="review-header">
+                    <span class="user-name">[NAMA PENGGUNA]</span>
+                    <span class="review-stars">[JUMLAH BINTANG]</span>
+                </div>
+                <p class="review-meta">
+                    Tanggal: [Tanggal Ulasan] | Layanan: [Nama Layanan] | Penyedia Jasa: [Nama Penyedia Jasa]
+                </p>
+                <p class="review-content">
+                    "Isi ulasan pengguna di sini. Ini akan menjadi teks yang mereka tulis tentang pengalaman mereka."
+                </p>
+            </article>
+
+            <article class="review-item">
+                <div class="review-header">
+                    <span class="user-name">Pengguna Anonim</span>
+                    <span class="review-stars">★★★★☆</span>
+                </div>
+                <p class="review-meta">
+                    Tanggal: 4 Juli 2025 | Layanan: Manicure & Pedicure | Penyedia Jasa: Nail Art Studio Bunga
+                </p>
+                <p class="review-content">
+                    "Kuku jadi cantik banget! Detail pengerjaannya rapi dan warnanya tahan lama. Sedikit saran, mungkin bisa lebih cepat dalam pengerjaan, tapi overall bagus!"
+                </p>
+            </article>
+
+            <button class="load-more-reviews">Lihat Lebih Banyak Ulasan</button>
+        </section>
+
+        <section class="how-to-review">
+            <h3>Bagaimana Cara Memberikan Ulasan?</h3>
+            <p>Hanya pengguna yang telah menyelesaikan pesanan layanan melalui InfoLengkap yang dapat memberikan ulasan.</p>
+            <ol>
+                <li><strong>Selesaikan Pesanan:</strong> Pastikan Anda telah menerima dan menyelesaikan layanan dari penyedia jasa.</li>
+                <li><strong>Kunjungi Riwayat Pesanan Anda:</strong> Masuk ke akun Anda dan pilih menu "Riwayat Pesanan" atau "Pesanan Saya".</li>
+                <li><strong>Beri Rating:</strong> Temukan layanan yang ingin Anda ulas, lalu klik tombol "Beri Ulasan" atau "Tulis Review". Pilih jumlah bintang dan tuliskan pengalaman Anda.</li>
+                <li><strong>Kirim:</strong> Ulasan Anda akan dipublikasikan setelah melalui proses moderasi singkat.</li>
+            </ol>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 InfoLengkap. Semua Hak Dilindungi.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

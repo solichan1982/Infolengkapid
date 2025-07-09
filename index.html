@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InfoLengkapid - Portal Informasi Jual Beli, Properti, Kendaraan, Jasa & Kost Terpercaya</title>
+    
+    <meta name="description" content="InfoLengkapid adalah portal terlengkap untuk jual beli properti (rumah, tanah), kendaraan (mobil, motor), cari kost, serta temukan jasa profesional dan layanan kecantikan di seluruh Indonesia. Temukan penawaran terbaik dan kebutuhan Anda di sini!">
+    <meta name="keywords" content="jual beli, properti, rumah dijual, tanah dijual, kendaraan bekas, mobil bekas, motor bekas, info kost, cari kost, sewa kost, jasa, layanan, jasa perbaikan, jasa kecantikan, salon, spa, InfoLengkapid, iklan gratis">
+    
+    <meta property="og:title" content="InfoLengkapid - Portal Jual Beli & Jasa Terpercaya">
+    <meta property="og:description" content="Temukan properti, kendaraan, kost, jasa profesional, dan layanan kecantikan terbaik hanya di InfoLengkapid.">
+    <meta property="og:image" content="https://placehold.co/1200x630/16A34A/ffffff?text=InfoLengkapid"> <meta property="og:url" content="https://www.infolengkapid.com"> <meta property="og:type" content="website">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'brand-green': '#16A34A',      // Primary green for natural feel (previously house-green)
+                        'brand-light-green': '#22C55E', // Lighter green for accents
+                        'brand-dark-green': '#15803D',  // Darker green for hover
+                        'brand-cream': '#FBFBFB',     // Light cream background
+                        'brand-brown': '#78350F',      // Brown for earthy tones/text
+                        'brand-light-brown': '#D3D3D3', // Light brown for elements
+                        'brand-red-id': '#EF4444',    // Red for 'id' as requested
+                        // Warna kategori baru atau disesuaikan
+                        'category-blue': '#2563EB',     // Untuk komersial / jasa
+                        'category-orange': '#F97316',   // Untuk tanah / kendaraan
+                        'category-pink': '#EC4899',     // Untuk kecantikan / kost
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Roboto+Condensed:wght@700&display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc; /* light gray background */
+        }
+        .slider-inner, .service-slider-inner {
+            transition: transform 0.5s ease-in-out;
+        }
+        .brand-text {
+            font-family: 'Roboto Condensed', sans-serif; /* A bold, modern font for the brand */
+        }
+        /* Hide scrollbar for smooth scrolling sections */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
+    </style>
+</head>
+<body class="bg-brand-cream">
+
+    <header class="bg-white shadow-md sticky top-0 z-40">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex-shrink-0 flex items-center">
+                    <img src="https://placehold.co/40x40/16A34A/ffffff?text=⭐" alt="InfoLengkapid Logo" class="h-8 w-8 mr-2">
+                    <a href="index.html" class="text-2xl font-bold brand-text">
+                        <span class="text-brand-green">Info</span>
+                        <span class="text-brand-brown">Lengkap</span>
+                        <span class="text-brand-red-id">id</span>
+                    </a>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-4">
+                        <a href="index.html" class="bg-brand-green text-white block px-3 py-2 rounded-md text-base font-medium">Beranda</a>
+                        <a href="#layanan" class="text-gray-600 hover:bg-brand-light-brown hover:text-brand-dark-green block px-3 py-2 rounded-md text-base font-medium">Layanan Kami</a>
+                        <a href="tentang.html" class="text-gray-600 hover:bg-brand-light-brown hover:text-brand-dark-green block px-3 py-2 rounded-md text-base font-medium">Tentang Kami</a>
+                        <a href="blog.html" class="text-gray-600 hover:bg-brand-light-brown hover:text-brand-dark-green block px-3 py-2 rounded-md text-base font-medium">Blog</a>
+                        <a href="kebijakan-privasi.html" class="text-gray-600 hover:bg-brand-light-brown hover:text-brand-dark-green block px-3 py-2 rounded-md text-base font-medium">Kebijakan Privasi</a>
+                        <a href="syarat-kententuan.html" class="text-gray-600 hover:bg-brand-light-brown hover:text-brand-dark-green block px-3 py-2 rounded-md text-base font-medium">Syarat & Ketentuan</a>
+                        <a href="contact.html" class="text-gray-600 hover:bg-brand-light-brown hover:text-brand-dark-green block px-3 py-2 rounded-md text-base font-medium">Kontak</a>
+                    </div>
+                </div>
+                <div class="-mr-2 flex md:hidden">
+                    <button id="mobile-menu-button" type="button" class="bg-gray-100 inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-brand-green" aria-controls="mobile-menu" aria-expanded="false">
+                        <span class="sr-only">Buka menu</span>
+                        <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" /></svg>
+                        <svg class="hidden h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="md:hidden hidden" id="mobile-menu">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="index.html" class="bg-brand-green text-white block px-3 py-2 rounded-md text-base font-medium">Beranda</a>
+                <a href="#layanan" class="text-gray-600 hover:bg-gray-100 hover:text-gray-900 block px-3 py-2 rounded-md text-base font-medium">Layanan Kami</a>
+                <a href="tentang.html" class="text-gray-600 hover:bg-gray-100 hover:text-gray-900 block px-3 py-2 rounded-md text-base font-medium">Tentang Kami</a>
+                <a href="blog.html" class="text-gray-600 hover:bg-gray-100 hover:text-gray-900 block px-3 py-2 rounded-md text-base font-medium">Blog</a>
+                <a href="kebijakan-privasi.html" class="text-gray-600 hover:bg-gray-100 hover:text-gray-900 block px-3 py-2 rounded-md text-base font-medium">Kebijakan Privasi</a>
+                <a href="syarat-kententuan.html" class="text-gray-600 hover:bg-gray-100 hover:text-gray-900 block px-3 py-2 rounded-md text-base font-medium">Syarat & Ketentuan</a>
+                <a href="contact.html" class="text-gray-600 hover:bg-gray-100 hover:text-gray-900 block px-3 py-2 rounded-md text-base font-medium">Kontak</a>
+            </div>
+        </div>
+    </header>
+
+    <section class="relative w-full h-96 lg:h-[500px] overflow-hidden shadow-lg">
+        <div id="hero-slider" class="h-full">
+            <div class="slider-inner relative h-full w-full flex">
+                <div class="w-full flex-shrink-0 h-full bg-cover bg-center" style="background-image: url('aset iklan/info adobe 1.png');">
+                    <div class="w-full h-full flex flex-col justify-center items-center bg-black bg-opacity-50 text-white text-center p-4">
+                        <h2 class="text-3xl md:text-5xl font-extrabold leading-tight">Temukan Jasa Profesional Terbaik</h2>
+                        <p class="mt-4 text-lg md:text-xl max-w-2xl">Dari tukang ledeng hingga renovasi rumah, kami siap membantu.</p>
+                        <a href="halaman-jasa.html" class="mt-6 px-6 py-3 bg-brand-light-green text-white rounded-lg font-semibold hover:bg-brand-dark-green transition-colors text-lg">Cari Jasa Sekarang</a>
+                    </div>
+                </div>
+                <div class="w-full flex-shrink-0 h-full bg-cover bg-center" style="background-image: url('https://placehold.co/1600x600/EC4899/ffffff?text=Kecantikan+Terbaru');">
+                    <div class="w-full h-full flex flex-col justify-center items-center bg-black bg-opacity-50 text-white text-center p-4">
+                        <h2 class="text-3xl md:text-5xl font-extrabold leading-tight">Manjakan Diri dengan Layanan Kecantikan</h2>
+                        <p class="mt-4 text-lg md:text-xl max-w-2xl">Salon, spa, make-up, dan perawatan diri terlengkap.</p>
+                        <a href="halaman-kecantikan.html" class="mt-6 px-6 py-3 bg-brand-light-green text-white rounded-lg font-semibold hover:bg-brand-dark-green transition-colors text-lg">Lihat Layanan Kecantikan</a>
+                    </div>
+                </div>
+                <div class="w-full flex-shrink-0 h-full bg-cover bg-center" style="background-image: url('https://placehold.co/1600x600/C084FC/ffffff?text=Kost+Nyaman');">
+                    <div class="w-full h-full flex flex-col justify-center items-center bg-black bg-opacity-50 text-white text-center p-4">
+                        <h2 class="text-3xl md:text-5xl font-extrabold leading-tight">Cari Kost Nyaman & Terdekat</h2>
+                        <p class="mt-4 text-lg md:text-xl max-w-2xl">Pilihan kost terlengkap untuk mahasiswa dan karyawan.</p>
+                        <a href="halaman-kost.html" class="mt-6 px-6 py-3 bg-brand-light-green text-white rounded-lg font-semibold hover:bg-brand-dark-green transition-colors text-lg">Temukan Kost Anda</a>
+                    </div>
+                </div>
+                <div class="w-full flex-shrink-0 h-full bg-cover bg-center" style="background-image: url('aset iklan/info jual rumah.jpg');">
+                    <div class="w-full h-full flex flex-col justify-center items-center bg-black bg-opacity-50 text-white text-center p-4">
+                        <h2 class="text-3xl md:text-5xl font-extrabold leading-tight">Properti Idaman Anda Ada di Sini</h2>
+                        <p class="mt-4 text-lg md:text-xl max-w-2xl">Jelajahi rumah, tanah, apartemen, dan properti komersial terbaik.</p>
+                        <a href="halaman-rumah.html" class="mt-6 px-6 py-3 bg-brand-light-green text-white rounded-lg font-semibold hover:bg-brand-dark-green transition-colors text-lg">Cari Properti</a>
+                    </div>
+                </div>
+                <div class="w-full flex-shrink-0 h-full bg-cover bg-center" style="background-image: url('aset iklan/infokendaraan1.jpg');">
+                    <div class="w-full h-full flex flex-col justify-center items-center bg-black bg-opacity-50 text-white text-center p-4">
+                        <h2 class="text-3xl md:text-5xl font-extrabold leading-tight">Beli & Jual Kendaraan Bekas Berkualitas</h2>
+                        <p class="mt-4 text-lg md:text-xl max-w-2xl">Pilihan mobil, motor, dan kendaraan lainnya dengan harga terbaik.</p>
+                        <a href="halaman-kendaraan.html" class="mt-6 px-6 py-3 bg-brand-light-green text-white rounded-lg font-semibold hover:bg-brand-dark-green transition-colors text-lg">Jelajahi Kendaraan</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="slider-dots" class="absolute bottom-5 left-1/2 -translate-x-1/2 flex space-x-2"></div>
+    </section>
+    
+    <section class="container mx-auto px-4 sm:px-6 lg:px-8 py-12 text-center">
+        <h1 class="text-3xl md:text-4xl font-extrabold text-gray-800 mb-6">InfoLengkapid: Pusat Informasi Terpadu untuk Kebutuhan Anda</h1>
+        <p class="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
+            Selamat datang di InfoLengkapid! Portal satu-satunya untuk mencari dan menawarkan segala kebutuhan Anda. 
+            Mulai dari <span class="font-semibold text-brand-green">jual beli rumah, tanah, properti komersial,</span> hingga 
+            <span class="font-semibold text-brand-orange">kendaraan bekas berkualitas (mobil & motor)</span>. 
+            Temukan <span class="font-semibold text-brand-pink">kost idaman</span> di lokasi strategis, 
+            serta berbagai <span class="font-semibold text-brand-blue">jasa profesional</span> 
+            dan <span class="font-semibold text-category-pink">layanan kecantikan</span> terkemuka. 
+            Kami hadir untuk memudahkan Anda menemukan informasi terlengkap dan terbaik di Indonesia.
+        </p>
+        <div class="mt-8">
+            <a href="contact.html" class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-brand-green hover:bg-brand-dark-green focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-brand-green">
+                <svg class="-ml-1 mr-3 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                    <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
+                    <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
+                </svg>
+                Iklankan Properti/Jasa Anda!
+            </a>
+        </div>
+    </section>
+
+    <div class="my-8 text-center bg-brand-light-brown p-4 rounded-lg border border-gray-200 container mx-auto px-4">
+        <p class="text-gray-600 text-sm mb-2">Space Iklan Anda di Sini (Google AdSense)</p>
+        <div class="bg-gray-200 h-24 md:h-32 flex items-center justify-center text-gray-500 text-xl font-bold">
+            Iklan Responsif
+        </div>
+    </div>
+    
+    <main id="layanan" class="container mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-20 space-y-16">
+        
+        <section class="service-category">
+            <div class="flex justify-between items-center mb-6">
+                <h3 class="text-2xl md:text-3xl font-bold text-gray-800 border-l-4 border-category-blue pl-4">Jasa & Layanan Profesional</h3>
+                <a href="halaman-jasa.html" class="text-brand-green hover:text-brand-dark-green font-semibold transition-colors">Lihat Semua Jasa &rarr;</a>
+            </div>
+            <div class="service-slider relative">
+                <div class="overflow-hidden">
+                    <div class="service-slider-inner flex -mx-2 pb-4 no-scrollbar">
+                        <div class="flex-shrink-0 w-full sm:w-1/2 lg:w-1/4 px-2"><div class="bg-white rounded-lg shadow-lg overflow-hidden h-full"><img class="w-full h-48 object-cover" src="https://placehold.co/600x400/34d399/ffffff?text=Servis+AC" alt="Servis AC Panggilan"><div class="p-4"><h4 class="font-bold text-lg">Servis & Cuci AC Panggilan</h4><p class="text-sm text-gray-500 mb-2">Ahli AC berpengalaman, semua merek.</p><p class="text-category-blue font-semibold">Mulai dari Rp 75.000</p></div></div></div>
+                        <div class="flex-shrink-0 w-full sm:w-1/2 lg:w-1/4 px-2"><div class="bg-white rounded-lg shadow-lg overflow-hidden h-full"><img class="w-full h-48 object-cover" src="https://placehold.co/600x400/10b981/ffffff?text=Tukang+Bangunan" alt="Jasa Tukang Bangunan"><div class="p-4"><h4 class="font-bold text-lg">Jasa Tukang Bangunan Harian</h4><p class="text-sm text-gray-500 mb-2">Renovasi, pasang keramik, pengecatan.</p><p class="text-category-blue font-semibold">Nego Sesuai Proyek</p></div></div></div>
+                        <div class="flex-shrink-0 w-full sm:w-1/2 lg:w-1/4 px-2"><div class="bg-white rounded-lg shadow-lg overflow-hidden h-full"><img class="w-full h-48 object-cover" src="https://placehold.co/600x400/6ee7b7/ffffff?text=Atap+Bocor" alt="Perbaikan Atap Bocor"><div class="p-4"><h4 class="font-bold text-lg">Perbaikan Atap Bocor Cepat</h4><p class="text-sm text-gray-500 mb-2">Solusi kebocoran atap rumah & kantor.</p><p class="text-category-blue font-semibold">Hubungi untuk Survei</p></div></div></div>
+                        <div class="flex-shrink-0 w-full sm:w-1/2 lg:w-1/4 px-2"><div class="bg-white rounded-lg shadow-lg overflow-hidden h-full"><img class="w-full h-48 object-cover" src="https://placehold.co/600x400/059669/ffffff?text=Jasa+Angkut" alt="Jasa Angkut Pindahan"><div class="p-4"><h4 class="font-bold text-lg">Jasa Angkut Barang & Pindahan</h4><p class="text-sm text-gray-500 mb-2">Armada lengkap, aman & terpercaya.</p><p class="text-category-blue font-semibold">Harga Bersahabat</p></div></div></div>
+                        <div class="flex-shrink-0 w-full sm:w-1/2 lg:w-1/4 px-2"><div class="bg-white rounded-lg shadow-lg overflow-hidden h-full"><img class="w-full h-48 object-cover" src="https://placehold.co/600x400/34d399/ffffff?text=Servis+Kulkas" alt="Servis Kulkas Panggilan"><div class="p-4"><h4 class="font-bold text-lg">Servis Kulkas & Mesin Cuci</h4><p class="text-sm text-gray-500 mb-2">Teknisi handal, garansi perbaikan.</p><p class="text-category-blue font-semibold">Cek Lokasi</p></div></div></div>
+                        <div class="flex-shrink-0 w-full sm:w-1/2 lg:w-1/4 px-2"><div class="bg-white rounded-lg shadow-lg overflow-hidden h-full"><img class="w-full h-48 object-cover" src="https://placehold.co/600x400/10b981/ffffff?text=Jasa+Las" alt="Jasa Las Besi"><div class="p-4"><h4 class="font-bold text-lg">Jasa Las Kanopi & Pagar</h4><p class="text-sm text-gray-500 mb-2">Desain kustom, material berkualitas.</p><p class="text-category-blue font-semibold">Mulai Rp 200rb/meter</p></div></div></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="service-category">
+            <div class="flex justify-between items-center mb-6">
+                <h3 class="text-2xl md:text-3xl font-bold text-gray-800 border-l-4 border-category-pink pl-4">Layanan Kecantikan & Perawatan Diri</h3>
+                <a href="halaman-kecantikan.html" class="text-brand-green hover:text-brand-dark-green font-semibold transition-colors">Lihat Semua Kecantikan &rarr;</a>
+            </div>
+            <div class="service-slider relative">
+                <div class="overflow-hidden">
+                    <div class="service-slider-inner flex -mx-2 pb-4 no-scrollbar">
+                        <div class="flex-shrink-0 w-full sm:w-1/2 lg:w-1/4 px-2"><div class="bg-white rounded-lg shadow-lg overflow-hidden h-full"><img class="w-full h-48 object-cover" src="https://placehold.co/600x400/EC4899/ffffff?text=Salon+Rambut" alt="Salon Rambut Profesional"><div class="p-4"><h4 class="font-bold text-lg">Salon Rambut Lengkap</h4><p class="text-sm text-gray-500 mb-2">Potong, cat, smoothing, keratin.</p><p class="text-category-pink font-semibold">Mulai Rp 50.000</p></div></div></div>
+                        <div class="flex-shrink-0 w-full sm:w-1/2 lg:w-1/4 px-2"><div class="bg-white rounded-lg shadow-lg overflow-hidden h-full"><img class="w-full h-48 object-cover" src="https://placehold.co/600x400/F472B6/ffffff?text=Spa+Massage" alt="Spa dan Massage Relaksasi"><div class="p-4"><h4 class="font-bold text-lg">Spa & Massage Relaksasi</h4><p class="text-sm text-gray-500 mb-2">Pijat refleksi, aroma terapi, lulur.</p><p class="text-category-pink font-semibold">Mulai Rp 100.000</p></div></div></div>
+                        <div class="flex-shrink-0 w-full sm:w-1/2 lg:w-1/4 px-2"><div class="bg-white rounded-lg shadow-lg overflow-hidden h-full"><img class="w-full h-48 object-cover" src="https://placehold.co/600x400/E879F9/ffffff?text=Makeup+Artist" alt="Makeup Artist Profesional"><div class="p-4"><h4 class="font-bold text-lg">Makeup Artist Panggilan</h4><p class="text-sm text-gray-500 mb-2">Untuk pesta, wisuda, pre-wedding.</p><p class="text-category-pink font-semibold">Mulai Rp 350.000</p></div></div></div>
+                        <div class="flex-shrink-0 w-full sm:w-1/2 lg:w-1/4 px-2"><div class="bg-white rounded-lg shadow-lg overflow-hidden h-full"><img class="w-full h-48 object-cover" src="https://placehold.co/600x400/C084FC/ffffff?text=Nail+Art" alt="Jasa Nail Art"><div class="p-4"><h4 class="font-bold text-lg">Nail Art & Manicure Pedicure</h4><p class="text-sm text-gray-500 mb-2">Desain kuku unik, perawatan tangan & kaki.</p><p class="text-category-pink font-semibold">Mulai Rp 60.000</p></div></div></div>
+                        <div class="flex-shrink-0 w-full sm:w-1/2 lg:w-1/4 px-2"><div class="bg-white rounded-lg shadow-lg overflow-hidden h-full"><img class="w-full h-48 object-cover" src="https://placehold.co/600x400/EC4899/ffffff?text=Facial+Wajah" alt="Facial Wajah"><div class="p-4"><h4 class="font-bold text-lg">Perawatan Wajah & Facial</h4><p class="text-sm text-gray-500 mb-2">Kulit bersih terawat, cerah alami.</p><p class="text-category-pink font-semibold">Mulai Rp 120.000</p></div></div></div>
+                        <div class="flex-shrink-0 w-full sm:w-1/2 lg:w-1/4 px-2"><div class="bg-white rounded-lg shadow-lg overflow-hidden h-full"><img class="w-full h-48 object-cover" src="https://placehold.co/600x400/F472B6/ffffff?text=Sulam+Alis" alt="Sulam Alis"><div class="p-4"><h4 class="font-bold text-lg">Sulam Alis & Bibir</h4><p class="text-sm text-gray-500 mb-2">Tampil cantik setiap saat, tanpa ribet.</p><p class="text-category-pink font-semibold">Hubungi untuk Harga</p></div></div></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="my-8 text-center bg-brand-light-brown p-4 rounded-lg border border-gray-200">
+            <p class="text-gray-600 text-sm mb-2">Space Iklan Anda di Sini (Google AdSense)</p>
+            <div class="bg-gray-200 h-24 md:h-32 flex items-center justify-center text-gray-500 text-xl font-bold">
+                Iklan Responsif
+            </div>
+        </div>
+
+        <section class="service-category">
+            <div class="flex justify-between items-center mb-6">
+                <h3 class="text-2xl md:text-3xl font-bold text-gray-800 border-l-4 border-category-pink pl-4">Info Kost Terdekat & Nyaman</h3>
+                <a href="halaman.kost.html" class="text-brand-green hover:text-brand-dark-green font-semibold transition-colors">Lihat Semua Kost &rarr;</a>
+            </div>
+            <div class="service-slider relative">
+                <div class="overflow-hidden">
+                    <div class="service-slider-inner flex -mx-2 pb-4 no-scrollbar">
+                        <div class="flex-shrink-0 w-full sm:w-1/2 lg:w-1/4 px-2"><div class="bg-white rounded-lg shadow-lg overflow-hidden h-full"><img class="w-full h-48 object-cover" src="https://placehold.co/600x400/f472b6/ffffff?text=Kost+Putri" alt="Kost Putri Dekat Kampus"><div class="p-4"><h4 class="font-bold text-lg">Kost Putri AC & Wifi Full Furnish</h4><p class="text-sm text-gray-500 mb-2">Yogyakarta - Dekat UGM & UNY</p><p class="text-category-pink font-semibold">Rp 1.5 Juta / bulan</p></div></div></div>
+                        <div class="flex-shrink-0 w-full sm:w-1/2 lg:w-1/4 px-2"><div class="bg-white rounded-lg shadow-lg overflow-hidden h-full"><img class="w-full h-48 object-cover" src="https://placehold.co/600x400/e879f9/ffffff?text=Kost+Putra" alt="Kost Putra Dekat Pusat Kota"><div class="p-4"><h4 class="font-bold text-lg">Kost Putra Eksklusif Dekat Pusat Kota</h4><p class="text-sm text-gray-500 mb-2">Malang - Fasilitas Lengkap</p><p class="text-category-pink font-semibold">Rp 1.8 Juta / bulan</p></div></div></div>
+                        <div class="flex-shrink-0 w-full sm:w-1/2 lg:w-1/4 px-2"><div class="bg-white rounded-lg shadow-lg overflow-hidden h-full"><img class="w-full h-48 object-cover" src="https://placehold.co/600x400/c084fc/ffffff?text=Kost+Pasutri" alt="Kost Pasutri Bebas Akses"><div class="p-4"><h4 class="font-bold text-lg">Kost Pasutri Bebas & Strategis</h4><p class="text-sm text-gray-500 mb-2">Depok - Lingkungan Aman</p><p class="text-category-pink font-semibold">Rp 2.2 Juta / bulan</p></div></div></div>
+                        <div class="flex-shrink-0 w-full sm:w-1/2 lg:w-1/4 px-2"><div class="bg-white rounded-lg shadow-lg overflow-hidden h-full"><img class="w-full h-48 object-cover" src="https://placehold.co/600x400/f0abfc/ffffff?text=Kost+Harian" alt="Kost Harian Murah"><div class="p-4"><h4 class="font-bold text-lg">Kost Harian / Mingguan Murah</h4><p class="text-sm text-gray-500 mb-2">Semarang - Dekat Stasiun</p><p class="text-category-pink font-semibold">Rp 150 Ribu / hari</p></div></div></div>
+                        <div class="flex-shrink-0 w-full sm:w-1/2 lg:w-1/4 px-2"><div class="bg-white rounded-lg shadow-lg overflow-hidden h-full"><img class="w-full h-48 object-cover" src="https://placehold.co/600x400/f472b6/ffffff?text=Kost+Campur" alt="Kost Campur Jakarta"><div class="p-4"><h4 class="font-bold text-lg">Kost Campur Jakarta Pusat</h4><p class="text-sm text-gray-500 mb-2">Akses mudah ke perkantoran.</p><p class="text-category-pink font-semibold">Mulai Rp 1.7 Juta / bulan</p></div></div></div>
+                        <div class="flex-shrink-0 w-full sm:w-1/2 lg:w-1/4 px-2"><div class="bg-white rounded-lg shadow-lg overflow-hidden h-full"><img class="w-full h-48 object-cover" src="https://placehold.co/600x400/e879f9/ffffff?text=Kost+Eksklusif" alt="Kost Eksklusif Surabaya"><div class="p-4"><h4 class="font-bold text-lg">Kost Eksklusif Surabaya</h4><p class="text-sm text-gray-500 mb-2">Kamar luas, parkir mobil.</p><p class="text-category-pink font-semibold">Mulai Rp 2.5 Juta / bulan</p></div></div></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="my-8 text-center bg-brand-light-brown p-4 rounded-lg border border-gray-200">
+            <p class="text-gray-600 text-sm mb-2">Space Iklan Anda di Sini (Google AdSense)</p>
+            <div class="bg-gray-200 h-24 md:h-32 flex items-center justify-center text-gray-500 text-xl font-bold">
+                Iklan Responsif
+            </div>
+        </div>
+        
+        <section class="service-category">
+            <div class="flex justify-between items-center mb-6">
+                <h3 class="text-2xl md:text-3xl font-bold text-gray-800 border-l-4 border-brand-green pl-4">Jual Beli Rumah & Tanah Strategis</h3>
+                <a href="halaman-rumah.html" class="text-brand-green hover:text-brand-dark-green font-semibold transition-colors">Lihat Semua Properti &rarr;</a>
+            </div>
+            <div class="service-slider relative">
+                <div class="overflow-hidden">
+                    <div class="service-slider-inner flex -mx-2 pb-4 no-scrollbar">
+                        <div class="flex-shrink-0 w-full sm:w-1/2 lg:w-1/4 px-2"><div class="bg-white rounded-lg shadow-lg overflow-hidden h-full"><img class="w-full h-48 object-cover" src="aset-rumah/aset rumah/Enscape_2025-02-16-13-54-50.png" alt="Rumah Modern Minimalis Jakarta"><div class="p-4"><h4 class="font-bold text-lg">Rumah Modern Minimalis Siap Huni</h4><p class="text-sm text-gray-500 mb-2">Jakarta Selatan - Dekat MRT</p><p class="text-brand-green font-semibold">Rp 1.2 Miliar</p></div></div></div>
+                        <div class="flex-shrink-0 w-full sm:w-1/2 lg:w-1/4 px-2"><div class="bg-white rounded-lg shadow-lg overflow-hidden h-full"><img class="w-full h-48 object-cover" src="aset-rumah/aset rumah/Enscape_2025-02-16-13-53-45.png" alt="Tanah Kavling Siap Bangun Bandung"><div class="p-4"><h4 class="font-bold text-lg">Tanah Kavling Siap Bangun</h4><p class="text-sm text-gray-500 mb-2">Bandung, Jawa Barat - Dekat Tol</p><p class="text-brand-green font-semibold">Rp 3 Juta / m²</p></div></div></div>
+                        <div class="flex-shrink-0 w-full sm:w-1/2 lg:w-1/4 px-2"><div class="bg-white rounded-lg shadow-lg overflow-hidden h-full"><img class="w-full h-48 object-cover" src="aset-rumah/aset rumah/Enscape_2025-02-16-13-56-38.png" alt="Villa Istimewa di Pacet"><div class="p-4"><h4 class="font-bold text-lg">Villa Istimewa dengan View Pegunungan</h4><p class="text-sm text-gray-500 mb-2">Pacet, Mojokerto - Cocok untuk Liburan</p><p class="text-brand-green font-semibold">Rp 2.5 Miliar</p></div></div></div>
+                        <div class="flex-shrink-0 w-full sm:w-1/2 lg:w-1/4 px-2"><div class="bg-white rounded-lg shadow-lg overflow-hidden h-full"><img class="w-full h-48 object-cover" src="aset-rumah/aset rumah/Enscape_2025-02-16-14-05-32.png" alt="Ruko 2 Lantai Strategis Surabaya"><div class="p-4"><h4 class="font-bold text-lg">Ruko 2 Lantai Strategis Ramai</h4><p class="text-sm text-gray-500 mb-2">Surabaya Pusat - Area Komersial</p><p class="text-brand-green font-semibold">Rp 950 Juta</p></div></div></div>
+                        <div class="flex-shrink-0 w-full sm:w-1/2 lg:w-1/4 px-2"><div class="bg-white rounded-lg shadow-lg overflow-hidden h-full"><img class="w-full h-48 object-cover" src="aset-rumah/aset rumah/Enscape_2025-02-16-13-58-17.png" alt="Rumah Baru Pondok Indah"><div class="p-4"><h4 class="font-bold text-lg">Rumah Baru Minimalis di Pondok Indah</h4><p class="text-sm text-gray-500 mb-2">Jakarta Selatan - Lokasi Premium</p><p class="text-brand-green font-semibold">Rp 3.8 Miliar</p></div></div></div>
+                        <div class="flex-shrink-0 w-full sm:w-1/2 lg:w-1/4 px-2"><div class="bg-white rounded-lg shadow-lg overflow-hidden h-full"><img class="w-full h-48 object-cover" src="https://placehold.co/600x400/F97316/ffffff?text=Tanah+Kavling+Bogor" alt="Tanah Kavling di Bogor"><div class="p-4"><h4 class="font-bold text-lg">Tanah Kavling Siap Bangun Bogor</h4><p class="text-sm text-gray-500 mb-2">Bogor - Dekat Wisata</p><p class="text-brand-green font-semibold">Rp 450 Juta</p></div></div></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="service-category">
+            <div class="flex justify-between items-center mb-6">
+                <h3 class="text-2xl md:text-3xl font-bold text-gray-800 border-l-4 border-category-orange pl-4">Jual Beli Kendaraan Bekas & Baru</h3>
+                <a href="info-kendaraan.html" class="text-brand-green hover:text-brand-dark-green font-semibold transition-colors">Lihat Semua Kendaraan &rarr;</a>
+            </div>
+            <div class="service-slider relative">
+                <div class="overflow-hidden">
+                    <div class="service-slider-inner flex -mx-2 pb-4 no-scrollbar">
+                        <div class="flex-shrink-0 w-full sm:w-1/2 lg:w-1/4 px-2"><div class="bg-white rounded-lg shadow-lg overflow-hidden h-full"><img class="w-full h-48 object-cover" src="https://placehold.co/600x400/fbbf24/ffffff?text=Mobil+Keluarga" alt="Toyota Avanza Bekas"><div class="p-4"><h4 class="font-bold text-lg">Toyota Avanza Tipe G 2019</h4><p class="text-sm text-gray-500 mb-2">Transmisi Automatic, Terawat</p><p class="text-category-orange font-semibold">Rp 185 Juta</p></div></div></div>
+                        <div class="flex-shrink-0 w-full sm:w-1/2 lg:w-1/4 px-2"><div class="bg-white rounded-lg shadow-lg overflow-hidden h-full"><img class="w-full h-48 object-cover" src="https://placehold.co/600x400/f59e0b/ffffff?text=Motor+Sport" alt="Honda CBR250RR Bekas"><div class="p-4"><h4 class="font-bold text-lg">Honda CBR250RR Tahun 2021 Mulus</h4><p class="text-sm text-gray-500 mb-2">Kilometer Rendah, Service Rutin</p><p class="text-category-orange font-semibold">Rp 68 Juta</p></div></div></div>
+                        <div class="flex-shrink-0 w-full sm:w-1/2 lg:w-1/4 px-2"><div class="bg-white rounded-lg shadow-lg overflow-hidden h-full"><img class="w-full h-48 object-cover" src="https://placehold.co/600x400/fcd34d/ffffff?text=Mobil+LCGC" alt="Daihatsu Ayla Bekas"><div class="p-4"><h4 class="font-bold text-lg">Daihatsu Ayla Tipe R 2022</h4><p class="text-sm text-gray-500 mb-2">Transmisi Manual, Irit BBM</p><p class="text-category-orange font-semibold">Rp 130 Juta</p></div></div></div>
+                        <div class="flex-shrink-0 w-full sm:w-1/2 lg:w-1/4 px-2"><div class="bg-white rounded-lg shadow-lg overflow-hidden h-full"><img class="w-full h-48 object-cover" src="https://placehold.co/600x400/fb923c/ffffff?text=Motor+Matic" alt="Yamaha NMAX Bekas"><div class="p-4"><h4 class="font-bold text-lg">Yamaha NMAX Connected 2023</h4><p class="text-sm text-gray-500 mb-2">Kondisi Like New, Surat Lengkap</p><p class="text-category-orange font-semibold">Rp 35 Juta</p></div></div></div>
+                        <div class="flex-shrink-0 w-full sm:w-1/2 lg:w-1/4 px-2"><div class="bg-white rounded-lg shadow-lg overflow-hidden h-full"><img class="w-full h-48 object-cover" src="https://placehold.co/600x400/fbbf24/ffffff?text=Mobil+SUV" alt="Honda CRV Bekas"><div class="p-4"><h4 class="font-bold text-lg">Honda CRV Turbo Prestige 2020</h4><p class="text-sm text-gray-500 mb-2">Full Servis Record, Terawat</p><p class="text-category-orange font-semibold">Rp 380 Juta</p></div></div></div>
+                        <div class="flex-shrink-0 w-full sm:w-1/2 lg:w-1/4 px-2"><div class="bg-white rounded-lg shadow-lg overflow-hidden h-full"><img class="w-full h-48 object-cover" src="https://placehold.co/600x400/f59e0b/ffffff?text=Motor+Bebek" alt="Suzuki Satria FU Bekas"><div class="p-4"><h4 class="font-bold text-lg">Suzuki Satria FU 2017</h4><p class="text-sm text-gray-500 mb-2">Mesin Sehat, Pajak Hidup</p><p class="text-category-orange font-semibold">Rp 12 Juta</p></div></div></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="my-8 text-center bg-brand-light-brown p-4 rounded-lg border border-gray-200">
+            <p class="text-gray-600 text-sm mb-2">Space Iklan Anda di Sini (Google AdSense)</p>
+            <div class="bg-gray-200 h-24 md:h-32 flex items-center justify-center text-gray-500 text-xl font-bold">
+                Iklan Responsif
+            </div>
+        </div>
+
+        <section>
+            <div class="flex justify-between items-center mb-6">
+                <h3 class="text-2xl md:text-3xl font-bold text-gray-800 border-l-4 border-brand-red-id pl-4">Artikel Terbaru dari Blog Kami</h3>
+                <a href="blog.html" class="text-brand-green hover:text-brand-dark-green font-semibold transition-colors">Baca Blog Selengkapnya &rarr;</a>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                    <img class="w-full h-48 object-cover" src="https://placehold.co/600x400/16A34A/ffffff?text=Tips+Rumah" alt="Tips Membeli Rumah Pertama">
+                    <div class="p-4">
+                        <h4 class="font-bold text-xl mb-2">Tips Penting Membeli Rumah Pertama Kali</h4>
+                        <p class="text-sm text-gray-600 mb-3">25 Mei 2025 | Properti</p>
+                        <p class="text-gray-700 text-base line-clamp-3">Membeli rumah adalah investasi besar. Pelajari cara memilih lokasi, menghitung anggaran, dan proses pengajuan KPR agar tidak salah langkah.</p>
+                        <a href="blog-detail-1.html" class="inline-block mt-4 text-brand-green hover:text-brand-dark-green font-semibold">Baca Selengkapnya &rarr;</a>
+                    </div>
+                </div>
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                    <img class="w-full h-48 object-cover" src="https://placehold.co/600x400/F97316/ffffff?text=Perawatan+Kendaraan" alt="Perawatan Kendaraan">
+                    <div class="p-4">
+                        <h4 class="font-bold text-xl mb-2">Cara Merawat Kendaraan Agar Awet dan Irit BBM</h4>
+                        <p class="text-sm text-gray-600 mb-3">18 Mei 2025 | Kendaraan</p>
+                        <p class="text-gray-700 text-base line-clamp-3">Perawatan rutin adalah kunci kendaraan awet. Simak tips sederhana untuk menjaga performa mesin dan menghemat konsumsi bahan bakar.</p>
+                        <a href="blog-detail-2.html" class="inline-block mt-4 text-brand-green hover:text-brand-dark-green font-semibold">Baca Selengkapnya &rarr;</a>
+                    </div>
+                </div>
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                    <img class="w-full h-48 object-cover" src="https://placehold.co/600x400/EC4899/ffffff?text=Kost+Nyaman" alt="Tips Mencari Kost">
+                    <div class="p-4">
+                        <h4 class="font-bold text-xl mb-2">5 Hal yang Perlu Diperhatikan Saat Mencari Kost Baru</h4>
+                        <p class="text-sm text-gray-600 mb-3">10 Mei 2025 | Info Kost</p>
+                        <p class="text-gray-700 text-base line-clamp-3">Mencari kost yang tepat bisa jadi tantangan. Pertimbangkan lokasi, fasilitas, dan lingkungan sekitar sebelum memutuskan untuk menyewa.</p>
+                        <a href="blog-detail-3.html" class="inline-block mt-4 text-brand-green hover:text-brand-dark-green font-semibold">Baca Selengkapnya &rarr;</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+    </main>
+
+    <footer class="bg-gray-800 text-white mt-12">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-8 text-center">
+            <p>&copy; 2025 InfoLengkapid. Semua Hak Cipta Dilindungi.</p>
+            <p class="text-sm text-gray-400 mt-2">Dibuat dengan ❤️ untuk kemudahan Anda.</p>
+        </div>
+    </footer>
+
+
+    <script>
+        // JavaScript for Mobile Menu
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const svgs = mobileMenuButton.querySelectorAll('svg');
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            svgs.forEach(svg => svg.classList.toggle('hidden'));
+        });
+
+        // JavaScript for Automatic Hero Slider
+        document.addEventListener('DOMContentLoaded', function() {
+            const heroSlider = document.querySelector('#hero-slider .slider-inner');
+            const heroSlides = heroSlider.querySelectorAll('.slider-inner > div');
+            const dotsContainer = document.getElementById('slider-dots');
+            if (!heroSlider || heroSlides.length === 0) return;
+
+            let currentHeroSlide = 0;
+            const heroSlideInterval = 5000; // 5 detik
+
+            // Create dots based on the number of slides
+            heroSlides.forEach((_, i) => {
+                const dot = document.createElement('button');
+                dot.classList.add('w-3', 'h-3', 'rounded-full', 'transition-colors', 'duration-300');
+                dot.classList.add(i === 0 ? 'bg-white' : 'bg-white/50', 'hover:bg-white');
+                dot.addEventListener('click', () => goToHeroSlide(i));
+                dotsContainer.appendChild(dot);
+            });
+
+            const dots = dotsContainer.querySelectorAll('button');
+
+            function updateDots(index) {
+                dots.forEach((dot, i) => {
+                    dot.classList.toggle('bg-white', i === index);
+                    dot.classList.toggle('bg-white/50', i !== index);
+                });
+            }
+
+            function goToHeroSlide(slideIndex) {
+                currentHeroSlide = slideIndex;
+                heroSlider.style.transform = `translateX(-${currentHeroSlide * 100}%)`;
+                updateDots(currentHeroSlide);
+            }
+
+            function nextHeroSlide() {
+                currentHeroSlide = (currentHeroSlide + 1) % heroSlides.length;
+                goToHeroSlide(currentHeroSlide);
+            }
+
+            // Start auto-sliding
+            setInterval(nextHeroSlide, heroSlideInterval);
+            // Initialize first slide
+            goToHeroSlide(0);
+        });
+
+        // JavaScript for Service Sliders (Horizontal Scroll with Loop)
+        document.addEventListener('DOMContentLoaded', function() {
+            const serviceSliders = document.querySelectorAll('.service-slider-inner');
+
+            serviceSliders.forEach(slider => {
+                // Clone first few cards to create a seamless loop effect
+                const cardsToClone = 3; // Clone 3 cards to ensure smooth transition on larger screens
+                const cards = slider.querySelectorAll('.flex-shrink-0');
+                if (cards.length === 0) return;
+
+                for (let i = 0; i < cardsToClone; i++) {
+                    const clone = cards[i].cloneNode(true);
+                    slider.appendChild(clone);
+                }
+
+                let currentServiceSlideIndex = 0;
+                const slideInterval = 3000; // 3 detik
+
+                function nextServiceSlide() {
+                    const originalCardsCount = cards.length;
+                    const cardWidth = cards[0].offsetWidth + (parseFloat(getComputedStyle(cards[0]).marginLeft) + parseFloat(getComputedStyle(cards[0]).marginRight)); // Get actual width including margin/padding if any
+
+                    currentServiceSlideIndex++;
+                    slider.style.transition = 'transform 0.5s ease-in-out';
+                    slider.style.transform = `translateX(-${currentServiceSlideIndex * cardWidth}px)`;
+                    
+                    // If we've scrolled past the original set of cards, reset to the beginning
+                    if (currentServiceSlideIndex >= originalCardsCount) {
+                        setTimeout(() => {
+                            slider.style.transition = 'none'; // Temporarily disable transition for instant jump
+                            currentServiceSlideIndex = 0;
+                            slider.style.transform = 'translateX(0)';
+                            // Re-enable transition after a very short delay
+                            setTimeout(() => {
+                                slider.style.transition = 'transform 0.5s ease-in-out';
+                            }, 50); 
+                        }, 500); // Wait for the transition of the last slide to finish
+                    }
+                }
+
+                setInterval(nextServiceSlide, slideInterval);
+            });
+        });
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laporkan Keluhan Layanan</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Gaya dasar untuk formulir ini agar lebih terbaca */
+        body { font-family: Arial, sans-serif; background-color: #f4f4f4; margin: 0; padding: 20px; color: #333; }
+        .container { max-width: 700px; margin: 20px auto; background-color: #fff; padding: 30px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        h1 { text-align: center; color: #007bff; margin-bottom: 25px; }
+        .form-group { margin-bottom: 15px; }
+        .form-group label { display: block; margin-bottom: 8px; font-weight: bold; }
+        .form-group input[type="text"],
+        .form-group input[type="email"],
+        .form-group input[type="tel"],
+        .form-group input[type="datetime-local"],
+        .form-group select,
+        .form-group textarea {
+            width: calc(100% - 20px); /* Menyesuaikan padding */
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box; /* Agar padding tidak menambah lebar */
+        }
+        .form-group textarea { resize: vertical; min-height: 100px; }
+        /* .form-group input[type="file"] { padding: 5px; } /* Dinonaktifkan karena tidak berfungsi dengan mailto */
+        .checkbox-group input { margin-right: 10px; }
+        .submit-button {
+            background-color: #28a745; /* Hijau untuk tombol kirim */
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1.1em;
+            display: block;
+            width: 100%;
+            margin-top: 20px;
+        }
+        .submit-button:hover { background-color: #218838; }
+        .info-text { font-size: 0.9em; color: #666; margin-top: 10px; }
+        .warning-box {
+            background-color: #fff3cd; /* Warna kuning muda */
+            border-left: 5px solid #ffc107; /* Garis kuning */
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 4px;
+            color: #856404; /* Teks kuning gelap */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Laporkan Keluhan Layanan</h1>
+        <p class="info-text">Mohon isi formulir di bawah ini dengan detail mengenai keluhan Anda. Laporan Anda akan kami tinjau segera.</p>
+
+        <div class="warning-box">
+            <strong>Penting:</strong> Formulir ini akan mencoba membuka aplikasi email di perangkat Anda. Anda perlu menekan tombol "Kirim" di aplikasi email tersebut untuk mengirim laporan. Lampiran file tidak dapat dikirim melalui cara ini.
+        </div>
+
+        <form action="mailto:your-email@example.com?subject=Laporan Keluhan Layanan InfoLengkap" method="POST" enctype="text/plain">
+            <div class="form-group">
+                <label for="reportType">Jenis Laporan:</label>
+                <select id="reportType" name="report_type" required>
+                    <option value="">Pilih Jenis Laporan</option>
+                    <option value="Pelayanan Buruk">Pelayanan Buruk</option>
+                    <option value="Masalah Teknis">Masalah Teknis</option>
+                    <option value="Dugaan Penipuan">Dugaan Penipuan</option>
+                    <option value="Pelanggaran Aturan Platform">Pelanggaran Aturan Platform</option>
+                    <option value="Lain-lain">Lain-lain</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="orderId">ID Pesanan/Layanan (Opsional):</label>
+                <input type="text" id="orderId" name="order_id" placeholder="Cth: INF0012345">
+            </div>
+
+            <div class="form-group">
+                <label for="providerName">Nama Penyedia Jasa yang Dilaporkan:</label>
+                <input type="text" id="providerName" name="provider_name" placeholder="Nama salon/terapis/makeup artist" required>
+            </div>
+
+            <div class="form-group">
+                <label for="incidentDateTime">Tanggal & Waktu Kejadian:</label>
+                <input type="datetime-local" id="incidentDateTime" name="incident_datetime" required>
+            </div>
+
+            <div class="form-group">
+                <label for="description">Deskripsi Detil Keluhan:</label>
+                <textarea id="description" name="description" rows="7" placeholder="Jelaskan secara rinci apa yang terjadi, termasuk nama orang yang terlibat jika ada, dan dampaknya pada Anda." required></textarea>
+            </div>
+
+            <hr> <h2>Informasi Kontak Anda</h2>
+            <p class="info-text">Informasi ini akan digunakan untuk proses tindak lanjut laporan Anda.</p>
+
+            <div class="form-group">
+                <label for="reporterName">Nama Lengkap Anda:</label>
+                <input type="text" id="reporterName" name="reporter_name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="reporterEmail">Email Anda:</label>
+                <input type="email" id="reporterEmail" name="reporter_email" required>
+            </div>
+
+            <div class="form-group">
+                <label for="reporterPhone">Nomor Telepon Anda (Opsional):</label>
+                <input type="tel" id="reporterPhone" name="reporter_phone" placeholder="Cth: 081234567890">
+            </div>
+
+            <div class="form-group checkbox-group">
+                <input type="checkbox" id="agreement" name="agreement" required>
+                <label for="agreement">Saya menyatakan bahwa informasi yang saya berikan adalah benar dan saya setuju laporan ini akan ditinjau oleh tim InfoLengkap.</label>
+            </div>
+
+            <button type="submit" class="submit-button">Kirim Laporan</button>
+        </form>
+    </div>
+
+    <script>
+        // Contoh validasi dasar (JavaScript)
+        document.querySelector('form').addEventListener('submit', function(event) {
+            const agreementCheckbox = document.getElementById('agreement');
+            if (!agreementCheckbox.checked) {
+                alert('Anda harus menyetujui pernyataan untuk mengirim laporan.');
+                event.preventDefault(); // Mencegah form dikirim jika tidak setuju
+            }
+            // Penting: validasi data yang lebih kompleks harus dilakukan di server
+        });
+    </script>
+</body>
+</html>
