@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Info Properti Dijual & Sewa - InfoLengkapid</title>
-    <meta name="description" content="Temukan informasi lengkap rumah, tanah, properti komersial, dan sewa properti di InfoLengkapid. Pilihan properti idaman dengan harga terbaik.">
-    <meta name="keywords" content="rumah dijual, jual rumah, beli rumah, rumah baru, rumah bekas, tanah dijual, jual tanah, properti komersial, sewa properti, apartemen disewa, real estate, rumah idaman, InfoLengkapid">
+    <title>Info Properti Dijual & Sewa - InfoLengkap</title>
+    <meta name="description" content="Temukan informasi lengkap rumah dijual, tanah dijual, dan properti sewa (rumah, apartemen, kios, kontrakan) di berbagai lokasi. Pilihan properti idaman dengan harga terbaik.">
+    <meta name="keywords" content="rumah dijual, jual rumah, beli rumah, rumah baru, rumah bekas, tanah dijual, jual tanah, sewa properti, apartemen disewa, ruko disewa, kontrakan, real estate, rumah idaman, InfoLengkap">
     
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -13,24 +13,24 @@
             theme: {
                 extend: {
                     colors: {
-                        'house-green': '#16A34A',      // Primary green for natural feel
-                        'house-light-green': '#22C55E', // Lighter green for accents
-                        'house-dark-green': '#15803D',  // Darker green for hover
-                        'house-cream': '#FBFBFB',     // Light cream background
-                        'house-brown': '#78350F',      // Brown for earthy tones/text
-                        'house-light-brown': '#D3D3D3', // Light brown for elements
-                        'accent-red-id': '#EF4444',    // Red for 'id' as requested
-                        'category-blue': '#2563EB',     // Blue for komersial/sewa
-                        'category-orange': '#F97316',   // Orange for tanah
+                        'primary-house-green': '#16A34A',      // Primary green for natural feel
+                        'secondary-house-green': '#22C55E', // Lighter green for accents
+                        'dark-house-green': '#15803D',  // Darker green for hover
+                        'light-house-green': '#D1FAE5',   // Very light green for backgrounds
+                        'accent-orange': '#F97316',  // A contrasting orange for highlights
+                        'soft-gray-green': '#F0FDF4', // A soft, almost white greenish gray
                     }
                 }
             }
         }
     </script>
     
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Roboto+Condensed:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     
     <style>
         body { 
@@ -57,37 +57,35 @@
             -ms-overflow-style: none;
             scrollbar-width: none;
         }
-        .brand-text {
-            font-family: 'Roboto Condensed', sans-serif; /* A bold, modern font for the brand */
-        }
     </style>
 </head>
-<body class="bg-house-cream">
+<body class="bg-gray-50">
 
    <header class="bg-white shadow-md sticky top-0 z-40">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-16">
                 <div class="flex-shrink-0 flex items-center">
-                    <img src="https://placehold.co/40x40/16A34A/ffffff?text=🏠" alt="Logo Rumah" class="h-8 w-8 mr-2">
+                    <img src="aset iklan/logo 11.png" alt="InfoLengkapid Logo" class="h-8 w-8 mr-2">
                     <a href="index.html" class="text-2xl font-bold brand-text">
-                        <span class="text-house-green">Info</span>
-                        <span class="text-house-brown">Lengkap</span>
-                        <span class="text-accent-red-id">id</span>
+                        <span class="text-brand-blue">Info</span>
+                        <span class="text-brand-brown">Lengkap</span>
+                        <span class="text-brand-red-id">id</span>
                     </a>
                 </div>
                 <div class="hidden md:block">
                     <div class="ml-10 flex items-baseline space-x-4">
-                        <a href="index.html" class="bg-house-green text-white block px-3 py-2 rounded-md text-base font-medium">Beranda</a>
-                 <a href="#layanan" class="text-gray-500 hover:bg-house-light-brown hover:text-house-dark-green block px-3 py-2 rounded-md text-base font-medium">Layanan kami</a>
-                 <a href="tentang.html" class="text-gray-500 hover:bg-house-light-brown hover:text-house-dark-green block px-3 py-2 rounded-md text-base font-medium">Tentang Kami</a>
-                 <a href="layanan.html" class="text-gray-500 hover:bg-house-light-brown hover:text-house-dark-green block px-3 py-2 rounded-md text-base font-medium">Layanan</a>
-                 <a href="blog.html" class="text-gray-500 hover:bg-house-light-brown hover:text-house-dark-green block px-3 py-2 rounded-md text-base font-medium">Kebijakan Privasi</a>
-                 <a href="syarat-kententuan.html" class="text-gray-500 hover:bg-house-light-brown hover:text-house-dark-green block px-3 py-2 rounded-md text-base font-medium">Ketentuan</a>
-                 <a href="contact.html" class="text-gray-500 hover:bg-house-light-brown hover:text-house-dark-green block px-3 py-2 rounded-md text-base font-medium">Kontak</a>
+                        <a href="index.html" class="bg-primary-house-green text-white block px-3 py-2 rounded-md text-base font-medium">Beranda</a>
+                        <a href="#layanan" class="text-gray-500 hover:bg-light-house-green hover:text-dark-house-green block px-3 py-2 rounded-md text-base font-medium">Layanan kami</a>
+                        <a href="tentang.html" class="text-gray-500 hover:bg-light-house-green hover:text-dark-house-green block px-3 py-2 rounded-md text-base font-medium">Tentang Kami</a>
+                        <a href="layanan.html" class="text-gray-500 hover:bg-light-house-green hover:text-dark-house-green block px-3 py-2 rounded-md text-base font-medium">Layanan</a>
+                        <a href="blog.html" class="text-gray-500 hover:bg-light-house-green hover:text-dark-house-green block px-3 py-2 rounded-md text-base font-medium">Blog</a>
+                        <a href="kebijakan-privasi.html" class="text-gray-500 hover:bg-light-house-green hover:text-dark-house-green block px-3 py-2 rounded-md text-base font-medium">Kebijakan Privasi</a>
+                        <a href="kententuan.html" class="text-gray-500 hover:bg-light-house-green hover:text-dark-house-green block px-3 py-2 rounded-md text-base font-medium">Ketentuan</a>
+                        <a href="contact.html" class="text-gray-500 hover:bg-light-house-green hover:text-dark-house-green block px-3 py-2 rounded-md text-base font-medium">Kontak</a>
                     </div>
                 </div>
                 <div class="-mr-2 flex md:hidden">
-                    <button id="mobile-menu-button" type="button" class="bg-gray-100 inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-house-green" aria-controls="mobile-menu" aria-expanded="false">
+                    <button id="mobile-menu-button" type="button" class="bg-gray-100 inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-house-green" aria-controls="mobile-menu" aria-expanded="false">
                         <span class="sr-only">Buka menu</span>
                         <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" /></svg>
                         <svg class="hidden h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
@@ -97,13 +95,14 @@
         </div>
         <div class="md:hidden hidden" id="mobile-menu">
             <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                 <a href="index.html" class="bg-house-green text-white block px-3 py-2 rounded-md text-base font-medium">Beranda</a>
-                 <a href="#layanan" class="text-gray-500 hover:bg-house-light-brown hover:text-house-dark-green block px-3 py-2 rounded-md text-base font-medium">Layanan kami</a>
-                 <a href="tentang.html" class="text-gray-500 hover:bg-house-light-brown hover:text-house-dark-green block px-3 py-2 rounded-md text-base font-medium">Tentang Kami</a>
-                 <a href="layanan.html" class="text-gray-500 hover:bg-house-light-brown hover:text-house-dark-green block px-3 py-2 rounded-md text-base font-medium">Layanan</a>
-                 <a href="blog.html" class="text-gray-500 hover:bg-house-light-brown hover:text-house-dark-green block px-3 py-2 rounded-md text-base font-medium">Kebijakan Privasi</a>
-                 <a href="syarat-kententuan.html" class="text-gray-500 hover:bg-house-light-brown hover:text-house-dark-green block px-3 py-2 rounded-md text-base font-medium">Ketentuan</a>
-                 <a href="contact.html" class="text-gray-500 hover:bg-house-light-brown hover:text-house-dark-green block px-3 py-2 rounded-md text-base font-medium">Kontak</a>
+                 <a href="index.html" class="bg-primary-house-green text-white block px-3 py-2 rounded-md text-base font-medium">Beranda</a>
+                 <a href="#layanan" class="text-gray-500 hover:bg-light-house-green hover:text-dark-house-green block px-3 py-2 rounded-md text-base font-medium">Layanan kami</a>
+                 <a href="tentang.html" class="text-gray-500 hover:bg-light-house-green hover:text-dark-house-green block px-3 py-2 rounded-md text-base font-medium">Tentang Kami</a>
+                 <a href="layanan.html" class="text-gray-500 hover:bg-light-house-green hover:text-dark-house-green block px-3 py-2 rounded-md text-base font-medium">Layanan</a>
+                 <a href="blog.html" class="text-gray-500 hover:bg-light-house-green hover:text-dark-house-green block px-3 py-2 rounded-md text-base font-medium">Blog</a>
+                 <a href="kebijakan-privasi.html" class="text-gray-500 hover:bg-light-house-green hover:text-dark-house-green block px-3 py-2 rounded-md text-base font-medium">Kebijakan Privasi</a>
+                 <a href="kententuan.html" class="text-gray-500 hover:bg-light-house-green hover:text-dark-house-green block px-3 py-2 rounded-md text-base font-medium">Ketentuan</a>
+                 <a href="contact.html" class="text-gray-500 hover:bg-light-house-green hover:text-dark-house-green block px-3 py-2 rounded-md text-base font-medium">Kontak</a>
             </div>
         </div>
     </header>
@@ -123,16 +122,10 @@
                         <p class="mt-4 text-lg md:text-xl max-w-2xl">Lahan kosong siap bangun di berbagai lokasi.</p>
                     </div>
                 </div>
-                 <div class="w-full flex-shrink-0 h-full bg-cover bg-center" style="background-image: url('https://placehold.co/1600x600/2563EB/ffffff?text=Sewa+Properti!');">
+                 <div class="w-full flex-shrink-0 h-full bg-cover bg-center" style="background-image: url('https://placehold.co/1600x600/22C55E/ffffff?text=Sewa+Properti!');">
                     <div class="w-full h-full flex flex-col justify-center items-center bg-black bg-opacity-50 text-white text-center p-4">
                         <h2 class="text-3xl md:text-5xl font-extrabold leading-tight">Sewa Properti Nyaman & Terjangkau</h2>
-                        <p class="mt-4 text-lg md:text-xl max-w-2xl">Rumah, apartemen, atau ruang kantor untuk disewa.</p>
-                    </div>
-                </div>
-                <div class="w-full flex-shrink-0 h-full bg-cover bg-center" style="background-image: url('https://placehold.co/1600x600/78350F/ffffff?text=Pusat+Bisnis!');">
-                    <div class="w-full h-full flex flex-col justify-center items-center bg-black bg-opacity-50 text-white text-center p-4">
-                        <h2 class="text-3xl md:text-5xl font-extrabold leading-tight">Properti Komersial Siap Pakai</h2>
-                        <p class="mt-4 text-lg md:text-xl max-w-2xl">Ruko, Kantor, Gudang untuk bisnis Anda.</p>
+                        <p class="mt-4 text-lg md:text-xl max-w-2xl">Rumah, apartemen, ruko, atau kontrakan untuk disewa.</p>
                     </div>
                 </div>
             </div>
@@ -144,35 +137,33 @@
         <section class="mb-8 p-4 bg-white rounded-lg shadow-md">
             <h2 class="text-2xl font-bold text-gray-800 mb-4">Cari Properti</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                <select id="type-filter" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-house-green text-gray-700">
+                <select id="type-filter" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-house-green text-gray-700">
                     <option value="">Jenis Properti (Semua)</option>
                     <option value="rumah-dijual">Rumah Dijual</option>
                     <option value="tanah-dijual">Tanah Dijual</option>
-                    <option value="komersial">Komersial</option>
                     <option value="sewa">Sewa Properti</option>
                 </select>
-                <input type="text" id="location-filter-input" placeholder="Lokasi/Kata Kunci: Jakarta, Tanah Kavling, Ruko..." class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-house-green">
-                <select id="price-range-filter" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-house-green text-gray-700">
+                <input type="text" id="location-filter-input" placeholder="Lokasi/Kata Kunci: Jakarta, Tanah, Kios..." class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-house-green">
+                <select id="price-range-filter" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-house-green text-gray-700">
                     <option value="">Harga (Semua)</option>
-                    <option value="<200jt">< Rp 200 Juta</option>
-                    <option value="200jt-500jt">Rp 200 Juta - 500 Juta</option>
-                    <option value="500jt-1m">Rp 500 Juta - 1 Miliar</option>
-                    <option value=">1m">> Rp 1 Miliar</option>
+                    <option value="<500jt">< Rp 500 Juta</option>
+                    <option value="500jt-2m">Rp 500 Juta - 2 Miliar</option>
+                    <option value=">2m">> Rp 2 Miliar</option>
                 </select>
             </div>
         </section>
 
-        <div class="my-8 text-center bg-house-light-brown p-4 rounded-lg border border-house-green/20">
-            <p class="text-house-green text-sm mb-2">Space Iklan Anda di Sini (Google AdSense)</p>
-            <div class="bg-house-green/10 h-24 md:h-32 flex items-center justify-center text-house-green text-xl font-bold">
+        <div class="my-8 text-center bg-light-house-green p-4 rounded-lg border border-primary-house-green/20">
+            <p class="text-primary-house-green text-sm mb-2">Space Iklan Anda di Sini (Google AdSense)</p>
+            <div class="bg-primary-house-green/10 h-24 md:h-32 flex items-center justify-center text-primary-house-green text-xl font-bold">
                 Iklan Responsif
             </div>
         </div>
 
         <section class="text-center py-6">
             <h2 class="text-2xl font-bold text-gray-800 mb-4">Punya Properti untuk Dijual atau Disewakan?</h2>
-            <p class="text-gray-600 mb-6">Daftarkan properti Anda di InfoLengkapid dan jangkau lebih banyak calon pembeli/penyewa!</p>
-            <a href="LINK_GOOGLE_FORM_ANDA_DI_SINI_PROPERTI" target="_blank" class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-house-green hover:bg-house-dark-green focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-house-green">
+            <p class="text-gray-600 mb-6">Daftarkan properti Anda di InfoLengkap dan jangkau lebih banyak calon pembeli/penyewa!</p>
+            <a href="LINK_GOOGLE_FORM_ANDA_DI_SINI_PROPERTI" target="_blank" class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-primary-house-green hover:bg-dark-house-green focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-house-green">
                 <svg class="-ml-1 mr-3 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
                     <path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 01-2 0V3a1 1 0 011-1zm-4 8a1 1 0 011-1h6a1 1 0 110 2H7a1 1 0 01-1-1zm1 5a1 1 0 011-1h4a1 1 0 110 2H8a1 1 0 01-1-1z" clip-rule="evenodd" />
                     <path d="M4 14V4a2 2 0 012-2h8a2 2 0 012 2v10a2 2 0 01-2 2H6a2 2 0 01-2-2zm4 0h4v2H8v-2z" />
@@ -183,17 +174,18 @@
         </section>
 
         <section id="Rumah Dijual">
-            <h2 class="text-3xl font-bold text-gray-800 mb-6 border-l-4 border-house-green pl-4">Rumah Dijual - Pilihan Terbaik</h2>
+            <h2 class="text-3xl font-bold text-gray-800 mb-6 border-l-4 border-primary-house-green pl-4">Rumah Dijual - Pilihan Terbaik</h2>
             <div class="relative">
                 <div id="rumah-dijual-container" class="flex overflow-x-auto space-x-6 pb-4 no-scrollbar scroll-smooth">
                     <div class="property-card flex-shrink-0 w-80 bg-white rounded-lg shadow-lg" 
-                        data-category="rumah-dijual" data-location="Jakarta Barat" data-title="Rumah Minimalis Modern Jakarta" data-price="850000000"
+                        data-lat="-6.208763" data-lon="106.845599" data-location="Jakarta Pusat"
+                        data-type="rumah-dijual" data-price="850000000"
                         data-images="https://placehold.co/800x600/16A34A/ffffff?text=Rumah+A,https://placehold.co/800x600/22C55E/ffffff?text=Rumah+B">
-                        <img src="https://placehold.co/600x400/16A34A/ffffff?text=Rumah+Jakarta+Barat" alt="Rumah Minimalis Jakarta Barat" class="w-full h-48 object-cover cursor-pointer open-gallery">
+                        <img src="https://placehold.co/600x400/16A34A/ffffff?text=Rumah+Jakarta+Pusat" alt="Rumah Dijual Jakarta Pusat" class="w-full h-48 object-cover cursor-pointer open-gallery">
                         <div class="p-4 flex flex-col flex-grow">
                             <h3 class="font-bold text-lg mb-1 property-title">Rumah Minimalis Modern Jakarta</h3>
-                            <p class="text-sm text-gray-500 mb-3 property-location">Jakarta Barat - Dekat Stasiun</p>
-                            <p class="text-xl font-semibold text-house-green mb-4">Rp 850.000.000</p>
+                            <p class="text-sm text-gray-500 mb-3 property-location">Jakarta Pusat - Dekat Stasiun MRT</p>
+                            <p class="text-xl font-semibold text-primary-house-green mb-4">Rp 850.000.000</p>
                             <ul class="text-gray-600 text-sm mb-4 space-y-1">
                                 <li>LT 90m², LB 70m², 2 KT, 2 KM</li>
                                 <li>Carport, Taman Depan, Listrik 2200W</li>
@@ -201,22 +193,23 @@
                             </ul>
                             <div class="mt-auto flex space-x-2">
                                 <button class="whatsapp-trigger flex-1 text-center bg-green-500 text-white py-2 px-4 rounded-md hover:bg-green-600 transition-colors text-sm font-medium" 
-                                        data-wa-number="6281234568001" 
-                                        data-service-name="Rumah Minimalis Modern Jakarta Barat">
+                                        data-wa-number="6281234567001" 
+                                        data-service-name="Rumah Minimalis Modern Jakarta Pusat">
                                     Hubungi Penjual (WA)
                                 </button>
-                                <a href="https://maps.google.com/?q=-6.2608,106.8105" target="_blank" class="flex-1 text-center bg-house-light-green text-gray-800 py-2 px-4 rounded-md hover:bg-house-dark-green transition-colors text-sm font-medium">Lihat Lokasi</a>
+                                <a href="#peta-lokasi" class="map-link flex-1 text-center bg-accent-orange text-gray-800 py-2 px-4 rounded-md hover:bg-orange-500 transition-colors text-sm font-medium">Lihat di Peta</a>
                             </div>
                         </div>
                     </div>
                     <div class="property-card flex-shrink-0 w-80 bg-white rounded-lg shadow-lg" 
-                        data-category="rumah-dijual" data-location="Bandung Utara" data-title="Rumah Mewah di Cluster" data-price="2500000000"
+                        data-lat="-6.902525" data-lon="107.618782" data-location="Bandung Utara"
+                        data-type="rumah-dijual" data-price="2500000000"
                         data-images="https://placehold.co/800x600/22C55E/ffffff?text=Rumah+C,https://placehold.co/800x600/16A34A/ffffff?text=Rumah+D">
-                        <img src="https://placehold.co/600x400/22C55E/ffffff?text=Rumah+Bandung+Utara" alt="Rumah Mewah Bandung Utara" class="w-full h-48 object-cover cursor-pointer open-gallery">
+                        <img src="https://placehold.co/600x400/22C55E/ffffff?text=Rumah+Bandung+Utara" alt="Rumah Dijual Bandung Utara" class="w-full h-48 object-cover cursor-pointer open-gallery">
                         <div class="p-4 flex flex-col flex-grow">
                             <h3 class="font-bold text-lg mb-1 property-title">Rumah Mewah Cluster View Kota</h3>
                             <p class="text-sm text-gray-500 mb-3 property-location">Bandung Utara - Dekat Dago</p>
-                            <p class="text-xl font-semibold text-house-green mb-4">Rp 2.500.000.000</p>
+                            <p class="text-xl font-semibold text-primary-house-green mb-4">Rp 2.500.000.000</p>
                              <ul class="text-gray-600 text-sm mb-4 space-y-1">
                                 <li>LT 150m², LB 120m², 3 KT, 3 KM</li>
                                 <li>Keamanan 24 Jam, Club House</li>
@@ -224,22 +217,23 @@
                             </ul>
                             <div class="mt-auto flex space-x-2">
                                 <button class="whatsapp-trigger flex-1 text-center bg-green-500 text-white py-2 px-4 rounded-md hover:bg-green-600 transition-colors text-sm font-medium" 
-                                        data-wa-number="6281234568002" 
+                                        data-wa-number="6281234567002" 
                                         data-service-name="Rumah Mewah Cluster View Kota Bandung">
                                     Hubungi Penjual (WA)
                                 </button>
-                                <a href="https://maps.google.com/?q=-6.9175,107.6191" target="_blank" class="flex-1 text-center bg-house-light-green text-gray-800 py-2 px-4 rounded-md hover:bg-house-dark-green transition-colors text-sm font-medium">Lihat Lokasi</a>
+                                <a href="#peta-lokasi" class="map-link flex-1 text-center bg-accent-orange text-gray-800 py-2 px-4 rounded-md hover:bg-orange-500 transition-colors text-sm font-medium">Lihat di Peta</a>
                             </div>
                         </div>
                     </div>
                     <div class="property-card flex-shrink-0 w-80 bg-white rounded-lg shadow-lg" 
-                        data-category="rumah-dijual" data-location="Surabaya Timur" data-title="Rumah Baru Modern Minimalis" data-price="650000000"
+                        data-lat="-7.276326" data-lon="112.791550" data-location="Surabaya Timur"
+                        data-type="rumah-dijual" data-price="650000000"
                         data-images="https://placehold.co/800x600/15803D/ffffff?text=Rumah+E,https://placehold.co/800x600/22C55E/ffffff?text=Rumah+F">
-                        <img src="https://placehold.co/600x400/15803D/ffffff?text=Rumah+Surabaya+Baru" alt="Rumah Baru Surabaya" class="w-full h-48 object-cover cursor-pointer open-gallery">
+                        <img src="https://placehold.co/600x400/15803D/ffffff?text=Rumah+Surabaya+Baru" alt="Rumah Dijual Surabaya" class="w-full h-48 object-cover cursor-pointer open-gallery">
                         <div class="p-4 flex flex-col flex-grow">
                             <h3 class="font-bold text-lg mb-1 property-title">Rumah Baru Modern Minimalis</h3>
                             <p class="text-sm text-gray-500 mb-3 property-location">Surabaya Timur - Dekat Kampus</p>
-                            <p class="text-xl font-semibold text-house-green mb-4">Rp 650.000.000</p>
+                            <p class="text-xl font-semibold text-primary-house-green mb-4">Rp 650.000.000</p>
                             <ul class="text-gray-600 text-sm mb-4 space-y-1">
                                 <li>LT 75m², LB 60m², 2 KT, 1 KM</li>
                                 <li>Desain Modern, Lingkungan Berkembang</li>
@@ -247,11 +241,11 @@
                             </ul>
                             <div class="mt-auto flex space-x-2">
                                 <button class="whatsapp-trigger flex-1 text-center bg-green-500 text-white py-2 px-4 rounded-md hover:bg-green-600 transition-colors text-sm font-medium" 
-                                        data-wa-number="6281234568005" 
+                                        data-wa-number="6281234567003" 
                                         data-service-name="Rumah Baru Modern Minimalis Surabaya">
                                     Hubungi Penjual (WA)
                                 </button>
-                                <a href="https://maps.google.com/?q=-7.2575,112.7688" target="_blank" class="flex-1 text-center bg-house-light-green text-gray-800 py-2 px-4 rounded-md hover:bg-house-dark-green transition-colors text-sm font-medium">Lihat Lokasi</a>
+                                <a href="#peta-lokasi" class="map-link flex-1 text-center bg-accent-orange text-gray-800 py-2 px-4 rounded-md hover:bg-orange-500 transition-colors text-sm font-medium">Lihat di Peta</a>
                             </div>
                         </div>
                     </div>
@@ -265,25 +259,26 @@
             </div>
         </section>
 
-        <div class="my-8 text-center bg-house-light-brown p-4 rounded-lg border border-house-green/20">
-            <p class="text-house-green text-sm mb-2">Space Iklan Anda di Sini (Google AdSense)</p>
-            <div class="bg-house-green/10 h-24 md:h-32 flex items-center justify-center text-house-green text-xl font-bold">
+        <div class="my-8 text-center bg-light-house-green p-4 rounded-lg border border-primary-house-green/20">
+            <p class="text-primary-house-green text-sm mb-2">Space Iklan Anda di Sini (Google AdSense)</p>
+            <div class="bg-primary-house-green/10 h-24 md:h-32 flex items-center justify-center text-primary-house-green text-xl font-bold">
                 Iklan Responsif
             </div>
         </div>
 
         <section id="Tanah Dijual">
-            <h2 class="text-3xl font-bold text-gray-800 mb-6 border-l-4 border-category-orange pl-4">Tanah Dijual - Siap Bangun & Investasi</h2>
+            <h2 class="text-3xl font-bold text-gray-800 mb-6 border-l-4 border-primary-house-green pl-4">Tanah Dijual - Siap Bangun & Investasi</h2>
             <div class="relative">
                 <div id="tanah-dijual-container" class="flex overflow-x-auto space-x-6 pb-4 no-scrollbar scroll-smooth">
                     <div class="property-card flex-shrink-0 w-80 bg-white rounded-lg shadow-lg" 
-                        data-category="tanah-dijual" data-location="Bogor" data-title="Tanah Kavling Siap Bangun" data-price="250000000"
+                        data-lat="-6.603387" data-lon="106.793264" data-location="Bogor"
+                        data-type="tanah-dijual" data-price="250000000"
                         data-images="https://placehold.co/800x600/F97316/ffffff?text=Tanah+A,https://placehold.co/800x600/EF4444/ffffff?text=Tanah+B">
                         <img src="https://placehold.co/600x400/F97316/ffffff?text=Tanah+Kavling+Bogor" alt="Tanah Kavling Bogor" class="w-full h-48 object-cover cursor-pointer open-gallery">
                         <div class="p-4 flex flex-col flex-grow">
                             <h3 class="font-bold text-lg mb-1 property-title">Tanah Kavling Bogor Strategis</h3>
                             <p class="text-sm text-gray-500 mb-3 property-location">Bogor - Dekat Jalur Puncak</p>
-                            <p class="text-xl font-semibold text-category-orange mb-4">Rp 250.000.000</p>
+                            <p class="text-xl font-semibold text-primary-house-green mb-4">Rp 250.000.000</p>
                             <ul class="text-gray-600 text-sm mb-4 space-y-1">
                                 <li>Luas 150m², Sertifikat Hak Milik</li>
                                 <li>Cocok untuk Villa/Rumah Tinggal</li>
@@ -291,22 +286,23 @@
                             </ul>
                             <div class="mt-auto flex space-x-2">
                                 <button class="whatsapp-trigger flex-1 text-center bg-green-500 text-white py-2 px-4 rounded-md hover:bg-green-600 transition-colors text-sm font-medium" 
-                                        data-wa-number="6281234568006" 
+                                        data-wa-number="6281234567004" 
                                         data-service-name="Tanah Kavling Bogor Strategis">
                                     Hubungi Penjual (WA)
                                 </button>
-                                <a href="https://maps.google.com/?q=-7.7956,110.3686" target="_blank" class="flex-1 text-center bg-house-light-green text-gray-800 py-2 px-4 rounded-md hover:bg-house-dark-green transition-colors text-sm font-medium">Lihat Lokasi</a>
+                                <a href="#peta-lokasi" class="map-link flex-1 text-center bg-accent-orange text-gray-800 py-2 px-4 rounded-md hover:bg-orange-500 transition-colors text-sm font-medium">Lihat di Peta</a>
                             </div>
                         </div>
                     </div>
                     <div class="property-card flex-shrink-0 w-80 bg-white rounded-lg shadow-lg" 
-                        data-category="tanah-dijual" data-location="Bali" data-title="Lahan Investasi View Pantai" data-price="1200000000"
+                        data-lat="-8.409518" data-lon="115.188916" data-location="Badung, Bali"
+                        data-type="tanah-dijual" data-price="1200000000"
                         data-images="https://placehold.co/800x600/EF4444/ffffff?text=Tanah+C,https://placehold.co/800x600/F97316/ffffff?text=Tanah+D">
                         <img src="https://placehold.co/600x400/EF4444/ffffff?text=Lahan+Bali+View+Pantai" alt="Lahan Investasi Bali" class="w-full h-48 object-cover cursor-pointer open-gallery">
                         <div class="p-4 flex flex-col flex-grow">
                             <h3 class="font-bold text-lg mb-1 property-title">Lahan Investasi Premium Bali</h3>
                             <p class="text-sm text-gray-500 mb-3 property-location">Badung, Bali - Dekat Pantai</p>
-                            <p class="text-xl font-semibold text-category-orange mb-4">Rp 1.200.000.000</p>
+                            <p class="text-xl font-semibold text-primary-house-green mb-4">Rp 1.200.000.000</p>
                             <ul class="text-gray-600 text-sm mb-4 space-y-1">
                                 <li>Luas 500m², Zona Pariwisata</li>
                                 <li>Sangat Cocok untuk Villa Komersil</li>
@@ -314,11 +310,11 @@
                             </ul>
                             <div class="mt-auto flex space-x-2">
                                 <button class="whatsapp-trigger flex-1 text-center bg-green-500 text-white py-2 px-4 rounded-md hover:bg-green-600 transition-colors text-sm font-medium" 
-                                        data-wa-number="6281234568007" 
+                                        data-wa-number="6281234567005" 
                                         data-service-name="Lahan Investasi Premium Bali">
                                     Hubungi Penjual (WA)
                                 </button>
-                                <a href="http://googleusercontent.com/maps.google.com/4" target="_blank" class="flex-1 text-center bg-house-light-green text-gray-800 py-2 px-4 rounded-md hover:bg-house-dark-green transition-colors text-sm font-medium">Lihat Lokasi</a>
+                                <a href="#peta-lokasi" class="map-link flex-1 text-center bg-accent-orange text-gray-800 py-2 px-4 rounded-md hover:bg-orange-500 transition-colors text-sm font-medium">Lihat di Peta</a>
                             </div>
                         </div>
                     </div>
@@ -332,92 +328,27 @@
             </div>
         </section>
 
-        <div class="my-8 text-center bg-house-light-brown p-4 rounded-lg border border-house-green/20">
-            <p class="text-house-green text-sm mb-2">Space Iklan Anda di Sini (Google AdSense)</p>
-            <div class="bg-house-green/10 h-24 md:h-32 flex items-center justify-center text-house-green text-xl font-bold">
-                Iklan Responsif
-            </div>
-        </div>
-
-        <section id="Properti Komersial">
-            <h2 class="text-3xl font-bold text-gray-800 mb-6 border-l-4 border-category-blue pl-4">Properti Komersial - Untuk Bisnis Anda</h2>
-            <div class="relative">
-                <div id="komersial-container" class="flex overflow-x-auto space-x-6 pb-4 no-scrollbar scroll-smooth">
-                    <div class="property-card flex-shrink-0 w-80 bg-white rounded-lg shadow-lg" 
-                        data-category="komersial" data-location="Jakarta Pusat" data-title="Ruko Strategis Pusat Kota" data-price="3500000000"
-                        data-images="https://placehold.co/800x600/2563EB/ffffff?text=Ruko+A,https://placehold.co/800x600/1D4ED8/ffffff?text=Ruko+B">
-                        <img src="https://placehold.co/600x400/2563EB/ffffff?text=Ruko+Jakarta+Pusat" alt="Ruko Jakarta Pusat" class="w-full h-48 object-cover cursor-pointer open-gallery">
-                        <div class="p-4 flex flex-col flex-grow">
-                            <h3 class="font-bold text-lg mb-1 property-title">Ruko Strategis Pusat Kota Jakarta</h3>
-                            <p class="text-sm text-gray-500 mb-3 property-location">Jakarta Pusat - Area Perkantoran</p>
-                            <p class="text-xl font-semibold text-category-blue mb-4">Rp 3.500.000.000</p>
-                            <ul class="text-gray-600 text-sm mb-4 space-y-1">
-                                <li>3 Lantai, Cocok untuk Kantor/Resto</li>
-                                <li>Area Parkir Luas, Dekat MRT</li>
-                                <li>Investasi Menjanjikan</li>
-                            </ul>
-                            <div class="mt-auto flex space-x-2">
-                                <button class="whatsapp-trigger flex-1 text-center bg-green-500 text-white py-2 px-4 rounded-md hover:bg-green-600 transition-colors text-sm font-medium" 
-                                        data-wa-number="6281234568008" 
-                                        data-service-name="Ruko Strategis Pusat Kota Jakarta">
-                                    Hubungi Penjual (WA)
-                                </button>
-                                <a href="http://googleusercontent.com/maps.google.com/5" target="_blank" class="flex-1 text-center bg-house-light-green text-gray-800 py-2 px-4 rounded-md hover:bg-house-dark-green transition-colors text-sm font-medium">Lihat Lokasi</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="property-card flex-shrink-0 w-80 bg-white rounded-lg shadow-lg" 
-                        data-category="komersial" data-location="Tangerang" data-title="Gudang Industri Modern" data-price="5000000000"
-                        data-images="https://placehold.co/800x600/1D4ED8/ffffff?text=Gudang+A,https://placehold.co/800x600/2563EB/ffffff?text=Gudang+B">
-                        <img src="https://placehold.co/600x400/1D4ED8/ffffff?text=Gudang+Tangerang" alt="Gudang Tangerang" class="w-full h-48 object-cover cursor-pointer open-gallery">
-                        <div class="p-4 flex flex-col flex-grow">
-                            <h3 class="font-bold text-lg mb-1 property-title">Gudang Industri Modern Tangerang</h3>
-                            <p class="text-sm text-gray-500 mb-3 property-location">Tangerang - Akses Tol Mudah</p>
-                            <p class="text-xl font-semibold text-category-blue mb-4">Rp 5.000.000.000</p>
-                             <ul class="text-gray-600 text-sm mb-4 space-y-1">
-                                <li>Luas Bangunan 1000m², Luas Tanah 1500m²</li>
-                                <li>Kantor 2 Lantai, Area Loading Dock</li>
-                                <li>Zona Industri, Bebas Kuli Angkut</li>
-                            </ul>
-                            <div class="mt-auto flex space-x-2">
-                                <button class="whatsapp-trigger flex-1 text-center bg-green-500 text-white py-2 px-4 rounded-md hover:bg-green-600 transition-colors text-sm font-medium" 
-                                        data-wa-number="6281234568009" 
-                                        data-service-name="Gudang Industri Modern Tangerang">
-                                    Hubungi Penjual (WA)
-                                </button>
-                                <a href="http://googleusercontent.com/maps.google.com/6" target="_blank" class="flex-1 text-center bg-house-light-green text-gray-800 py-2 px-4 rounded-md hover:bg-house-dark-green transition-colors text-sm font-medium">Lihat Lokasi</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <button class="absolute top-1/2 -left-4 transform -translate-y-1/2 bg-white p-2 rounded-full shadow-md hidden md:block z-10" onclick="scrollContainer('komersial-container', -300)" aria-label="Geser ke Kiri">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" /></svg>
-                </button>
-                <button class="absolute top-1/2 -right-4 transform -translate-y-1/2 bg-white p-2 rounded-full shadow-md hidden md:block z-10" onclick="scrollContainer('komersial-container', 300)" aria-label="Geser ke Kanan">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
-                </button>
-            </div>
-        </section>
-
-        <div class="my-8 text-center bg-house-light-brown p-4 rounded-lg border border-house-green/20">
-            <p class="text-house-green text-sm mb-2">Space Iklan Anda di Sini (Google AdSense)</p>
-            <div class="bg-house-green/10 h-24 md:h-32 flex items-center justify-center text-house-green text-xl font-bold">
+        <div class="my-8 text-center bg-light-house-green p-4 rounded-lg border border-primary-house-green/20">
+            <p class="text-primary-house-green text-sm mb-2">Space Iklan Anda di Sini (Google AdSense)</p>
+            <div class="bg-primary-house-green/10 h-24 md:h-32 flex items-center justify-center text-primary-house-green text-xl font-bold">
                 Iklan Responsif
             </div>
         </div>
 
         <section id="Sewa Properti">
-            <h2 class="text-3xl font-bold text-gray-800 mb-6 border-l-4 border-house-green pl-4">Sewa Properti - Pilihan Fleksibel</h2>
+            <h2 class="text-3xl font-bold text-gray-800 mb-6 border-l-4 border-primary-house-green pl-4">Sewa Properti - Pilihan Fleksibel</h2>
+            <p class="text-gray-600 mb-8">Temukan beragam pilihan properti sewa mulai dari apartemen, rumah, ruko, hingga kios dan kontrakan. Cocok untuk individu, keluarga, maupun bisnis.</p>
             <div class="relative">
                 <div id="sewa-properti-container" class="flex overflow-x-auto space-x-6 pb-4 no-scrollbar scroll-smooth">
                     <div class="property-card flex-shrink-0 w-80 bg-white rounded-lg shadow-lg" 
-                        data-category="sewa" data-location="Jakarta Selatan" data-title="Apartemen Studio Furnished" data-price="4000000" data-rent="true"
+                        data-lat="-6.235555" data-lon="106.829141" data-location="Jakarta Selatan"
+                        data-type="sewa" data-price="4000000" data-rent-type="bulan"
                         data-images="https://placehold.co/800x600/16A34A/ffffff?text=Apartemen+A,https://placehold.co/800x600/22C55E/ffffff?text=Apartemen+B">
                         <img src="https://placehold.co/600x400/16A34A/ffffff?text=Apartemen+Disewa+Jakarta" alt="Apartemen Disewa Jakarta" class="w-full h-48 object-cover cursor-pointer open-gallery">
                         <div class="p-4 flex flex-col flex-grow">
                             <h3 class="font-bold text-lg mb-1 property-title">Apartemen Studio Furnished Jakarta</h3>
                             <p class="text-sm text-gray-500 mb-3 property-location">Jakarta Selatan - Dekat Pusat Bisnis</p>
-                            <p class="text-xl font-semibold text-house-green mb-4">Rp 4.000.000 / Bulan</p>
+                            <p class="text-xl font-semibold text-primary-house-green mb-4">Rp 4.000.000 / Bulan</p>
                             <ul class="text-gray-600 text-sm mb-4 space-y-1">
                                 <li>Studio, Fully Furnished, AC</li>
                                 <li>Fasilitas Lengkap: Gym, Pool, Keamanan</li>
@@ -425,22 +356,23 @@
                             </ul>
                             <div class="mt-auto flex space-x-2">
                                 <button class="whatsapp-trigger flex-1 text-center bg-green-500 text-white py-2 px-4 rounded-md hover:bg-green-600 transition-colors text-sm font-medium" 
-                                        data-wa-number="6281234568010" 
+                                        data-wa-number="6281234567006" 
                                         data-service-name="Apartemen Studio Furnished Jakarta">
                                     Hubungi Pemilik (WA)
                                 </button>
-                                <a href="http://googleusercontent.com/maps.google.com/7" target="_blank" class="flex-1 text-center bg-house-light-green text-gray-800 py-2 px-4 rounded-md hover:bg-house-dark-green transition-colors text-sm font-medium">Lihat Lokasi</a>
+                                <a href="#peta-lokasi" class="map-link flex-1 text-center bg-accent-orange text-gray-800 py-2 px-4 rounded-md hover:bg-orange-500 transition-colors text-sm font-medium">Lihat di Peta</a>
                             </div>
                         </div>
                     </div>
                      <div class="property-card flex-shrink-0 w-80 bg-white rounded-lg shadow-lg" 
-                        data-category="sewa" data-location="Yogyakarta" data-title="Rumah Sewa Nyaman" data-price="25000000" data-rent="true"
+                        data-lat="-7.795579" data-lon="110.368612" data-location="Yogyakarta"
+                        data-type="sewa" data-price="25000000" data-rent-type="tahun"
                         data-images="https://placehold.co/800x600/22C55E/ffffff?text=Rumah+Sewa+A,https://placehold.co/800x600/16A34A/ffffff?text=Rumah+Sewa+B">
                         <img src="https://placehold.co/600x400/22C55E/ffffff?text=Rumah+Sewa+Yogyakarta" alt="Rumah Sewa Yogyakarta" class="w-full h-48 object-cover cursor-pointer open-gallery">
                         <div class="p-4 flex flex-col flex-grow">
                             <h3 class="font-bold text-lg mb-1 property-title">Rumah Sewa Nyaman di Yogyakarta</h3>
                             <p class="text-sm text-gray-500 mb-3 property-location">Yogyakarta - Dekat UGM</p>
-                            <p class="text-xl font-semibold text-house-green mb-4">Rp 25.000.000 / Tahun</p>
+                            <p class="text-xl font-semibold text-primary-house-green mb-4">Rp 25.000.000 / Tahun</p>
                             <ul class="text-gray-600 text-sm mb-4 space-y-1">
                                 <li>3 Kamar Tidur, 2 Kamar Mandi</li>
                                 <li>Dapur, Ruang Tamu Luas, Carport</li>
@@ -448,11 +380,35 @@
                             </ul>
                             <div class="mt-auto flex space-x-2">
                                 <button class="whatsapp-trigger flex-1 text-center bg-green-500 text-white py-2 px-4 rounded-md hover:bg-green-600 transition-colors text-sm font-medium" 
-                                        data-wa-number="6281234568011" 
+                                        data-wa-number="6281234567007" 
                                         data-service-name="Rumah Sewa Nyaman Yogyakarta">
                                     Hubungi Pemilik (WA)
                                 </button>
-                                <a href="http://googleusercontent.com/maps.google.com/8" target="_blank" class="flex-1 text-center bg-house-light-green text-gray-800 py-2 px-4 rounded-md hover:bg-house-dark-green transition-colors text-sm font-medium">Lihat Lokasi</a>
+                                <a href="#peta-lokasi" class="map-link flex-1 text-center bg-accent-orange text-gray-800 py-2 px-4 rounded-md hover:bg-orange-500 transition-colors text-sm font-medium">Lihat di Peta</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="property-card flex-shrink-0 w-80 bg-white rounded-lg shadow-lg" 
+                        data-lat="-6.175392" data-lon="106.827153" data-location="Jakarta Pusat"
+                        data-type="sewa" data-price="100000000" data-rent-type="tahun"
+                        data-images="https://placehold.co/800x600/15803D/ffffff?text=Ruko+A,https://placehold.co/800x600/22C55E/ffffff?text=Ruko+B">
+                        <img src="https://placehold.co/600x400/15803D/ffffff?text=Ruko+Disewa+Jakarta" alt="Ruko Disewa Jakarta Pusat" class="w-full h-48 object-cover cursor-pointer open-gallery">
+                        <div class="p-4 flex flex-col flex-grow">
+                            <h3 class="font-bold text-lg mb-1 property-title">Ruko Strategis Disewakan Jakarta</h3>
+                            <p class="text-sm text-gray-500 mb-3 property-location">Jakarta Pusat - Area Komersial</p>
+                            <p class="text-xl font-semibold text-primary-house-green mb-4">Rp 100.000.000 / Tahun</p>
+                            <ul class="text-gray-600 text-sm mb-4 space-y-1">
+                                <li>2 Lantai, Cocok untuk Kantor/Toko</li>
+                                <li>Area Parkir, Dekat Akses Transportasi</li>
+                                <li>Lokasi Ramai dan Strategis</li>
+                            </ul>
+                            <div class="mt-auto flex space-x-2">
+                                <button class="whatsapp-trigger flex-1 text-center bg-green-500 text-white py-2 px-4 rounded-md hover:bg-green-600 transition-colors text-sm font-medium" 
+                                        data-wa-number="6281234567008" 
+                                        data-service-name="Ruko Strategis Disewakan Jakarta">
+                                    Hubungi Pemilik (WA)
+                                </button>
+                                <a href="#peta-lokasi" class="map-link flex-1 text-center bg-accent-orange text-gray-800 py-2 px-4 rounded-md hover:bg-orange-500 transition-colors text-sm font-medium">Lihat di Peta</a>
                             </div>
                         </div>
                     </div>
@@ -466,22 +422,27 @@
             </div>
         </section>
 
+
+        <section id="peta-lokasi" class="pt-8">
+            <h2 class="text-3xl font-bold text-gray-800 mb-6 border-l-4 border-primary-house-green pl-4">Peta Lokasi Properti</h2>
+            <div id="map" class="h-96 md:h-[500px] w-full rounded-lg shadow-md z-0"></div>
+        </section>
     </main>
 
     <footer class="bg-gray-800 text-white mt-12">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-8 text-center">
-            <p>© 2024 InfoLengkapid. Semua Hak Cipta Dilindungi.</p>
+            <p>&copy; 2024 InfoLengkap. Semua Hak Cipta Dilindungi.</p>
         </div>
     </footer>
 
     <div id="gallery-popup" class="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center p-4 z-50 hidden opacity-0">
         <div class="relative w-full max-w-3xl">
-            <button id="close-gallery" class="absolute -top-2 -right-2 md:-top-4 md:-right-4 z-10 text-white bg-red-600 rounded-full w-9 h-9 flex items-center justify-center text-2xl font-bold">×</button>
+            <button id="close-gallery" class="absolute -top-2 -right-2 md:-top-4 md:-right-4 z-10 text-white bg-red-600 rounded-full w-9 h-9 flex items-center justify-center text-2xl font-bold hover:bg-red-700 transition-colors" aria-label="Tutup Galeri">&times;</button>
             <div id="gallery-container" class="relative w-full h-64 md:h-96 bg-black rounded-lg overflow-hidden"></div>
-            <button id="prev-btn" class="absolute top-1/2 left-2 md:left-4 -translate-y-1/2 bg-white/30 text-white p-2 rounded-full hover:bg-white/50 transition-colors">
+            <button id="prev-btn" class="absolute top-1/2 left-2 md:left-4 -translate-y-1/2 bg-white/30 text-white p-2 rounded-full hover:bg-white/50 transition-colors" aria-label="Gambar Sebelumnya">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" /></svg>
             </button>
-            <button id="next-btn" class="absolute top-1/2 right-2 md:right-4 -translate-y-1/2 bg-white/30 text-white p-2 rounded-full hover:bg-white/50 transition-colors">
+            <button id="next-btn" class="absolute top-1/2 right-2 md:right-4 -translate-y-1/2 bg-white/30 text-white p-2 rounded-full hover:bg-white/50 transition-colors" aria-label="Gambar Selanjutnya">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
             </button>
             <div id="gallery-counter" class="absolute bottom-2 right-3 text-white text-sm bg-black/50 px-2 py-1 rounded"></div>
@@ -618,63 +579,126 @@
             if (e.target === galleryPopup) closeGallery();
         });
 
-        // --- FILTERING LOGIC ---
+        // --- LEAFLET.JS MAP LOGIC & LOCATION FILTERING ---
+        const map = L.map('map').setView([-2.5, 118.0], 5); // Initial map view (Indonesia general area)
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+        }).addTo(map);
+
         const allPropertyCards = document.querySelectorAll('.property-card');
+        let currentMarkers = [];
+        let allPropertyData = [];
+
+        allPropertyCards.forEach(card => {
+            const lat = parseFloat(card.dataset.lat);
+            const lon = parseFloat(card.dataset.lon);
+            const title = card.querySelector('.property-title').textContent;
+            const location = card.dataset.location;
+            const type = card.dataset.type;
+            const price = parseFloat(card.dataset.price); // Pastikan ini di-parse sebagai angka
+            allPropertyData.push({ card, lat, lon, title, location, type, price });
+        });
+
+        function updateMapMarkers(filteredProperties) {
+            currentMarkers.forEach(marker => map.removeLayer(marker));
+            currentMarkers = [];
+
+            filteredProperties.forEach(prop => {
+                if (!isNaN(prop.lat) && !isNaN(prop.lon)) {
+                    const marker = L.marker([prop.lat, prop.lon]).addTo(map).bindPopup(`<b>${prop.title}</b><br>${prop.location}`);
+                    currentMarkers.push(marker);
+                }
+            });
+
+            if (currentMarkers.length > 0) {
+                const group = new L.featureGroup(currentMarkers);
+                map.fitBounds(group.getBounds().pad(0.5));
+            } else {
+                map.setView([-2.5, 118.0], 5); // Reset to broader Indonesia view if no markers
+            }
+        }
 
         function applyFilters() {
             const lowerCaseSearchTerm = document.getElementById('location-filter-input').value.toLowerCase().trim();
-            const selectedCategory = document.getElementById('type-filter').value;
+            const selectedType = document.getElementById('type-filter').value;
             const selectedPriceRange = document.getElementById('price-range-filter').value;
+
+            const filteredPropertiesForMap = [];
 
             allPropertyCards.forEach(card => {
                 const cardLocation = card.dataset.location ? card.dataset.location.toLowerCase() : '';
-                const cardTitle = card.dataset.title ? card.dataset.title.toLowerCase() : ''; 
-                const cardCategory = card.dataset.category;
-                const cardPrice = parseFloat(card.dataset.price); // Use data-price attribute for filtering
-                const isRent = card.dataset.rent === 'true'; // Check if it's a rental property
+                const cardTitle = card.querySelector('.property-title').textContent.toLowerCase();
+                const cardType = card.dataset.type;
+                const cardPrice = parseFloat(card.dataset.price); 
 
-                let isTextMatch = (lowerCaseSearchTerm === '' || cardLocation.includes(lowerCaseSearchTerm) || cardTitle.includes(lowerCaseSearchTerm));
-                let isCategoryMatch = (selectedCategory === '' || cardCategory === selectedCategory);
+                let isLocationMatch = (lowerCaseSearchTerm === '' || cardLocation.includes(lowerCaseSearchTerm) || cardTitle.includes(lowerCaseSearchTerm));
+                let isTypeMatch = (selectedType === '' || cardType === selectedType);
                 let isPriceMatch = true; 
 
                 if (selectedPriceRange !== '') {
                     if (isNaN(cardPrice)) {
                         isPriceMatch = false; 
                     } else {
-                        // For rental properties, prices are usually per month/year, so direct comparison might not be ideal
-                        // But for simplicity, we'll apply the same range for now, assuming a "value"
                         switch (selectedPriceRange) {
-                            case '<200jt':
-                                isPriceMatch = cardPrice < 200000000;
+                            case '<500jt':
+                                isPriceMatch = cardPrice < 500000000;
                                 break;
-                            case '200jt-500jt':
-                                isPriceMatch = cardPrice >= 200000000 && cardPrice <= 500000000;
+                            case '500jt-2m':
+                                isPriceMatch = cardPrice >= 500000000 && cardPrice <= 2000000000;
                                 break;
-                            case '500jt-1m':
-                                isPriceMatch = cardPrice >= 500000000 && cardPrice <= 1000000000;
-                                break;
-                            case '>1m':
-                                isPriceMatch = cardPrice > 1000000000;
+                            case '>2m':
+                                isPriceMatch = cardPrice > 2000000000;
                                 break;
                         }
                     }
                 }
                 
-                if (isTextMatch && isCategoryMatch && isPriceMatch) {
+                if (isLocationMatch && isTypeMatch && isPriceMatch) {
                     card.style.display = 'block';
+                    const propData = allPropertyData.find(p => p.card === card);
+                    if (propData) {
+                        filteredPropertiesForMap.push(propData);
+                    }
                 } else {
                     card.style.display = 'none';
                 }
             });
+
+            updateMapMarkers(filteredPropertiesForMap);
         }
 
         document.getElementById('location-filter-input').addEventListener('keyup', applyFilters);
         document.getElementById('type-filter').addEventListener('change', applyFilters);
         document.getElementById('price-range-filter').addEventListener('change', applyFilters);
 
-        applyFilters(); // Initial filter application
 
-        // --- HORIZONTAL SCROLL LOGIC FOR PROPERTY LISTINGS (DESKTOP ARROWS) ---
+        applyFilters();
+
+        const mapLinks = document.querySelectorAll('.map-link');
+        mapLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const card = this.closest('.property-card');
+                const lat = parseFloat(card.dataset.lat);
+                const lon = parseFloat(card.dataset.lon);
+                
+                document.getElementById('peta-lokasi').scrollIntoView({ behavior: 'smooth' });
+                
+                if (!isNaN(lat) && !isNaN(lon)) {
+                    map.setView([lat, lon], 15);
+                    const targetProperty = allPropertyData.find(p => p.card === card);
+                    if (targetProperty) {
+                        const marker = currentMarkers.find(m => 
+                            m.getLatLng().lat === targetProperty.lat && 
+                            m.getLatLng().lng === targetProperty.lon
+                        );
+                        if (marker) marker.openPopup();
+                    }
+                }
+            });
+        });
+
         window.scrollContainer = function(containerId, scrollAmount) {
             const container = document.getElementById(containerId);
             if (container) {
@@ -685,7 +709,6 @@
             }
         };
 
-        // --- WHATSAPP CLICK TRACKING & NOTIFICATION LOGIC ---
         const whatsappButtons = document.querySelectorAll('.whatsapp-trigger');
         const notificationForm = document.getElementById('whatsappNotificationForm');
         const namaPropertiInput = document.getElementById('namaPropertiInput');
@@ -706,7 +729,7 @@
                 notificationForm.submit();
 
                 setTimeout(() => {
-                    window.location.href = `https://wa.me/${waNumber}?text=Halo, saya tertarik dengan properti ${encodeURIComponent(propertyName)} yang saya lihat di InfoLengkapid.`;
+                    window.location.href = `https://wa.me/${waNumber}?text=Halo, saya tertarik dengan properti ${encodeURIComponent(propertyName)} yang saya lihat di InfoLengkap.`;
                 }, 200);
             });
         });
