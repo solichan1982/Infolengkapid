@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulir Pendaftaran Iklan - InfoLengkap</title>
+    <meta name="description" content="Daftarkan iklan Anda di InfoLengkap untuk berbagai layanan: jasa kecantikan, jasa tenaga berat, info kost, jual beli kendaraan, dan jual/sewa properti.">
+    <meta name="keywords" content="formulir iklan, daftar iklan, pasang iklan, jasa kecantikan, jasa tenaga berat, info kost, jual beli kendaraan, jual rumah, jual tanah, sewa properti, iklan gratis, InfoLengkap">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'primary-purple': '#8B5CF6',
+                        'secondary-purple': '#A78BFA',
+                        'dark-purple': '#6D28D9',
+                        'light-purple': '#EDE9FE',
+                        'accent-yellow': '#FBBF24',
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background-color: #f8fafc; 
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+
+    <header class="bg-white shadow-md sticky top-0 z-40">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex-shrink-0">
+                    <a href="index.html" class="text-2xl font-bold text-primary-purple">Info<span class="text-gray-800">Lengkap</span></a>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-4">
+                        <a href="index.html" class="text-gray-500 hover:bg-light-purple hover:text-dark-purple block px-3 py-2 rounded-md text-base font-medium">Beranda</a>
+                        <a href="#form-section" class="bg-primary-purple text-white block px-3 py-2 rounded-md text-base font-medium">Daftar Iklan</a>
+                    </div>
+                </div>
+                <div class="-mr-2 flex md:hidden">
+                    <button id="mobile-menu-button" type="button" class="bg-gray-100 inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-purple" aria-controls="mobile-menu" aria-expanded="false">
+                        <span class="sr-only">Buka menu</span>
+                        <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" /></svg>
+                        <svg class="hidden h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="md:hidden hidden" id="mobile-menu">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                 <a href="index.html" class="bg-primary-purple text-white block px-3 py-2 rounded-md text-base font-medium">Beranda</a>
+                 <a href="#form-section" class="text-gray-500 hover:bg-light-purple hover:text-dark-purple block px-3 py-2 rounded-md text-base font-medium">Daftar Iklan</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <section id="form-section" class="bg-white p-8 rounded-lg shadow-lg max-w-3xl mx-auto">
+            <h1 class="text-3xl font-bold text-gray-800 mb-6 text-center">Formulir Pendaftaran Iklan</h1>
+            <p class="text-gray-600 mb-8 text-center">Silakan isi formulir di bawah ini untuk mendaftarkan iklan Anda di InfoLengkap. Pilih jenis layanan yang sesuai.</p>
+
+            <div id="form-success-message" class="hidden bg-green-100 border-l-4 border-green-500 text-green-700 p-4 mb-6" role="alert">
+                <p class="font-bold">Terima Kasih!</p>
+                <p>Iklan Anda telah berhasil terkirim. Kami akan segera memprosesnya dan menghubungi Anda jika ada informasi lebih lanjut.</p>
+            </div>
+
+            <form action="https://formspree.io/f/mvgrjrjv" method="POST" id="ad-registration-form" class="space-y-6">
+                <input type="hidden" name="_replyto" value="lengkapidinfo@Gmail.com">
+                <input type="hidden" name="_subject" id="form-subject" value="Pendaftaran Iklan - InfoLengkap">
+
+                <div>
+                    <label for="service-type" class="block text-sm font-medium text-gray-700 mb-1">Jenis Layanan Iklan <span class="text-red-500">*</span></label>
+                    <select id="service-type" name="jenis_layanan" required 
+                            class="mt-1 block w-full p-3 border border-gray-300 rounded-md shadow-sm focus:ring-primary-purple focus:border-primary-purple sm:text-sm">
+                        <option value="">-- Pilih Jenis Layanan --</option>
+                        <option value="jasa_kecantikan">Jasa Kecantikan</option>
+                        <option value="jasa_tenaga_berat">Jasa Tenaga Berat</option>
+                        <option value="info_kost">Info Kost</option>
+                        <option value="jual_beli_kendaraan">Jual Beli Kendaraan</option>
+                        <option value="jual_rumah_tanah_properti">Jual Rumah, Tanah, & Properti Sewa</option>
+                    </select>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <label for="full-name" class="block text-sm font-medium text-gray-700 mb-1">Nama Lengkap <span class="text-red-500">*</span></label>
+                        <input type="text" id="full-name" name="nama_lengkap" required 
+                               class="mt-1 block w-full p-3 border border-gray-300 rounded-md shadow-sm focus:ring-primary-purple focus:border-primary-purple sm:text-sm"
+                               placeholder="Nama Anda">
+                    </div>
+                    <div>
+                        <label for="whatsapp-number" class="block text-sm font-medium text-gray-700 mb-1">Nomor WhatsApp <span class="text-red-500">*</span></label>
+                        <input type="tel" id="whatsapp-number" name="nomor_whatsapp" required 
+                               class="mt-1 block w-full p-3 border border-gray-300 rounded-md shadow-sm focus:ring-primary-purple focus:border-primary-purple sm:text-sm"
+                               placeholder="Contoh: 6281234567890 (tanpa +)">
+                        <p class="mt-1 text-xs text-gray-500">Gunakan format internasional tanpa '+', contoh: 6281234567890</p>
+                    </div>
+                </div>
+
+                <div>
+                    <label for="ad-title" class="block text-sm font-medium text-gray-700 mb-1">Judul Iklan <span class="text-red-500">*</span></label>
+                    <input type="text" id="ad-title" name="judul_iklan" required 
+                           class="mt-1 block w-full p-3 border border-gray-300 rounded-md shadow-sm focus:ring-primary-purple focus:border-primary-purple sm:text-sm"
+                           placeholder="Contoh: Kost Putri Dekat Kampus, Jasa Pindah Rumah Cepat">
+                </div>
+
+                <div>
+                    <label for="ad-description" class="block text-sm font-medium text-gray-700 mb-1">Deskripsi Iklan <span class="text-red-500">*</span></label>
+                    <textarea id="ad-description" name="deskripsi_iklan" rows="5" required 
+                              class="mt-1 block w-full p-3 border border-gray-300 rounded-md shadow-sm focus:ring-primary-purple focus:border-primary-purple sm:text-sm"
+                              placeholder="Jelaskan detail iklan Anda secara lengkap: fasilitas, lokasi, harga, dll."></textarea>
+                </div>
+
+                <div>
+                    <label for="ad-location" class="block text-sm font-medium text-gray-700 mb-1">Lokasi (Kota/Daerah) <span class="text-red-500">*</span></label>
+                    <input type="text" id="ad-location" name="lokasi_iklan" required 
+                           class="mt-1 block w-full p-3 border border-gray-300 rounded-md shadow-sm focus:ring-primary-purple focus:border-primary-purple sm:text-sm"
+                           placeholder="Contoh: Jakarta Pusat, Surabaya, Bali">
+                </div>
+
+                <div id="jasa_kecantikan_fields" class="hidden space-y-6">
+                    <h3 class="text-lg font-semibold text-gray-800 border-b pb-2">Detail Jasa Kecantikan</h3>
+                    <div>
+                        <label for="beauty-service-type" class="block text-sm font-medium text-gray-700 mb-1">Jenis Jasa Kecantikan</label>
+                        <input type="text" id="beauty-service-type" name="jasa_kecantikan_jenis" 
+                               class="mt-1 block w-full p-3 border border-gray-300 rounded-md shadow-sm focus:ring-primary-purple focus:border-primary-purple sm:text-sm"
+                               placeholder="Contoh: Facial, Makeup Artist, Potong Rambut">
+                    </div>
+                    <div>
+                        <label for="beauty-area-layanan" class="block text-sm font-medium text-gray-700 mb-1">Area Layanan</label>
+                        <input type="text" id="beauty-area-layanan" name="jasa_kecantikan_area" 
+                               class="mt-1 block w-full p-3 border border-gray-300 rounded-md shadow-sm focus:ring-primary-purple focus:border-primary-purple sm:text-sm"
+                               placeholder="Contoh: Jabodetabek, Datang ke Rumah, Studio">
+                    </div>
+                </div>
+
+                <div id="jasa_tenaga_berat_fields" class="hidden space-y-6">
+                    <h3 class="text-lg font-semibold text-gray-800 border-b pb-2">Detail Jasa Tenaga Berat</h3>
+                    <div>
+                        <label for="heavy-service-type" class="block text-sm font-medium text-gray-700 mb-1">Jenis Jasa Tenaga Berat</label>
+                        <input type="text" id="heavy-service-type" name="jasa_tenaga_berat_jenis" 
+                               class="mt-1 block w-full p-3 border border-gray-300 rounded-md shadow-sm focus:ring-primary-purple focus:border-primary-purple sm:text-sm"
+                               placeholder="Contoh: Angkut Barang, Pindah Rumah, Bangun/Renovasi">
+                    </div>
+                    <div>
+                        <label for="heavy-equipment" class="block text-sm font-medium text-gray-700 mb-1">Peralatan yang Digunakan (jika ada)</label>
+                        <input type="text" id="heavy-equipment" name="jasa_tenaga_berat_peralatan" 
+                               class="mt-1 block w-full p-3 border border-gray-300 rounded-md shadow-sm focus:ring-primary-purple focus:border-primary-purple sm:text-sm"
+                               placeholder="Contoh: Truk Engkel, Gerobak, Alat Berat">
+                    </div>
+                </div>
+
+                <div id="info_kost_fields" class="hidden space-y-6">
+                    <h3 class="text-lg font-semibold text-gray-800 border-b pb-2">Detail Info Kost</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label for="kost-type" class="block text-sm font-medium text-gray-700 mb-1">Jenis Kost</label>
+                            <select id="kost-type" name="info_kost_jenis" 
+                                    class="mt-1 block w-full p-3 border border-gray-300 rounded-md shadow-sm focus:ring-primary-purple focus:border-primary-purple sm:text-sm">
+                                <option value="">Pilih</option>
+                                <option value="putri">Kost Putri</option>
+                                <option value="putra">Kost Putra</option>
+                                <option value="campur">Kost Campur</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="kost-price" class="block text-sm font-medium text-gray-700 mb-1">Harga Sewa (per Bulan)</label>
+                            <input type="number" id="kost-price" name="info_kost_harga" 
+                                   class="mt-1 block w-full p-3 border border-gray-300 rounded-md shadow-sm focus:ring-primary-purple focus:border-primary-purple sm:text-sm"
+                                   placeholder="Contoh: 800000">
+                        </div>
+                    </div>
+                    <div>
+                        <label for="kost-facilities" class="block text-sm font-medium text-gray-700 mb-1">Fasilitas Utama Kost</label>
+                        <input type="text" id="kost-facilities" name="info_kost_fasilitas" 
+                               class="mt-1 block w-full p-3 border border-gray-300 rounded-md shadow-sm focus:ring-primary-purple focus:border-primary-purple sm:text-sm"
+                               placeholder="Contoh: KM Dalam, AC, WiFi, Dapur Umum">
+                    </div>
+                </div>
+
+                <div id="jual_beli_kendaraan_fields" class="hidden space-y-6">
+                    <h3 class="text-lg font-semibold text-gray-800 border-b pb-2">Detail Jual Beli Kendaraan</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label for="vehicle-type" class="block text-sm font-medium text-gray-700 mb-1">Jenis Kendaraan</label>
+                            <select id="vehicle-type" name="kendaraan_jenis" 
+                                    class="mt-1 block w-full p-3 border border-gray-300 rounded-md shadow-sm focus:ring-primary-purple focus:border-primary-purple sm:text-sm">
+                                <option value="">Pilih</option>
+                                <option value="mobil">Mobil</option>
+                                <option value="motor">Motor</option>
+                                <option value="truk">Truk</option>
+                                <option value="lainnya">Lainnya</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="vehicle-brand" class="block text-sm font-medium text-gray-700 mb-1">Merek</label>
+                            <input type="text" id="vehicle-brand" name="kendaraan_merek" 
+                                   class="mt-1 block w-full p-3 border border-gray-300 rounded-md shadow-sm focus:ring-primary-purple focus:border-primary-purple sm:text-sm"
+                                   placeholder="Contoh: Toyota, Honda, Yamaha">
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label for="vehicle-model" class="block text-sm font-medium text-gray-700 mb-1">Model</label>
+                            <input type="text" id="vehicle-model" name="kendaraan_model" 
+                                   class="mt-1 block w-full p-3 border border-gray-300 rounded-md shadow-sm focus:ring-primary-purple focus:border-primary-purple sm:text-sm"
+                                   placeholder="Contoh: Avanza, Vario, Colt Diesel">
+                        </div>
+                        <div>
+                            <label for="vehicle-year" class="block text-sm font-medium text-gray-700 mb-1">Tahun Pembuatan</label>
+                            <input type="number" id="vehicle-year" name="kendaraan_tahun" min="1900" max="2099" 
+                                   class="mt-1 block w-full p-3 border border-gray-300 rounded-md shadow-sm focus:ring-primary-purple focus:border-primary-purple sm:text-sm"
+                                   placeholder="Contoh: 2018">
+                        </div>
+                    </div>
+                    <div>
+                        <label for="vehicle-price" class="block text-sm font-medium text-gray-700 mb-1">Harga Jual/Beli (IDR)</label>
+                        <input type="number" id="vehicle-price" name="kendaraan_harga" 
+                               class="mt-1 block w-full p-3 border border-gray-300 rounded-md shadow-sm focus:ring-primary-purple focus:border-primary-purple sm:text-sm"
+                               placeholder="Contoh: 150000000">
+                    </div>
+                </div>
+
+                <div id="jual_rumah_tanah_properti_fields" class="hidden space-y-6">
+                    <h3 class="text-lg font-semibold text-gray-800 border-b pb-2">Detail Properti</h3>
+                    <div>
+                        <label for="property-category" class="block text-sm font-medium text-gray-700 mb-1">Kategori Properti</label>
+                        <select id="property-category" name="properti_kategori" 
+                                class="mt-1 block w-full p-3 border border-gray-300 rounded-md shadow-sm focus:ring-primary-purple focus:border-primary-purple sm:text-sm">
+                            <option value="">Pilih</option>
+                            <option value="rumah_dijual">Rumah Dijual</option>
+                            <option value="tanah_dijual">Tanah Dijual</option>
+                            <option value="apartemen_disewa">Apartemen Disewa</option>
+                            <option value="rumah_disewa">Rumah Disewa</option>
+                            <option value="kios_disewa">Kios Disewa</option>
+                            <option value="ruko_disewa">Ruko Disewa</option>
+                            <option value="lainnya">Lainnya</option>
+                        </select>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label for="property-land-size" class="block text-sm font-medium text-gray-700 mb-1">Luas Tanah (m²)</label>
+                            <input type="number" id="property-land-size" name="properti_luas_tanah" 
+                                   class="mt-1 block w-full p-3 border border-gray-300 rounded-md shadow-sm focus:ring-primary-purple focus:border-primary-purple sm:text-sm"
+                                   placeholder="Contoh: 120">
+                        </div>
+                        <div>
+                            <label for="property-building-size" class="block text-sm font-medium text-gray-700 mb-1">Luas Bangunan (m² - jika ada)</label>
+                            <input type="number" id="property-building-size" name="properti_luas_bangunan" 
+                                   class="mt-1 block w-full p-3 border border-gray-300 rounded-md shadow-sm focus:ring-primary-purple focus:border-primary-purple sm:text-sm"
+                                   placeholder="Contoh: 90">
+                        </div>
+                    </div>
+                    <div>
+                        <label for="property-price" class="block text-sm font-medium text-gray-700 mb-1">Harga Jual/Sewa (IDR)</label>
+                        <input type="number" id="property-price" name="properti_harga" 
+                               class="mt-1 block w-full p-3 border border-gray-300 rounded-md shadow-sm focus:ring-primary-purple focus:border-primary-purple sm:text-sm"
+                               placeholder="Contoh: 750000000 (untuk jual), 5000000 (untuk sewa)">
+                    </div>
+                    <div>
+                        <label for="property-certificate" class="block text-sm font-medium text-gray-700 mb-1">Status Sertifikat</label>
+                        <input type="text" id="property-certificate" name="properti_sertifikat" 
+                               class="mt-1 block w-full p-3 border border-gray-300 rounded-md shadow-sm focus:ring-primary-purple focus:border-primary-purple sm:text-sm"
+                               placeholder="Contoh: SHM, HGB, SHGB">
+                    </div>
+                </div>
+
+                <div class="text-sm text-gray-500">
+                    <p><span class="text-red-500">*</span> Bidang wajib diisi.</p>
+                    <p class="mt-2">Setelah Anda mengirim formulir ini, tim kami akan meninjau informasi Anda. Kami akan menghubungi Anda melalui WhatsApp untuk konfirmasi dan meminta detail tambahan seperti foto iklan, jika diperlukan.</p>
+                </div>
+
+                <button type="submit" 
+                        class="w-full flex justify-center py-3 px-4 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-primary-purple hover:bg-dark-purple focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-purple">
+                    Kirim Pendaftaran Iklan
+                </button>
+            </form>
+        </section>
+    </main>
+
+    <footer class="bg-gray-800 text-white mt-12">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-8 text-center">
+            <p>&copy; 2024 InfoLengkap. Semua Hak Cipta Dilindungi.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile menu toggle
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const svgs = mobileMenuButton.querySelectorAll('svg');
+
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+                svgs.forEach(svg => svg.classList.toggle('hidden'));
+            });
+
+            // Form conditional fields logic
+            const serviceTypeSelect = document.getElementById('service-type');
+            const formSubjectInput = document.getElementById('form-subject');
+            const conditionalFields = {
+                'jasa_kecantikan': document.getElementById('jasa_kecantikan_fields'),
+                'jasa_tenaga_berat': document.getElementById('jasa_tenaga_berat_fields'),
+                'info_kost': document.getElementById('info_kost_fields'),
+                'jual_beli_kendaraan': document.getElementById('jual_beli_kendaraan_fields'),
+                'jual_rumah_tanah_properti': document.getElementById('jual_rumah_tanah_properti_fields')
+            };
+
+            const allConditionalInputs = document.querySelectorAll('#ad-registration-form div[id$="_fields"] input, #ad-registration-form div[id$="_fields"] select, #ad-registration-form div[id$="_fields"] textarea');
+
+            function toggleConditionalFields() {
+                const selectedService = serviceTypeSelect.value;
+                
+                // Reset all conditional fields and remove 'required' attribute
+                allConditionalInputs.forEach(input => {
+                    input.closest('div').classList.add('hidden'); // Hide parent div if it's a direct child of the conditional block
+                    input.removeAttribute('required');
+                    // Optionally clear value
+                    // input.value = ''; 
+                });
+
+                // Show relevant fields and add 'required' if necessary for key fields
+                if (conditionalFields[selectedService]) {
+                    conditionalFields[selectedService].classList.remove('hidden');
+                    // Add 'required' for specific key fields for the shown section
+                    // Example:
+                    // if (selectedService === 'info_kost') {
+                    //     document.getElementById('kost-type').setAttribute('required', 'true');
+                    //     document.getElementById('kost-price').setAttribute('required', 'true');
+                    // }
+                }
+
+                // Update form subject
+                switch (selectedService) {
+                    case 'jasa_kecantikan':
+                        formSubjectInput.value = 'Pendaftaran Iklan - Jasa Kecantikan';
+                        break;
+                    case 'jasa_tenaga_berat':
+                        formSubjectInput.value = 'Pendaftaran Iklan - Jasa Tenaga Berat';
+                        break;
+                    case 'info_kost':
+                        formSubjectInput.value = 'Pendaftaran Iklan - Info Kost';
+                        break;
+                    case 'jual_beli_kendaraan':
+                        formSubjectInput.value = 'Pendaftaran Iklan - Jual Beli Kendaraan';
+                        break;
+                    case 'jual_rumah_tanah_properti':
+                        formSubjectInput.value = 'Pendaftaran Iklan - Jual Rumah, Tanah, Properti';
+                        break;
+                    default:
+                        formSubjectInput.value = 'Pendaftaran Iklan - InfoLengkap';
+                }
+            }
+
+            serviceTypeSelect.addEventListener('change', toggleConditionalFields);
+            toggleConditionalFields(); // Call on load to set initial state
+
+            // Formspree submission handling
+            const form = document.getElementById('ad-registration-form');
+            const successMessage = document.getElementById('form-success-message');
+
+            form.addEventListener('submit', async function(event) {
+                event.preventDefault(); // Prevent default form submission
+
+                const formData = new FormData(form);
+                const response = await fetch(form.action, {
+                    method: form.method,
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+
+                if (response.ok) {
+                    form.reset(); // Clear the form
+                    successMessage.classList.remove('hidden'); // Show success message
+                    // Scroll to success message
+                    successMessage.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    // Optionally hide message after a few seconds
+                    setTimeout(() => {
+                        successMessage.classList.add('hidden');
+                    }, 10000); // Hide after 10 seconds
+                    
+                    // Reset conditional fields display
+                    toggleConditionalFields();
+
+                } else {
+                    alert('Terjadi kesalahan saat mengirim formulir. Silakan coba lagi.');
+                    // You might want to display a more user-friendly error message
+                }
+            });
+        });
+    </script>
+</body>
+</html>
